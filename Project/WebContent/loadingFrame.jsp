@@ -13,9 +13,11 @@
 		<title>Welcome</title>
 	</head>
 	<body class="resize">
-		<div id="bottomDiv">
-			<img id="logoImg" src="image/logo.png">
-			<img class="topDiv imgResize" src="image/moveKid.png">
+		<div class="bottomDiv">
+			<div>
+				<img id="logoImg" src="image/logo.png">
+				<img class="imgResize" id="moveKid" src="image/moveKid.png">
+			</div>
 		</div>
 	</body>
 </html>
