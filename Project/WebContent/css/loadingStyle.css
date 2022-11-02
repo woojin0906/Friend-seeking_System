@@ -38,6 +38,23 @@
 	object-fit: cover;
 }
 
+.bottomDiv #hiMsg{
+	position: absolute;
+	top: 10%;
+	left: 85%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+}
+
+.bottomDiv h2{
+	position: absolute;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 48px;
+	transform: rotate(-7deg);
+	top: 26%;
+	left: 29%;
+}
+
 .move_to_right {
 	-webkit-animation-name: animation_move;
 	-webkit-animation-duration: 3s;

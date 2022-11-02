@@ -8,9 +8,15 @@
 <!DOCTYPE html>
 <html class="resize">
 	<head>
- 		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
 		<meta charset="UTF-8">
+		
+ 		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
 		<link href="css/loadingStyle.css?ver=1" rel="stylesheet" type="text/css">
+ 		
+ 		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+ 		
 		<title>Welcome</title>
 	</head>
 	<body class="resize">
@@ -21,9 +27,11 @@
 		</script>
 		
 		<div class="bottomDiv">
+			<h2>친구 구할 땐?</h2>
 			<div>
 				<img id="logoImg" src="image/logo.png">
-				<img class="imgResize" id="moveKid" src="image/moveKid.png">
+				<img id="moveKid" src="image/moveKid.png">
+				<img id="hiMsg" src="image/msg.png">
 			</div>
 		</div>
 	</body>
