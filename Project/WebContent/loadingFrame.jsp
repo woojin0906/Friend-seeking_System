@@ -6,13 +6,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="resize">
 	<head>
 		<meta charset="UTF-8">
-		<link href="css/image.css" rel="stylesheet" type="text/css">
-		<title>Insert title here</title>
+		<link href="css/image.css?ver=1" rel="stylesheet" type="text/css">
+		<title>Welcome</title>
 	</head>
-	<body>
-		<img src="image/logo.png">
+	<body class="resize">
+		<div id="bottomDiv">
+			<img id="logoImg" src="image/logo.png">
+			<img class="topDiv imgResize" src="image/moveKid.png">
+		</div>
 	</body>
 </html>

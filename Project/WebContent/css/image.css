@@ -1,6 +1,36 @@
 @charset "UTF-8";
 
-img {
+.resize {
+	width: 100%;
+	height: 100%;
+}
+
+.imgResize {
 	display: block;
 	margin: auto;
+	max-width: 7%;
+	height: auto;
+	text-align: center;
+}
+
+.topDiv {
+	display: flex;
+	text-align : center;
+	height: 100%;
+	position: absolute;
+}
+
+#bottomDiv {
+	display: flex;
+	text-align : center;
+	height: 100%;
+	position:relative;
+}
+
+#logoImg {
+	display: block;
+	margin: auto;
+	max-width: 50%;
+	height: auto;
+	text-align: center;
 }
