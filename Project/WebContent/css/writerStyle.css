@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li { list-style-type: none; }
+.box {
+    width: 100%;
+}
+header {
+    margin: 0 auto;
+    height: 160px;
+}
+#logo {
+    float: left;
+    margin: 30px 0 0 30px;
+}
+#menu {
+    float: right;
+    text-align: right;
+    margin: 20px 20px 0 0;
+}
+#menu li {
+    display: inline-block;
+}
+#top_menu li {
+    margin: 5px 0 0 10px;
+}
+#main_menu li {
+    margin: 40px 0 0 80px;
+    font-family: "맑은고딕";
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* main */
+main {
+    clear: both;
+    height: 630px;
+    margin-bottom: 100px;
+}
+.main_name {
+    margin-left: 340px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #4a92c1;
+}
+table {
+    border-top: 3px solid #4a92c1;
+    border-collapse: collapse;
+    margin: auto;
+  }
+  th, td {
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 7px;
+  }
+th { 
+    text-align: left; 
+    padding-left: 15px; 
+    padding-right: 15px;
+  }
+
+#text { 
+    border: 1px solid #cacaca; 
+    padding: 10px; margin: 5px; 
+  }
+#gender { margin: 7px; }
+#person { margin: 7px; }
+#context { border: 1px solid #d8d6d6; }
+#btn {
+    margin: auto;
+    display: block;
+    padding: 12px 40px 12px 40px; 
+    font-size: 16px; 
+    background-color: #4a92c1;
+    color: white;
+    border: 1px solid #4a92c1;
+    border-radius: 5px;
+}
+
+
+/* footer */
+footer {
+    height : 280px;
+    background-color: white;
+    color : black;
+    border-top: 1px solid #e3e3e3;
+}
+#bottom_menu ul {
+    padding : 20px 0 0 50px;
+    font-weight: bold;
+}
+#bottom_menu li {
+    display: inline;
+    margin-right: 30px;
+}
+footer .items {
+    float: left;
+    margin : 50px 100px 0 50px;
+}
+
+
+footer .items ul { margin-top: 15px; }
+footer .items li { margin-top: 5px; }
+footer .phone {
+    font-size: 25px;
+    font-weight: bold;
+}
