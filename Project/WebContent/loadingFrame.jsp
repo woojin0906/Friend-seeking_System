@@ -19,7 +19,7 @@
  		
 		<title>Welcome</title>
 	</head>
-	<body class="resize">
+	<body id="mainBody" class="resize">
  		<script>
 			window.onload = setTimeout(function() {
 				$('#moveKid').addClass('move_to_right');
@@ -29,11 +29,12 @@
 					setTimeout(function() {
 						$('#info').css({"visibility" : "visible"});
 						$('#info').addClass('up_info');
-						
-						$('#moveKid').addClass('move_gelatine');
-						$('#hiMsg').addClass('move_gelatine');
-						$('#info').addClass('move_gelatine');
-						$('#logoImg').addClass('move_gelatine');
+						setTimeout(function() {
+							$('#hiMsg').css({"top" : "10%", "left" : "83%"});
+							$('#moveKid').css({"top" : "29%", "left" : "64%"});
+							$('#info').css({"top" : "-23%", "left" : "-12%"});
+							$('#mainBody').addClass('move_gelatine');
+						}, 1000);
 					}, 1500);
 				}, 3500);
 			}, 1000);
