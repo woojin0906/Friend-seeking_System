@@ -4,12 +4,6 @@
 * { 
     font-family:'Noto Sans KR', sans-serif;
 }
-/* .header * {
-    -ms-overflow-style: none;
-}
-.header * ::-webkit-scrollbar{
-    display: none;
-} */
 
 .header {
   position: fixed;
@@ -18,7 +12,7 @@
   width: 100%;
   background: #e2f0d9;
   color:#000;
-  z-index: -10;
+  z-index: 1000;
   height: 120px;
   overflow: hidden;
   -webkit-transition: height 0.3s;
@@ -206,8 +200,6 @@ input#menuicon.hidden {
 /* -------------------------전체 */
 #content {
   width: 100%;
-  top: 150px;
-  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
