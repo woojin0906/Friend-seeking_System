@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="#"><img class ="logoimg"src="img/logo_header.png"></a>
+        <a href="#"><img class ="logoimg"src="image/logo_header.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
             <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -61,17 +63,17 @@
         <hr>
         <div id="wrap">
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="img/car.png">  붕붕 친구 게시판</p></a>
+                <a class="astyle" href="#"><p><img src="image/car.png">  붕붕 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <!-- 글 제목 받아오기 -->
             </div>
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="img/eat.png">  냠냠 친구 게시판</p></a>
+                <a class="astyle" href="#"><p><img src="image/eat.png">  냠냠 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <!-- 글 제목 받아이고 -->
             </div>
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="img/studying.png">  열공 친구 게시판</p></a>
+                <a class="astyle" href="#"><p><img src="image/studying.png">  열공 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <!-- 글 제목 받아오기 -->
             </div>

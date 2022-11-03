@@ -23,12 +23,25 @@
  		<script>
 			window.onload = setTimeout(function() {
 				$('#moveKid').addClass('move_to_right');
+				setTimeout(function() {
+					$('#hiMsg').css({"visibility" : "visible"});
+					$('#hiMsg').addClass('hi_everyone');
+					setTimeout(function() {
+						$('#info').css({"visibility" : "visible"});
+						$('#info').addClass('up_info');
+						
+						$('#moveKid').addClass('move_gelatine');
+						$('#hiMsg').addClass('move_gelatine');
+						$('#info').addClass('move_gelatine');
+						$('#logoImg').addClass('move_gelatine');
+					}, 1500);
+				}, 3500);
 			}, 1000);
 		</script>
 		
 		<div class="bottomDiv">
-			<h2>친구 구할 땐?</h2>
 			<div>
+				<h2 id="info">친구 구할 땐?</h2>
 				<img id="logoImg" src="image/logo.png">
 				<img id="moveKid" src="image/moveKid.png">
 				<img id="hiMsg" src="image/msg.png">

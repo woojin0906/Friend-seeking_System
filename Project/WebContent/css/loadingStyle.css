@@ -39,20 +39,22 @@
 }
 
 .bottomDiv #hiMsg{
+	visibility: hidden;
 	position: absolute;
 	top: 10%;
-	left: 85%;
+	left: 83%;
 	transform: translate(-50%, -50%);
 	object-fit: cover;
 }
 
-.bottomDiv h2{
+.bottomDiv #info{
+	visibility: hidden;
 	position: absolute;
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: 48px;
 	transform: rotate(-7deg);
-	top: 26%;
-	left: 29%;
+	top: -23%;
+	left: -12%;
 }
 
 .move_to_right {
@@ -65,4 +67,43 @@
 @keyframes animation_move {
 	0% {transform:translate3d(-50%, -50%, 0);}
     100%{transform:translate3d(70%, -50%, 0);}
+}
+
+.hi_everyone {
+	-webkit-animation-name: printMsg;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes printMsg {
+	0% {transform: scale(0) translate3d(300%, -300%, 0);}
+    100%{transform: scale(1.0) translate3d(0%, -50%, 0);}
+}
+
+.up_info {
+	-webkit-animation-name: printInfo;
+	-webkit-animation-duration: 0.7s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes printInfo {
+	0% {transform: rotate(-7deg) scale(50.0);}
+    100%{transform: rotate(-7deg) scale(1.0);}
+}
+
+.move_gelatine {
+	-webkit-animation-name: gelatine;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: 3;
+	-webkit-animation-duration: 0.7s;
+	-webkit-animation-delay: 1.5s;
+}
+
+@keyframes gelatine {
+  from, to { transform: scale(1, 1); }
+  25% { transform: scale(0.9, 1.1); }
+  50% { transform: scale(1.1, 0.9); }
+  75% { transform: scale(0.95, 1.05); }
 }
