@@ -84,7 +84,7 @@
 
 .up_info {
 	-webkit-animation-name: printInfo;
-	-webkit-animation-duration: 0.7s;
+	-webkit-animation-duration: 0.5s;
 	-webkit-animation-timing-function: ease-in-out;
 	-webkit-animation-fill-mode: forwards;
 }
@@ -99,11 +99,12 @@
 	-webkit-animation-fill-mode: forwards;
 	-webkit-animation-iteration-count: 2;
 	-webkit-animation-duration: 1.2s;
+	-webkit-animation-delay: 0.5s;
 }
 
 @keyframes gelatine {
-  from, to { transform: scale(1, 1); }
-  25% { transform: scale(0.95, 1.05); }
-  50% { transform: scale(1.05, 0.95); }
-  75% { transform: scale(0.95, 1.05); }
+  from, to { transform: scale(1, 1) rotate(0deg); }
+  25% { transform: scale(0.95, 1.05) rotate(-2deg); }
+  50% { transform: scale(1.05, 0.95) rotate(0deg); }
+  75% { transform: scale(0.95, 1.05) rotate(2deg); }
 }
