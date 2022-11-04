@@ -7,32 +7,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="script/header.js" type="text/javascript"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/writerStyle.css">
     <title>글작성 홈페이지</title>
 </head>
 <body>
-<header>
-            <div id="logo">
-                <h1><a href="#">구해줘! 프렌즈</a></h1>
-            </div>
-            <nav id="menu">
-                <ul id="top_menu">
-                    <li><a href="#">전우진(woojin)님</a></li><li>|</li>
-                    <li><a href="#">로그아웃</a></li><li>|</li>
-                    <li><a href="#">장바구니</a></li>   
-                </ul>
-              <!--  <ul id="main_menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">신상품</a></li>
-                    <li><a href="#">인기상품</a></li>
-                    <li><a href="#">모든상품</a></li>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="#">검색</a></li> -->
-                </ul>
-            </nav>
+<header class="header">
+        <a href="#"><img class ="logoimg"src="image/logo_header.png"></a>
+        <div class="btnright">
+            <button class="custom-btn btn-3"><span>Log In</span></button>
+            <button class="custom-btn btn-3"><span>Sign Up</span></button>
+        </div>
     </header>
-
+    <div id="boardside">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <div class="cont">
+                <ul>
+                    <li><a href="#">전체 글 보기</a></li>
+                    <li><a href="#">붕붕</a></li>
+                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                </ul>
+            </div>
+            <label for="menuicon" class="background"></label>
+        </div>
+    </div>
+            
+<div id="main_footer">
     <main>
         <div class="main">
             <div class="main_name">
@@ -123,5 +134,6 @@
         </div>
 
 </footer>
+</div>
 </body>
 </html>
