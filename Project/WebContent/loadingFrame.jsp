@@ -9,15 +9,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<title>Welcome</title>
 		
  		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
 		<link href="css/loadingStyle.css?ver=1" rel="stylesheet" type="text/css">
- 		
  		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
  		
-		<title>Welcome</title>
 	</head>
 	<body id="mainBody">
  		<script>
