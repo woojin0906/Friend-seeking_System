@@ -20,8 +20,10 @@
 			<div id="right">
 				<p>계정이 없으세요?</p>
 				<input id="signUp" type="button" value="만들기">
-				<input id="_id" type="text" value="아이디">
-				<input id="_pwd" type="password" value="비밀번호">
+				<img id="personImg" src="image/person.png">
+				<img id="keyImg" src="image/key.png">
+				<input id="_id" type="text">
+				<input id="_pwd" type="password">
 				<input id="loginBtn" type="submit" value="로그인">
 			</div>
 		</div>

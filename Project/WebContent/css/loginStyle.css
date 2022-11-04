@@ -72,37 +72,69 @@ html, body {
 	border-color: rgb(242, 242, 242);
 }
 
+#right #personImg{
+	position: absolute;
+	top: 38%;
+	left: 10%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
 #right #_id {
 	position: absolute;
 	left: 20%;
-	top: 30%;
+	top: 35%;
 	width: 60%;
 	height: 7%;
 	font-family: 'Do Hyeon', sans-serif;
-	font-size: 1.1vw;
+	font-size: 1.2vw;
 	border: 0px;
 	border-bottom: solid 5px #78A1E2;
 	outline: none;
+	text-indent: 15%;
+}
+
+#right #keyImg{
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
 }
 
 #right #_pwd {
 	position: absolute;
 	left: 20%;
-	top: 45%;
+	top: 47%;
 	width: 60%;
 	height: 7%;
 	font-family: 'Do Hyeon', sans-serif;
-	font-size: 1.1vw;
+	font-size: 1.2vw;
 	border: 0px;
 	border-bottom: solid 5px #78A1E2;
 	outline: none;
+	text-indent: 15%;
 }
 
 #right #loginBtn {
 	position: absolute;
-	left: 30%;
-	top: 60%;
-	
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+	left: 37%;
+	top: 65%;
+	width: 25%;
+	height: 8%;
+	color: white;
+	background-color: rgb(120, 161, 226);
+	border-radius: 15px;
+	border-color: rgb(120, 161, 226);
 }
 
 	
