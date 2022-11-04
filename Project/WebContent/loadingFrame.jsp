@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="resize">
+<html>
 	<head>
 		<meta charset="UTF-8">
 		
@@ -19,7 +19,7 @@
  		
 		<title>Welcome</title>
 	</head>
-	<body id="mainBody" class="resize">
+	<body id="mainBody">
  		<script>
 			window.onload = setTimeout(function() {
 				$('#moveKid').addClass('move_to_right');
