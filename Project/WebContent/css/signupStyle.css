@@ -11,7 +11,7 @@ html, body {
 	overflow: hidden;
 }
 
-.loginArea {
+.signupArea {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -22,67 +22,31 @@ html, body {
 	border-radius: 20px;
 }
 
-.loginArea #left {
+.signupArea #left {
 	position: absolute;
-	width: 40%;
-	height: 100%;
-	background-color: rgb(120, 161, 226);
-	border-radius: 20px 0 0 20px;
-}
-
-.loginArea #right {
-	position: absolute;
-	left: 40%;
 	width: 60%;
 	height: 100%;
 }
 
-#logo {
+.signupArea #right {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-webkit-user-drag: none;
-	max-width: 70%;
-	max-height: 70%;
+	left: 60%;
+	width: 40%;
+	height: 100%;
+	border-radius: 0 20px 20px 0;
+	background-color: rgb(120, 161, 226);
 }
 
-#right p {
+#left p {
 	position: absolute;
 	font-family: 'Do Hyeon', sans-serif;
 	color: grey;
-	font-size: 1.1vw;
+	font-size: 1.4vw;
 	left: 42%;
 	top: 5%;
 }
 
-#right #signUp {
-	position: absolute;
-	font-family: 'Do Hyeon', sans-serif;
-	font-size: 1.1vw;
-	white-space : nowrap;
-	overflow : hidden;
-	text-overflow : ellipsis;
-	left: 77%;
-	top: 4%;
-	width: 17%;
-	height: 7%;
-	color: rgb(120, 161, 226);
-	border-radius: 15px;
-	border-color: rgb(242, 242, 242);
-}
-
-#right #personImg{
-	position: absolute;
-	top: 38.5%;
-	left: 24%;
-	transform: translate(-50%, -50%);
-	-webkit-user-drag: none;
-	max-width: 70%;
-	max-height: 70%;
-}
-
-#right #_id {
+#left #_id {
 	position: absolute;
 	left: 20%;
 	top: 35%;
@@ -96,17 +60,7 @@ html, body {
 	text-indent: 15%;
 }
 
-#right #keyImg{
-	position: absolute;
-	top: 51%;
-	left: 24%;
-	transform: translate(-50%, -50%);
-	-webkit-user-drag: none;
-	max-width: 70%;
-	max-height: 70%;
-}
-
-#right #_pwd {
+#left #_pwd {
 	position: absolute;
 	left: 20%;
 	top: 47%;
@@ -120,15 +74,15 @@ html, body {
 	text-indent: 15%;
 }
 
-#right #loginBtn {
+#left #signupBtn {
 	position: absolute;
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: 1.1vw;
 	white-space : nowrap;
 	overflow : hidden;
 	text-overflow : ellipsis;
-	left: 37%;
-	top: 65%;
+	left: 48%;
+	top: 86%;
 	width: 25%;
 	height: 8%;
 	color: white;
@@ -137,18 +91,29 @@ html, body {
 	border-color: rgb(120, 161, 226);
 }
 
-#right #lostPwd {
+#left #cancelBtn {
 	position: absolute;
 	font-family: 'Do Hyeon', sans-serif;
 	font-size: 1.1vw;
 	white-space : nowrap;
 	overflow : hidden;
 	text-overflow : ellipsis;
-	color: grey;
-	left: 30%;
-	top: 80%;
-	max-width: 45%;
-	max-height: 6%;
-	border: 0px;
-	background-color: white;
+	left: 76%;
+	top: 86%;
+	width: 16%;
+	height: 8%;
+	color: white;
+	background-color: rgb(120, 161, 226);
+	border-radius: 15px;
+	border-color: rgb(120, 161, 226);
+}
+
+#right #logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
 }
