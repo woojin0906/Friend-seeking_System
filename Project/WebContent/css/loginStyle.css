@@ -74,8 +74,8 @@ html, body {
 
 #right #personImg{
 	position: absolute;
-	top: 38%;
-	left: 10%;
+	top: 38.5%;
+	left: 24%;
 	transform: translate(-50%, -50%);
 	-webkit-user-drag: none;
 	max-width: 70%;
@@ -98,8 +98,8 @@ html, body {
 
 #right #keyImg{
 	position: absolute;
-	top: 50%;
-	left: 10%;
+	top: 51%;
+	left: 24%;
 	transform: translate(-50%, -50%);
 	-webkit-user-drag: none;
 	max-width: 70%;
@@ -137,4 +137,19 @@ html, body {
 	border-color: rgb(120, 161, 226);
 }
 
+#right #lostPwd {
+	position: absolute;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+	color: grey;
+	left: 30%;
+	top: 80%;
+	max-width: 45%;
+	max-height: 6%;
+	border: 0px;
+	background-color: white;
 	
+}
