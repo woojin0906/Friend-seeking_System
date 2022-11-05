@@ -15,11 +15,15 @@
 		<div class="signupArea">
 			<div id="left">
 				<p>회원가입</p>
-				<button id="signUp" type="button" onclick="location='signUp.jsp'">만들기</button>
 				<input id="_id" type="text" placeholder="아이디">
 				<input id="_pwd" type="password" placeholder="비밀번호">
-				<input id="_pwdCheck" type="password" placeholder="비밀번호 확인">
-				
+				<input id="_name" type="text" placeholder="이름">
+				<input id="_tel" type="text" placeholder="전화번호">
+				<select id="_sex">
+					<option value="none">성별</option>
+					<option value="남자">남자</option>
+					<option value="여자">여자</option>
+				</select>
 				<button id="signupBtn" type="button">회원가입</button>
 				<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
 			</div>

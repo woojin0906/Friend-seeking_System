@@ -43,13 +43,13 @@ html, body {
 	color: grey;
 	font-size: 1.4vw;
 	left: 42%;
-	top: 5%;
+	top: 10%;
 }
 
 #left #_id {
 	position: absolute;
 	left: 20%;
-	top: 35%;
+	top: 25%;
 	width: 60%;
 	height: 7%;
 	font-family: 'Do Hyeon', sans-serif;
@@ -63,7 +63,49 @@ html, body {
 #left #_pwd {
 	position: absolute;
 	left: 20%;
-	top: 47%;
+	top: 36%;
+	width: 60%;
+	height: 7%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 15%;
+}
+
+#left #_name {
+	position: absolute;
+	left: 20%;
+	top: 54%;
+	width: 30%;
+	height: 7%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 30%;
+}
+
+#left #_sex {
+	position: absolute;
+	left: 56%;
+	top: 54%;
+	width: 25%;
+	height: 8.3%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 30%;
+}
+
+#left #_tel {
+	position: absolute;
+	left: 20%;
+	top: 65%;
 	width: 60%;
 	height: 7%;
 	font-family: 'Do Hyeon', sans-serif;
