@@ -24,11 +24,16 @@
 					<option value="남자">남자</option>
 					<option value="여자">여자</option>
 				</select>
+				<img id="personImg" src="image/person.png">
+				<img id="keyImg" src="image/key.png">
+				<img id="nameImg" src="image/nameImg.png">
+				<img id="sexImg" src="image/sexImg.png">
+				<img id="telImg" src="image/telImg.png">
 				<button id="signupBtn" type="button">회원가입</button>
 				<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
 			</div>
 			<div id="right">
-				<img id="logo" src="image/loginLogo.png">
+				<img id="logo" src="image/signUpLogo.png">
 			</div>
 		</div>
 	</body>

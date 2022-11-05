@@ -99,7 +99,7 @@ html, body {
 	border: 0px;
 	border-bottom: solid 5px #78A1E2;
 	outline: none;
-	text-indent: 30%;
+	text-indent: 35%;
 }
 
 #left #_tel {
@@ -148,6 +148,56 @@ html, body {
 	background-color: rgb(120, 161, 226);
 	border-radius: 15px;
 	border-color: rgb(120, 161, 226);
+}
+
+#left #personImg{
+	position: absolute;
+	top: 28.5%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#left #keyImg{
+	position: absolute;
+	top: 40%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#left #nameImg{
+	position: absolute;
+	top: 58%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#left #sexImg{
+	position: absolute;
+	top: 58%;
+	left: 59.5%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#left #telImg{
+	position: absolute;
+	top: 70%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
 }
 
 #right #logo {
