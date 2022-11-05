@@ -1,7 +1,7 @@
 <!-- 
 	작성자: 김지웅
 	웹 서비스 접속시 가장 먼저 출력되는 페이지
-	메인 로고가 fadein, fadeout 효과로 
+	여러 애니메이션 효과 적용 
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.findArea {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 30%;
+	height: 40%;
+	box-shadow: 3px 3px 8px grey;
+	border-radius: 20px;
+	background-color: white;
+	z-index: 1;
+}
+
+.findArea p {
+	position: absolute;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.6vw;
+	left: 35%;
+	top: 8%;
+}
+
+#_id {
+	position: absolute;
+	left: 20%;
+	top: 31%;
+	width: 60%;
+	height: 7%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 15%;
+}
+
+#_name {
+	position: absolute;
+	left: 20%;
+	top: 50%;
+	width: 30%;
+	height: 7%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 30%;
+}
+
+#_tel {
+	position: absolute;
+	left: 20%;
+	top: 69%;
+	width: 60%;
+	height: 7%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.2vw;
+	border: 0px;
+	border-bottom: solid 5px #78A1E2;
+	outline: none;
+	text-indent: 15%;
+}
+
+#personImg{
+	position: absolute;
+	top: 34.5%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#nameImg{
+	position: absolute;
+	top: 53%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#telImg{
+	position: absolute;
+	top: 72.5%;
+	left: 24%;
+	transform: translate(-50%, -50%);
+	-webkit-user-drag: none;
+	max-width: 70%;
+	max-height: 70%;
+}
+
+#kid {
+	position: absolute;
+	top: 35%;
+	left: 32%;
+	transform: translate(-50%, -50%);
+	transform: rotate(-45deg);
+	-webkit-user-drag: none;
+	max-width: 55%;
+	max-height: 55%;
+}
+
+#kid2 {
+	position: absolute;
+	top: 54%;
+	left: 64.5%;
+	transform: translate(-50%, -50%);
+	transform: rotate(45deg);
+	-webkit-user-drag: none;
+	max-width: 55%;
+	max-height: 55%;
+}
+
+#findBtn {
+	position: absolute;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+	left: 57%;
+	top: 86%;
+	width: 15%;
+	height: 8%;
+	color: white;
+	background-color: rgb(120, 161, 226);
+	border-radius: 15px;
+	border-color: rgb(120, 161, 226);
+}
+
+#cancelBtn {
+	position: absolute;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+	left: 76%;
+	top: 86%;
+	width: 15%;
+	height: 8%;
+	color: white;
+	background-color: rgb(120, 161, 226);
+	border-radius: 15px;
+	border-color: rgb(120, 161, 226);
+}
