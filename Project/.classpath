@@ -9,6 +9,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/인하공전/2학년 2학기/서버구축관리/과제 안내 및 과제 양식/WebSoft/InstallSoftware/1.JDK/jdk-8u101-docs-all.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
