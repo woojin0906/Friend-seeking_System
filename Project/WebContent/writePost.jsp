@@ -47,7 +47,8 @@
                     <li><a href="#">전체 글 보기</a></li>
                     <li><a href="#">붕붕</a></li>
                     <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                    <li><a href="#">게시판 이름</a></li>                        
+                    <li><a href="#">게시판 이름</a></li>
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -96,7 +97,7 @@
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td id="context" colspan="3"><textarea type="hidden" name="_context" value="<%=context %>"><%=context %></textarea></td>        
+                 <td id="context" colspan="3"><input type="hidden" name="_context" value="<%=context %>"/><%=context %></td>        
              </tr>
          </table>    
          </form>

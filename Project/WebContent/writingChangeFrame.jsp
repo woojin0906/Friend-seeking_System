@@ -48,7 +48,8 @@
                     <li><a href="#">전체 글 보기</a></li>
                     <li><a href="#">붕붕</a></li>
                     <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                    <li><a href="#">게시판 이름</a></li>                        
+                    <li><a href="#">게시판 이름</a></li>
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
