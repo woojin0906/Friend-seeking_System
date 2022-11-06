@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #e2f0d9;
+  background: #78A1E2;
   color:#000;
   z-index: 0;
   height: 120px;
@@ -53,7 +53,7 @@
   margin-left: 100px;
 }
 
-/* --------------------------- */
+/* --------------------------- sidebar*/
 #boardside * {
     list-style: none;
     text-decoration: none;
@@ -275,8 +275,8 @@ input#menuicon.hidden {
     position: absolute;
     top: 700px;
     width: 80%;
-    border: dashed 1px #e2f0d9;
-    background: #e2f0d9;
+    border: dashed 1px #78A1E2;
+    background: #78A1E2;
     z-index: -100;
   }
 
@@ -289,7 +289,7 @@ input#menuicon.hidden {
   /* left: 300px; */
   width: 1200px;
   height: 500px;
-  background: rgba(226, 240, 217, 0.2);
+  background: rgba(120, 161, 226, 0.2);
   border-radius: 25px;
   justify-content: center;
   flex-direction: row;
@@ -356,7 +356,7 @@ input#menuicon.hidden {
 }
 .btn-3 {
   background: rgb(148, 185, 255);
-  background: linear-gradient(0deg, rgb(224, 240, 210,1) 0%, rgb(220, 255, 209,1) 100%);
+  background: linear-gradient(0deg, rgb(187, 213, 255) 0%, rgb(120, 161, 226) 100%);
   width: 100px;
   height: 40px;
   line-height: 42px;
@@ -371,12 +371,13 @@ input#menuicon.hidden {
   height: 100%;
 }
 .btn-3:before,
-.btn-3:after {
+.btn-3:after { /* 마우스 호버 시 오른쪽, 위 색상 */
   position: absolute;
   content: "";
   right: 0;
   top: 0;
-  background: rgb(93, 174, 255);
+  /* background: #ccc; */
+  background: rgb(188, 207, 255);
   transition: all 0.2s ease;
 }
 .btn-3:before {
@@ -398,7 +399,7 @@ input#menuicon.hidden {
   width: 100%;
 }
 .btn-3 span:hover{
-   color: rgb(93, 174, 255);
+   color: rgb(188, 207, 255);
 }
 .btn-3 span:before,
 .btn-3 span:after {
@@ -406,7 +407,7 @@ input#menuicon.hidden {
   content: "";
   left: 0;
   bottom: 0;
-  background: rgba(93, 174, 255);
+  background: rgb(188, 207, 255);
   transition: all 0.2s ease;
 }
 .btn-3 span:before {
