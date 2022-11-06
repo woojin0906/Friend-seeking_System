@@ -73,7 +73,10 @@
 				Connection conn = null;
 				Statement stmt = null;
 				ResultSet rs = null;
-				boolean infoMsg = true;
+				PreparedStatement pstmt = null;
+				boolean infoState = true, infoState2 = true;
+				String infoMsg;
+				String sql;
 				
 				if( !id.equals("") && !pwd.equals("") && !nickname.equals("") && 
 						!name.equals("") && !sex.equals("") && !tel.equals("")){
@@ -82,22 +85,58 @@
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
 					
-					String sql = "select id from member";
+					sql = "select id from member";
 					stmt = conn.createStatement();
 					rs = stmt.executeQuery(sql);
 					
 					while(rs.next()){
 		               	String user = rs.getString(1);
 						if(user.equals(id)){
-							infoMsg = false;
+							infoState = false;
 							break;
 						}
 		            }
 					
-					if(infoMsg) {
-// 						String sql = "insert into memeber values('" + id + "','" +  password + "','" + name
+					sql = "select nickname from member";
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery(sql);
+					
+					while(rs.next()){
+		               	String nick = rs.getString(1);
+						if(nick.equals(nickname)){
+							infoState2 = false;
+							break;
+						}
+		            }
+					
+					if(infoState && infoState2) {
+						out.println("중복이 없음");
+						sql = "insert into member values('" 
+						+ id + "','" +  pwd + "','" + name + "','" + sex + "','" + tel
+						+ "','" + nickname + "')";
+						
+						pstmt = conn.prepareStatement(sql);
+						pstmt.executeUpdate();
 					}
+					else {
+						if(infoState == false && infoState2 == false){
+							infoMsg = "이미 사용중인 아이디와 닉네임입니다.";
+							out.println(infoMsg);
+						}
+						else if(infoState == false){
+							infoMsg = "이미 사용중인 아이디입니다.";
+							out.println(infoMsg);
+						}
+						else if(infoState2 == false){ 
+							infoMsg = "이미 사용중인 닉네임입니다.";
+							out.println(infoMsg);
+						}
+					}
+				} else{
+					infoMsg = "모든 값이 입력되지 않았습니다.";					
+					out.println(infoMsg);
 				}
+					
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
