@@ -201,7 +201,7 @@ input#menuicon.hidden {
 #main_footer {
 	width: 100%;  
 	position: absolute;
-  	top: 200px; 
+  	top: 150px; 
   	
   	 z-index: -100;
 }
@@ -209,7 +209,7 @@ input#menuicon.hidden {
 /* main */
 main {
   clear: both;
-  height: 850px;
+  height: 900px;
   margin-bottom: 100px;
 }
 
@@ -298,30 +298,29 @@ th, td {
 }
 /* footer */
 footer {
-  height : 280px;
-  background-color: white;
-  color : black;
-  border-top: 1px solid #e3e3e3;
+    height : 280px;
+    background-color: white;
+    color : black;
+    border-top: 1px solid #e3e3e3;
 }
 #bottom_menu ul {
-  padding : 20px 0 0 50px;
-  font-weight: bold;
+    padding : 20px 0 0 50px;
+    font-weight: bold;
 }
 #bottom_menu li {
-  display: inline;
-  margin-right: 30px;
+    display: inline;
+    margin-right: 30px;
 }
 footer .items {
-  float: left;
-  margin : 50px 100px 0 50px;
+    float: left;
+    margin : 50px 50px 0 50px;
 }
 
-
-footer .items ul { margin-top: 15px; }
-footer .items li { margin-top: 5px; }
+footer .items ul { margin-top: 5px; }
+footer .items li { margin-top: 5px; list-style: none; }
 footer .phone {
-  font-size: 25px;
-  font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 /* button */

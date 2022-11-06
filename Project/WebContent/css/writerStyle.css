@@ -200,20 +200,18 @@ input#menuicon.hidden {
 #main_footer {
 	width: 100%;  
 	position: absolute;
-  	top: 200px; 
-  	
+  	top: 150px; 
   	 z-index: -100;
 }
 
 /* main */
 main {
     clear: both;
-    height: 700px;
-
+    height: 750px;
     margin-bottom: 100px;
 }
 .main_name {
-    margin-left: 370px;
+    margin-left: 350px;
     margin-bottom: 10px;
     margin-top: 10px;
     color: #78A1E2;
@@ -237,7 +235,7 @@ th {
 
 #text { 
     border: 1px solid #cacaca; 
-    padding: 10px; margin: 5px; 
+    padding: 5px; margin: 5px; 
   }
 #gender { margin: 7px; }
 #person { margin: 7px; }
@@ -271,12 +269,11 @@ footer {
 }
 footer .items {
     float: left;
-    margin : 50px 100px 0 50px;
+    margin : 50px 50px 0 50px;
 }
 
-
-footer .items ul { margin-top: 15px; }
-footer .items li { margin-top: 5px; }
+footer .items ul { margin-top: 5px; }
+footer .items li { margin-top: 5px; list-style: none; }
 footer .phone {
     font-size: 25px;
     font-weight: bold;

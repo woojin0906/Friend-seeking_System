@@ -20,10 +20,12 @@
    	
       String title = request.getParameter("_title");
       String name = request.getParameter("_name");
+      String type = request.getParameter("_type");
       String time = request.getParameter("_time");
       String gender = request.getParameter("_gender");
 	  String[] person = request.getParameterValues("_person");
-	  String place = request.getParameter("_place");
+	  String depart = request.getParameter("_depart");
+	  String arrival = request.getParameter("_arrival");
 	  String context = request.getParameter("_context");
 
    %>
@@ -78,7 +80,10 @@
                  </td>
              
              </tr>
-      
+      		 <tr>
+                 <th>종류</th>
+                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="<%=type %>" /><%=type %></td>        
+             </tr>
              <tr>
                  <th>시간</th>
                  <td id="hidden" colspan="3"><input type="hidden" name="_time" value="<%=time %>" /><%=time %></td>        
@@ -92,8 +97,12 @@
                  <td id="hidden" colspan="3"><input type="hidden" name="_person" value="<%=person %>"/><%=person %></td>        
              </tr>
              <tr>
-                 <th>출발지&도착지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_place" value="<%=place %>"/><%=place %></td>        
+                 <th>출발지</th>
+                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value="<%=depart %>"/><%=depart %></td>        
+             </tr>
+             <tr>
+                 <th>도착지</th>
+                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value="<%=arrival %>"/><%=arrival %></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>

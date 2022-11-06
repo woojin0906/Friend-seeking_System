@@ -18,12 +18,14 @@
 <body>
    <%
    	
-      String title = request.getParameter("_title");
-      String name = request.getParameter("_name");
-      String time = request.getParameter("_time");
-      String gender = request.getParameter("_gender");
+	   String title = request.getParameter("_title");
+	   String name = request.getParameter("_name");
+	   String type = request.getParameter("_type");
+	   String time = request.getParameter("_time");
+	   String gender = request.getParameter("_gender");
 	  String[] person = request.getParameterValues("_person");
-	  String place = request.getParameter("_place");
+	  String depart = request.getParameter("_depart");
+	  String arrival = request.getParameter("_arrival");
 	  String context = request.getParameter("_context");
 
    %>
@@ -74,7 +76,11 @@
                  <th>작성자</th>
                  <td><input id="text" type="text" name="_name" size="50" maxlength="100" value="<%=name %>"/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
              </tr>
-      
+      		 <tr>
+                  <th>종류</th>
+                  <td><input id="type" type="radio" name="_type" value="택시"/>택시 
+                      <input id="type" type="radio" name="_type" value="카풀"/>카풀</td>        
+             </tr>
              <tr>
                  <th>시간</th>
                  <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="<%=time %>" /></td>        
@@ -96,8 +102,12 @@
                  </td>        
              </tr>
              <tr>
-                 <th>출발지&도착지</th>
-                 <td><input id="text" type="text" name="_place" size="50" maxlength="100" value="<%=place %>"/></td>        
+                  <th>출발지</th>
+                  <td><input id="text" type="text" name="_depart" size="50" maxlength="100" value="<%=depart %>"/></td>        
+             </tr>
+             <tr>
+                   <th>도착지</th>
+                   <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value="<%=arrival %>"/></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>

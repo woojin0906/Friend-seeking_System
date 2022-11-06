@@ -62,7 +62,11 @@
                     <th>작성자</th>
                     <td><input id="text" type="text" name="_name" size="50" maxlength="100" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                 </tr>
-         
+         		<tr>
+                    <th>종류</th>
+                    <td><input id="type" type="radio" name="_type" value="택시"/>택시 
+                        <input id="type" type="radio" name="_type" value="카풀"/>카풀</td>        
+                </tr>
                 <tr>
                     <th>시간</th>
                     <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="" /></td>        
@@ -84,8 +88,12 @@
                     </td>        
                 </tr>
                 <tr>
-                    <th>출발지&도착지</th>
-                    <td><input id="text" type="text" name="_place" size="50" maxlength="100" value=""/></td>        
+                    <th>출발지</th>
+                    <td><input id="text" type="text" name="_depart" size="50" maxlength="100" value=""/></td>        
+                </tr>
+                <tr>
+                    <th>도착지</th>
+                    <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value=""/></td>        
                 </tr>
                 <tr>
                     <th>기타 내용</th>
@@ -128,8 +136,9 @@
         <div class="items">
             <h2 class="items_name">입금 정보</h2>
             <ul>
+            	<li>구해줘! 프렌즈</li>
                 <li>농협 123-123-123456</li>
-                <li>구해줘! 프렌즈</li>
+                
             </ul>
         </div>
 
