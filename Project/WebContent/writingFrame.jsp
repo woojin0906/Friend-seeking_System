@@ -16,8 +16,8 @@
     <title>글작성 홈페이지</title>
 </head>
 <body>
-<header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_header.png"></a>
+    <header class="header">
+        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
             <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -42,7 +42,7 @@
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-            
+    
 <div id="main_footer">
     <main>
         <div class="main">
@@ -51,8 +51,7 @@
             </div>
             
         
-        <form action="" method="get" >
-            <input type="hidden" name="board_id" >
+        <form action="writePost.jsp" method="get" >
             <table >
                 <tr>
                     <th>제목</th>

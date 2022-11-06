@@ -15,84 +15,88 @@
  <title>글모음 홈페이지</title>
 </head>
 <body>
-<header class="header">
-     <a href="#"><img class ="logoimg"src="image/logo_header.png"></a>
-     <div class="btnright">
-         <button class="custom-btn btn-3"><span>Log In</span></button>
-         <button class="custom-btn btn-3"><span>Sign Up</span></button>
-     </div>
- </header>
- <div id="boardside">
-     <input type="checkbox" id="menuicon">
-     <label for="menuicon">
-         <span></span>
-         <span></span>
-         <span></span>
-     </label>
-     <div class="sidebar">
-         <div class="cont">
-             <ul>
-                 <li><a href="#">전체 글 보기</a></li>
-                 <li><a href="#">붕붕</a></li>
-                 <li><a href="#">게시판 이름</a></li>
-                 <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
-             </ul>
-         </div>
-         <label for="menuicon" class="background"></label>
-     </div>
- </div>
+
+   <%
+   	
+      String title = request.getParameter("_title");
+      String name = request.getParameter("_name");
+      String time = request.getParameter("_time");
+      String gender = request.getParameter("_gender");
+	  String[] person = request.getParameterValues("_person");
+	  String place = request.getParameter("_place");
+	  String context = request.getParameter("_context");
+
+   %>
+    <header class="header">
+        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <div class="btnright">
+            <button class="custom-btn btn-3"><span>Log In</span></button>
+            <button class="custom-btn btn-3"><span>Sign Up</span></button>
+        </div>
+    </header>
+    <div id="boardside">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <div class="cont">
+                <ul>
+                    <li><a href="#">전체 글 보기</a></li>
+                    <li><a href="#">붕붕</a></li>
+                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                </ul>
+            </div>
+            <label for="menuicon" class="background"></label>
+        </div>
+    </div>
          
 <div id="main_footer">
  <main>
      <div class="main">
-<!--        <div class="main_name">
-             <h1>게시글</h1>
-         </div>-->   
-         
-     
-     <form action="" method="get" >
-         <div class="_btn">
-         
-         </div>
+           
+     <form action="writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
-                 <td id="table_top"><input type="hidden" name="_title" value=""/></td>
+                 <td id="table_top"><input type="hidden" name="_title" value="<%=title %>"/><%=title %></td>
                  <td id="date">작성일자</td>
                  <td id="date_hidden"><input type="hidden" name="_date" value=""/></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_name" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td colspan="2">
+                 <td id="hidden"><input type="hidden" name="_name" value="<%=name %>"/><%=name %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="btn_writePost1">
                      <input id="btn" type="submit" value="수정하기">
-                     <input id="btn_check" type="submit" value="참여하기"/>
+                 </td>
+                 <td id="btn_writePost2">
+                 	<input id="btn_check" type="submit" value="참여하기"/>
                  </td>
              
              </tr>
       
              <tr>
                  <th>시간</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" /></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="<%=time %>" /><%=time %></td>        
              </tr>
              <tr>
                  <th>성별</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/> 
-                 </td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value="<%=gender %>"/><%=gender %></td>        
              </tr>
              <tr>
                  <th>인원</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/>
-                 </td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value="<%=person %>"/><%=person %></td>        
              </tr>
              <tr>
                  <th>출발지&도착지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_place" value=""/></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_place" value="<%=place %>"/><%=place %></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td id="context" colspan="3"><input type="hidden" name="_place" value=""/>
-                 <!-- <textarea cols="122" rows="10"></textarea>--></td>        
+                 <td id="context" colspan="3"><textarea type="hidden" name="_context" value="<%=context %>"><%=context %></textarea></td>        
              </tr>
          </table>    
          </form>
@@ -108,37 +112,37 @@
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
+                     <td><input type="hidden" name="_gender" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>

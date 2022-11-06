@@ -16,32 +16,44 @@
  <title>글수정 홈페이지</title>
 </head>
 <body>
-<header class="header">
-     <a href="#"><img class ="logoimg"src="image/logo_header.png"></a>
-     <div class="btnright">
-         <button class="custom-btn btn-3"><span>Log In</span></button>
-         <button class="custom-btn btn-3"><span>Sign Up</span></button>
-     </div>
- </header>
- <div id="boardside">
-     <input type="checkbox" id="menuicon">
-     <label for="menuicon">
-         <span></span>
-         <span></span>
-         <span></span>
-     </label>
-     <div class="sidebar">
-         <div class="cont">
-             <ul>
-                 <li><a href="#">전체 글 보기</a></li>
-                 <li><a href="#">붕붕</a></li>
-                 <li><a href="#">게시판 이름</a></li>
-                 <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
-             </ul>
-         </div>
-         <label for="menuicon" class="background"></label>
-     </div>
- </div>
+   <%
+   	
+      String title = request.getParameter("_title");
+      String name = request.getParameter("_name");
+      String time = request.getParameter("_time");
+      String gender = request.getParameter("_gender");
+	  String[] person = request.getParameterValues("_person");
+	  String place = request.getParameter("_place");
+	  String context = request.getParameter("_context");
+
+   %>
+   
+    <header class="header">
+        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <div class="btnright">
+            <button class="custom-btn btn-3"><span>Log In</span></button>
+            <button class="custom-btn btn-3"><span>Sign Up</span></button>
+        </div>
+    </header>
+    <div id="boardside">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <div class="cont">
+                <ul>
+                    <li><a href="#">전체 글 보기</a></li>
+                    <li><a href="#">붕붕</a></li>
+                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                </ul>
+            </div>
+            <label for="menuicon" class="background"></label>
+        </div>
+    </div>
          
 <div id="main_footer">
  <main>
@@ -51,21 +63,20 @@
          </div>
          
      
-     <form action="" method="get" >
-         <input type="hidden" name="board_id" >
-         <table >
+     <form action="writePost.jsp" method="get" >
+         <table>
              <tr>
                  <th>제목</th>
-                 <td><input id="text" type="text" name="_title" size="120" maxlength="100" value=""/></td>
+                 <td><input id="text" type="text" name="_title" size="120" maxlength="100" value="<%=title %>"/></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td><input id="text" type="text" name="_name" size="50" maxlength="100" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td><input id="text" type="text" name="_name" size="50" maxlength="100" value="<%=name %>"/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
              </tr>
       
              <tr>
                  <th>시간</th>
-                 <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="" /></td>        
+                 <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="<%=time %>" /></td>        
              </tr>
              <tr>
                  <th>성별</th>
@@ -85,11 +96,11 @@
              </tr>
              <tr>
                  <th>출발지&도착지</th>
-                 <td><input id="text" type="text" name="_place" size="50" maxlength="100" value=""/></td>        
+                 <td><input id="text" type="text" name="_place" size="50" maxlength="100" value="<%=place %>"/></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td><textarea id="context" name="_context" cols="122" rows="10"></textarea></td>        
+                 <td><textarea id="context" name="_context" cols="122" rows="10" value="<%=context %>"></textarea></td>        
              </tr>
              <tr>
                  <td colspan="2"><input id="btn" type="submit" value="수정하기"></td>

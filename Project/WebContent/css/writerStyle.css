@@ -1,5 +1,7 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+
+* { 
     font-family:'Noto Sans KR', sans-serif;
 }
 
@@ -8,7 +10,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #e2f0d9;
+  background: #78A1E2;
   color:#000;
   z-index: 0;
   height: 120px;
@@ -51,7 +53,7 @@
   margin-left: 100px;
 }
 
-/* --------------------------- */
+/* --------------------------- sidebar*/
 #boardside * {
     list-style: none;
     text-decoration: none;
@@ -202,21 +204,22 @@ input#menuicon.hidden {
   	
   	 z-index: -100;
 }
+
 /* main */
 main {
     clear: both;
-    height: 630px;
+    height: 700px;
 
     margin-bottom: 100px;
 }
 .main_name {
-    margin-left: 340px;
+    margin-left: 370px;
     margin-bottom: 10px;
     margin-top: 10px;
-    color: #abd292;
+    color: #78A1E2;
 }
 table {
-    border-top: 3px solid #abd292;
+    border-top: 3px solid #78A1E2;
     border-collapse: collapse;
     margin: auto;
   }
@@ -244,9 +247,9 @@ th {
     display: block;
     padding: 12px 40px 12px 40px; 
     font-size: 16px; 
-    background-color: #abd292;
+    background-color: #78A1E2;
     color: white;
-    border: 1px solid #abd292;
+    border: 1px solid #78A1E2;
     border-radius: 5px;
 }
 
@@ -280,91 +283,91 @@ footer .phone {
 }
 
 /* button */
-
 .custom-btn {
-    width: 100px;
-    height: 40px;
-    color: #000;
-    border-radius: 5px;
-    padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
-  }
-  .btn-3 {
-    background: rgb(148, 185, 255);
-    background: linear-gradient(0deg, rgb(224, 240, 210,1) 0%, rgb(220, 255, 209,1) 100%);
-    width: 100px;
-    height: 40px;
-    line-height: 42px;
-    padding: 0;
-    border: none;
-    margin-left: 10px;
-  }
-  .btn-3 span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  .btn-3:before,
-  .btn-3:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
-    background: rgb(93, 174, 255);
-    transition: all 0.2s ease;
-  }
-  .btn-3:before {
-    height: 0%;
-    width: 2px;
-  }
-  .btn-3:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn-3:hover{
-    background: transparent;
-    box-shadow: none;
-  }
-  .btn-3:hover:before {
-    height: 100%;
-  }
-  .btn-3:hover:after {
-    width: 100%;
-  }
-  .btn-3 span:hover{
-     color: rgb(93, 174, 255);
-  }
-  .btn-3 span:before,
-  .btn-3 span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    background: rgba(93, 174, 255);
-    transition: all 0.2s ease;
-  }
-  .btn-3 span:before {
-    width: 2px;
-    height: 0%;
-  }
-  .btn-3 span:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn-3 span:hover:before {
-    height: 100%;
-  }
-  .btn-3 span:hover:after {
-    width: 100%;
-  }
+  width: 100px;
+  height: 40px;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-3 {
+  background: rgb(148, 185, 255);
+  background: linear-gradient(0deg, rgb(187, 213, 255) 0%, rgb(120, 161, 226) 100%);
+  width: 100px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  margin-left: 10px;
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after { /* ���콺 ȣ�� �� ������, �� ���� */
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  /* background: #ccc; */
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+  background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgb(188, 207, 255);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
