@@ -117,7 +117,7 @@
 					<img id="telImg" src="image/telImg.png">
 					<button id="signupBtn" type="button">회원가입</button>
 				</form>
-				<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
+				<button id="cancelBtn" type="button" onclick="location.href='loginFrame.jsp'">취소</button>
 			</div>
 			<div id="right">
 				<img id="logo" src="image/signUpLogo.png">

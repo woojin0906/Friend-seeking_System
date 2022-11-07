@@ -25,7 +25,7 @@
 			<img id="nameImg" src="image/nameImg.png">
 			<img id="telImg" src="image/telImg.png">
 			<button id="findBtn" type="button">찾기</button>
-			<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
+			<button id="cancelBtn" type="button" onclick="location.href='loginFrame.jsp'">취소</button>
 		</div>
 		<img id="kid" src="image/moveKid.png">
 		<img id="kid2" src="image/kid.png">
