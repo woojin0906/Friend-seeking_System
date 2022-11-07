@@ -18,6 +18,7 @@
 	</head>
 	<body>
 		<script>
+			// 가상으로 삽입한 팝업창을 닫는 function	
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
 				$('.background').remove();
@@ -26,7 +27,8 @@
 					window.location.replace('loginFrame.jsp');
 			});
 			
-			// input에 데이터를 모두 입력했는지 검사 후 submit 하여 데이터 전송하는 function
+			// input에 데이터를 모두 입력했는지 검사하고,
+			// 데이터 유효성 검사를 한 뒤 submit 하여 데이터 전송하는 function
 			$(document).on("click", "#signupBtn", function(){
 				let idval = $('#_id').val();
 				let pwdval = $('#_pwd').val();
@@ -36,13 +38,58 @@
 				let sexval = $('#_sex').val();
 				
 				let checkMsg;
+				let checkState = true;
+				
 				if (idval == "" || pwdval == "" || nickval == "" 
 						|| nameval == "" || telval == "" || sexval == ""){
 					checkMsg = "모든 입력값을 입력해주세요.";
+					checkState = false;
 					
 					$('body').append("<div class=background><div id=popup>"+ checkMsg 
 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-				} else {
+				}
+				
+				else if (idval.length < 4 || idval.length > 16){
+					checkMsg = "아이디는 4~16자 사이로 입력해주세요.";
+					checkState = false;
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				}
+				
+				else if (pwdval.length < 8 || pwdval.length > 20){
+					checkMsg = "비밀번호는 8~20자 사이로 입력해주세요.";
+					checkState = false;
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				}
+				
+				else if (nickval.length > 8){
+					checkMsg = "닉네임은 8자 이하로 입력해주세요.";
+					checkState = false;
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				}
+				
+				else if (nameval.length > 6){
+					checkMsg = "이름은 6자 이하로 입력해주세요.";
+					checkState = false;
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				}
+				
+				else if (telval.length > 13){
+					checkMsg = "전화번호는 13자 이하로 입력해주세요.";
+					checkState = false;
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				}
+					
+				if(checkState){
 					$("#_dataForm").submit();
 				}
 			});
@@ -160,6 +207,7 @@
 				}
 					
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		%>
 	</body>
