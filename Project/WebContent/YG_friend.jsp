@@ -190,11 +190,11 @@
             <input type="hidden" name="mid" value="#">
             <input type="hidden" name="category" value="">
             <select name="search_target" class="ppbt">
-              <option value="title_content">제목+내용</option>
-              <option value="title">제목</option>
-              <option value="content">내용</option>
-              <option value="comment">댓글</option>
-              <option value="nick_name">작성자</option>
+              <option value="_title_content">제목+내용</option>
+              <option value="_title">제목</option>
+              <option value="_content">내용</option>
+              <option value="_Category">공부주제</option>
+              <option value="_nickname">작성자</option>
             </select>
             <input class="ppip focused" type="text" name="search_keyword" value="" title="검색" placeholder="검색어를 입력하세요.">
             <button class="ppbt bt_mono" type="submit">검색</button>
