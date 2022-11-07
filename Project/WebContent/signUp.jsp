@@ -10,12 +10,22 @@
 		<meta charset="UTF-8">
 		<title>sign up</title>
 	
+		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
 		<link href="css/signupStyle.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		<script>
+			$(document).on("click", "#closeBtn", function(e) {
+				let val = $('#popup').text();
+				$('.background').addClass('close');
+				
+				if(val == "회원가입이 완료되었습니다.확인")
+					window.location.replace('loginFrame.jsp');
+			})
+		</script>
 		<div class="signupArea">
 			<div id="left">
 				<p>회원가입</p>
@@ -62,13 +72,6 @@
 			if (sex == null ) sex=""; 
 			if( tel == null ) tel="";
 			
-			out.println(id);
-			out.println(pwd);
-			out.println(nickname);
-			out.println(name);
-			out.println(sex);
-			out.println(tel);
-			
 			try {
 				Connection conn = null;
 				Statement stmt = null;
@@ -80,7 +83,6 @@
 				
 				if( !id.equals("") && !pwd.equals("") && !nickname.equals("") && 
 						!name.equals("") && !sex.equals("") && !tel.equals("")){
-					out.println("DB 전송");
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
@@ -110,35 +112,36 @@
 		            }
 					
 					if(infoState && infoState2) {
-						out.println("중복이 없음");
 						sql = "insert into member values('" 
 						+ id + "','" +  pwd + "','" + name + "','" + sex + "','" + tel
 						+ "','" + nickname + "')";
 						
 						pstmt = conn.prepareStatement(sql);
 						pstmt.executeUpdate();
+						out.println("<div class=background><div id=popup>"+ "회원가입이 완료되었습니다." 
+						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 					}
 					else {
 						if(infoState == false && infoState2 == false){
-							infoMsg = "이미 사용중인 아이디와 닉네임입니다.";
-							out.println(infoMsg);
+							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디와 닉네임입니다." 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 						else if(infoState == false){
-							infoMsg = "이미 사용중인 아이디입니다.";
-							out.println(infoMsg);
+							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디입니다." 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 						else if(infoState2 == false){ 
-							infoMsg = "이미 사용중인 닉네임입니다.";
-							out.println(infoMsg);
+							out.println("<div class=background><div id=popup>"+ "이미 사용중인 닉네임입니다." 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 					}
 				} else{
-					infoMsg = "모든 값이 입력되지 않았습니다.";					
-					out.println(infoMsg);
+// 					infoMsg = "모든 값이 입력되지 않았습니다.";				
+// 					out.println("<div id=background><div id=popup>"+ "모든 값이 입력되지 않았습니다." 
+// 							+ "<button id=closeBtn onclick=close()>확인</button>" +"</div></div>");
 				}
 					
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		%>
 	</body>
