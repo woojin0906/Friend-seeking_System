@@ -24,12 +24,35 @@
 				
 				if(val == "회원가입이 완료되었습니다.확인")
 					window.location.replace('loginFrame.jsp');
-			})
+			});
+			
+			// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
+			$(document).on("click", "#signupBtn", function(){
+				let idval = $('#_id').val();
+				let pwdval = $('#_pwd').val();
+				let nickval = $('#_nickname').val();
+				let nameval = $('#_name').val();
+				let telval = $('#_tel').val();
+				let sexval = $('#_sex').val();
+				
+				let checkMsg;
+				
+				if (idval == "" || pwdval == "" || nickval == "" 
+						|| nameval == "" || telval == "" || sexval == ""){
+					checkMsg = "모든 입력값을 입력해주세요.";
+					
+					$('body').append("<div class=background><div id=popup>"+ checkMsg 
+							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				} else {
+					$("#_dataForm").submit();
+				}
+			});
+			
 		</script>
 		<div class="signupArea">
 			<div id="left">
 				<p>회원가입</p>
-				<form action="signUp.jsp" method="post">
+				<form id="_dataForm" action="signUp.jsp" method="post">
 					<input name="_id" id="_id" type="text" placeholder="아이디">
 					<input name="_pwd" id="_pwd" type="password" placeholder="비밀번호">
 					<input name="_nickname" id="_nickname" type="text" placeholder="닉네임">
@@ -46,7 +69,7 @@
 					<img id="nameImg" src="image/nameImg.png">
 					<img id="sexImg" src="image/sexImg.png">
 					<img id="telImg" src="image/telImg.png">
-					<button id="signupBtn" type="submit">회원가입</button>
+					<button id="signupBtn" type="button">회원가입</button>
 				</form>
 				<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
 			</div>
@@ -135,10 +158,6 @@
 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 					}
-				} else{
-// 					infoMsg = "모든 값이 입력되지 않았습니다.";				
-// 					out.println("<div id=background><div id=popup>"+ "모든 값이 입력되지 않았습니다." 
-// 							+ "<button id=closeBtn onclick=close()>확인</button>" +"</div></div>");
 				}
 					
 			} catch (Exception e) {
