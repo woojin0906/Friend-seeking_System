@@ -88,15 +88,17 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>글제목</th>
-                      <th>작성자</th> <!-- 여기에는 작성자 이름을 받아올 예정 -->
+                    
+                      <th>작성자</th>
+                      <th>제목</th> 
                       <th>종류</th> <!-- 카풀&택시 -->
-                      <th>시간</th>
                       <th>성별</th>
                       <th>인원</th> <!-- 2~5명 , 5명이상 , 상관없음 -->
-                      <th>출발지</th> 
-                      <th>도착지</th>
-                      <th>기타내용</th> 
+                      <th>출발지</th> <!-- 출발장소 -->
+                      <th>도착지</th> <!-- 도착장소 -->      
+                      <th>시간</th> 
+                      <th>기타</th> 
+                      
                     </tr>
                   </thead>
                   <tbody>
@@ -111,30 +113,32 @@
 	              		
 	              		while(rs.next()) {
 	              			traffic = new Traffic();
-	              			traffic.setNumber(rs.getInt("number"));
-	              			traffic.setNickName(rs.getString("nickname"));
-	              			traffic.setTitle(rs.getString("title"));
-	              			Date promiseTime = rs.getDate("promiseTime");
+	              			traffic.setNumber(rs.getInt("_number"));
+	              			traffic.setNickName(rs.getString("_nickname"));
+	              			traffic.setTitle(rs.getString("_title"));
+	              			Date promiseTime = rs.getDate("_promiseTime");
 	              			traffic.setPromiseTime(promiseTime);
-	              			Date writeTime = rs.getDate("writeTime");
+	              			Date writeTime = rs.getDate("_writeTime");
 	              			traffic.setWriteTime(writeTime);
-	              			traffic.setCount(rs.getString("count"));
-	              			traffic.setSex(rs.getString("sex"));
-	              			traffic.setStart(rs.getString("start"));
-	              			traffic.setDest(rs.getString("dest"));
-	              			traffic.setMain(rs.getString("main"));
-	              			traffic.setCategory(rs.getString("category"));
+	              			traffic.setCount(rs.getString("_count"));
+	              			traffic.setSex(rs.getString("_sex"));
+	              			traffic.setStart(rs.getString("_start"));
+	              			traffic.setDest(rs.getString("_dest"));
+	              			traffic.setMain(rs.getString("_main"));
+	              			traffic.setCategory(rs.getString("_category"));
                   %>
            					 <tr>
+           					 
+			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->           					 
 			                      <td><%= traffic.getTitle() %></td> <!-- 제목 -->
-			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->
 			                      <td><%= traffic.getCategory() %></td> <!-- 종류 -->
-			                      <td><%= traffic.getPromiseTime() %></td> <!-- 시간 -->
 			                      <td><%= traffic.getSex() %></td> <!-- 성별 -->
 			                      <td><%= traffic.getCount() %></td> <!-- 인원 -->
 			                      <td><%= traffic.getStart() %></td> <!-- 출발지 -->
 			                      <td><%= traffic.getDest() %></td> <!-- 도착지 -->
+			                      <td><%= traffic.getPromiseTime() %></td> <!-- 시간 -->
 			                      <td><%= traffic.getMain() %></td> <!-- 기타내용 -->
+			                      
                     		</tr>
            			<%
 	              		}
