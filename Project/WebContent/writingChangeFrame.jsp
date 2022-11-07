@@ -3,7 +3,7 @@
 	글수정 페이지
  -->
  <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8" import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +16,35 @@
  <title>글수정 홈페이지</title>
 </head>
 <body>
-   <%
-   	
-	   String title = request.getParameter("_title");
-	   String name = request.getParameter("_name");
-	   String type = request.getParameter("_type");
-	   String time = request.getParameter("_time");
-	   String gender = request.getParameter("_gender");
-	  String[] person = request.getParameterValues("_person");
-	  String depart = request.getParameter("_depart");
-	  String arrival = request.getParameter("_arrival");
-	  String context = request.getParameter("_context");
+<%
+    Connection conn = null;
+  	PreparedStatement stmt = null;
+
+  	String title = request.getParameter("_title");
+  	String nickName = request.getParameter("_nickName");
+  	String type = request.getParameter("_type");
+  	String time = request.getParameter("_time");
+  	String gender = request.getParameter("_gender");
+  	String person = request.getParameter("_person");
+  	String depart = request.getParameter("_depart");
+  	String arrival = request.getParameter("_arrival");
+  	String context = request.getParameter("_context");
+
+  	
+  	
+  	/*try {
+  		Class.forName("com.mysql.cj.jdbc.Driver"); 
+  		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+  		stmt = conn.prepareStatement("select * from traffic");
+  		
+  		stmt.executeUpdate();
+  		
+  		stmt.close();
+  		conn.close();
+  	} catch(Exception e) {
+  		e.printStackTrace();
+  	}*/
+
 
    %>
    
@@ -74,7 +92,7 @@
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td><input id="text" type="text" name="_name" size="50" maxlength="100" value="<%=name %>"/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td><input id="text" type="text" name="_nickName" size="50" maxlength="100" value="<%=nickName %>"/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
              </tr>
       		 <tr>
                   <th>종류</th>
@@ -94,11 +112,11 @@
              </tr>
              <tr>
                  <th>인원</th>
-                 <td><input id="person" type="checkbox" name="_person" value="2명"/>2명 
-                     <input id="person" type="checkbox" name="_person" value="3명"/>3명
-                     <input id="person" type="checkbox" name="_person" value="4명"/>4명
-                     <input id="person" type="checkbox" name="_person" value="5명 이상"/>5명 이상
-                     <input id="person" type="checkbox" name="_person" value="상관없음"/>상관없음
+                 <td><input id="person" type="radio" name="_person" value="2명"/>2명 
+                     <input id="person" type="radio" name="_person" value="3명"/>3명
+                     <input id="person" type="radio" name="_person" value="4명"/>4명
+                     <input id="person" type="radio" name="_person" value="5명 이상"/>5명 이상
+                     <input id="person" type="radio" name="_person" value="상관없음"/>상관없음
                  </td>        
              </tr>
              <tr>

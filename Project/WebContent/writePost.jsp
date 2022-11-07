@@ -2,8 +2,9 @@
 	작성자: 전우진
 	글모음 + 참여자 페이지
  -->
- <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" import="java.sql.*"%>
+
 <!DOCTYPE html>
 <html>
 <head><script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -17,16 +18,37 @@
 <body>
 
    <%
-   	
-      String title = request.getParameter("_title");
-      String name = request.getParameter("_name");
-      String type = request.getParameter("_type");
-      String time = request.getParameter("_time");
-      String gender = request.getParameter("_gender");
-	  String[] person = request.getParameterValues("_person");
-	  String depart = request.getParameter("_depart");
-	  String arrival = request.getParameter("_arrival");
-	  String context = request.getParameter("_context");
+    Connection conn = null;
+	Statement stmt = null;
+	
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver"); 
+		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+		stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select * from traffic");
+		
+		while(rs.next()) {
+			
+			String title = rs.getString("title");
+			String nickName = rs.getString("nickname");
+			String type = rs.getString("category");
+			String promisetime = rs.getString("promisetime");
+			String gender = rs.getString("sex");
+			String person = rs.getString("count");
+			String depart = rs.getString("start");
+			String arrival = rs.getString("dest");
+			String context = rs.getString("main");
+			String writetime = rs.getString("writetime");
+
+		}
+
+		rs.close();
+		stmt.close();
+		conn.close();
+
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
 
    %>
     <header class="header">
@@ -65,13 +87,13 @@
          <table id="_table_writerPage">
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
-                 <td id="table_top"><input type="hidden" name="_title" value="<%=title %>"/><%=title %></td>
+                 <td id="table_top"><input type="hidden" name="_title" value=""/>title</td>
                  <td id="date">작성일자</td>
-                 <td id="date_hidden"><input type="hidden" name="_date" value=""/></td>
+                 <td id="date_hidden"><input type="hidden" name="_date" value=""/>writetime</td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_name" value="<%=name %>"/><%=name %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="hidden"><input type="hidden" name="_nickName" value=""/>nickName</td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                  <td id="btn_writePost1">
                      <input id="btn" type="submit" value="수정하기">
                  </td>
@@ -82,31 +104,31 @@
              </tr>
       		 <tr>
                  <th>종류</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="<%=type %>" /><%=type %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="" />type</td>        
              </tr>
              <tr>
                  <th>시간</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="<%=time %>" /><%=time %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" />promisetime</td>        
              </tr>
              <tr>
                  <th>성별</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value="<%=gender %>"/><%=gender %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/>gender</td>        
              </tr>
              <tr>
                  <th>인원</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value="<%=person %>"/><%=person %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/>person</td>        
              </tr>
              <tr>
                  <th>출발지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value="<%=depart %>"/><%=depart %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value=""/>depart</td>        
              </tr>
              <tr>
                  <th>도착지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value="<%=arrival %>"/><%=arrival %></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value=""/>arrival</td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td id="context" colspan="3"><input type="hidden" name="_context" value="<%=context %>"/><%=context %></td>        
+                 <td id="context" colspan="3"><input type="hidden" name="_context" value=""/>context</td>        
              </tr>
          </table>    
          </form>
@@ -122,37 +144,37 @@
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
                  <tr>
                      <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_gender" value=""/></td>
+                     <td><input type="hidden" name="_sex" value=""/></td>
                      <td><input type="hidden" name="_phone" value=""/></td>
                      <td><input type="hidden" name="_ex" value=""/></td>
                  </tr>
