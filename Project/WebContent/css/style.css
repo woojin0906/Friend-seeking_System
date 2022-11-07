@@ -383,6 +383,7 @@ td{max-width:620px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
 #contents .container .row .col-12 .table-div{margin-top: 15px;}
 #contents .container .row .col-12 .table-div table{width: 100%;}
 #contents .container .row .col-12 .table-div table thead th{font-size: 1.2rem; font-weight: 1000;}
+#contents .container .row .col-12 .table-div table thead th{width: 200px; }
 #contents .container .row .col-12 .table-div table tbody tr{height: 40px;}
 #contents .container .row .col-12 .table-div table tbody td{font-size: 0.9rem;padding: 2px 15px;text-align: left; }
 .btn-7{color:white; text-decoration: none; border-radius: 5px; position: absolute;top:10px; right: 10px; padding:5px 18px; font-size: 1.2rem; border: 1px solid 	#FFFFFF; background-color: #78A1E2 }
