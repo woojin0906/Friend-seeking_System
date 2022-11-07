@@ -16,41 +16,36 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <title>글모음 홈페이지</title>
 </head>
 <body>
-
-   <%
-    Connection conn = null;
-	Statement stmt = null;
+ <%
+   // Connection conn = null;
+	//Statement stmt = null;
+	//ResultSet rs = null;
 	
-	try {
-		Class.forName("com.mysql.cj.jdbc.Driver"); 
-		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-		stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from traffic");
+		//String nickName = request.getParameter("_nickName");
+
+//	var lastData = localStorage.getItem('_nickName');
+
+	
+	//try {
+	//	Class.forName("com.mysql.cj.jdbc.Driver"); 
+	//	conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+	//	stmt = conn.createStatement();
+		//rs = stmt.executeQuery("select title, category, promisetime, sex, count, start, dest, main, writetime from traffic from traffic where nickname = '" + nickName + "'");
 		
-		while(rs.next()) {
+	//	while(rs.next()) {
 			
-			String title = rs.getString("title");
-			String nickName = rs.getString("nickname");
-			String type = rs.getString("category");
-			String promisetime = rs.getString("promisetime");
-			String gender = rs.getString("sex");
-			String person = rs.getString("count");
-			String depart = rs.getString("start");
-			String arrival = rs.getString("dest");
-			String context = rs.getString("main");
-			String writetime = rs.getString("writetime");
+	//		 	}
 
-		}
+	//	rs.close();
+	//	stmt.close();
+	//	conn.close();
 
-		rs.close();
-		stmt.close();
-		conn.close();
-
-	} catch(Exception e) {
-		e.printStackTrace();
-	}
+	//} catch(Exception e) {
+	//	e.printStackTrace();
+	//}
 
    %>
+
     <header class="header">
         <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
         <div class="btnright">
@@ -85,15 +80,17 @@ pageEncoding="UTF-8" import="java.sql.*"%>
            
      <form action="writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
+        
+		
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
-                 <td id="table_top"><input type="hidden" name="_title" value=""/>title</td>
+                 <td id="table_top"><input type="hidden" name="_title" value=""/></td>
                  <td id="date">작성일자</td>
-                 <td id="date_hidden"><input type="hidden" name="_date" value=""/>writetime</td>
+                 <td id="date_hidden"><input type="hidden" name="_date" value=""/></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_nickName" value=""/>nickName</td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="hidden"><input type="hidden" name="_nickName" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                  <td id="btn_writePost1">
                      <input id="btn" type="submit" value="수정하기">
                  </td>
@@ -104,32 +101,34 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              </tr>
       		 <tr>
                  <th>종류</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="" />type</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="" /></td>        
              </tr>
              <tr>
                  <th>시간</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" />promisetime</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" /></td>        
              </tr>
              <tr>
                  <th>성별</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/>gender</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/></td>        
              </tr>
              <tr>
                  <th>인원</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/>person</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/></td>        
              </tr>
              <tr>
                  <th>출발지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value=""/>depart</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value=""/></td>        
              </tr>
              <tr>
                  <th>도착지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value=""/>arrival</td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value=""/></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td id="context" colspan="3"><input type="hidden" name="_context" value=""/>context</td>        
+                 <td id="context" colspan="3"><input type="hidden" name="_context" value=""/></td>        
              </tr>
+             
+     
          </table>    
          </form>
      <div class="table2">

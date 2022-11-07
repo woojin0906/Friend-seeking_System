@@ -232,17 +232,17 @@ th {
     padding-left: 15px; 
     padding-right: 15px;
   }
-#type {
+#_type {
 	margin: 10px;
 }
-#text { 
+#_title, #_nickName, #_time, #_depart, #_arrival { 
     border: 1px solid #cacaca; 
     padding: 7px; margin: 1px; 
     font-size: 13px;
   }
-#gender { margin: 9px; }
-#person { margin: 9px; }
-#context { border: 1px solid #d8d6d6; }
+#_gender { margin: 9px; }
+#_person { margin: 9px; }
+#_context { border: 1px solid #d8d6d6; }
 #btn {
     margin: auto;
     display: block;
