@@ -20,13 +20,13 @@
 		<script>
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
-				$('.background').addClass('close');
+				$('.background').remove();
 				
 				if(val == "회원가입이 완료되었습니다.확인")
 					window.location.replace('loginFrame.jsp');
 			});
 			
-			// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
+			// input에 데이터를 모두 입력했는지 검사 후 submit 하여 데이터 전송하는 function
 			$(document).on("click", "#signupBtn", function(){
 				let idval = $('#_id').val();
 				let pwdval = $('#_pwd').val();
@@ -36,7 +36,6 @@
 				let sexval = $('#_sex').val();
 				
 				let checkMsg;
-				
 				if (idval == "" || pwdval == "" || nickval == "" 
 						|| nameval == "" || telval == "" || sexval == ""){
 					checkMsg = "모든 입력값을 입력해주세요.";

@@ -106,7 +106,7 @@ html, body {
 #kid {
 	position: absolute;
 	top: 35%;
-	left: 32%;
+	left: 31.5%;
 	transform: translate(-50%, -50%);
 	transform: rotate(-45deg);
 	-webkit-user-drag: none;
