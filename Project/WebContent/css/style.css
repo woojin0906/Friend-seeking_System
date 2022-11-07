@@ -1,10 +1,348 @@
 @charset "utf-8";
+/* button */
+
+font-family: 'Do Hyeon', sans-serif;
+
+.custom-btn {
+  width: 100px;
+  height: 40px;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-3 {
+  background: rgb(148, 185, 255);
+  background: linear-gradient(0deg, rgb(187, 213, 255) 0%, rgb(120, 161, 226) 100%);
+  width: 100px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  margin-left: 10px;
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after { /* ���콺 ȣ�� �� ������, �� ���� */
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  /* background: #ccc; */
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+  background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgb(188, 207, 255);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #78A1E2;
+  color:#000;
+  z-index: 0;
+  height: 120px;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  display: inline-block;
+}
+
+.header .logoimg {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  width: 160px;
+  height: 70px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.header h1 {
+  position: absolute;
+  left: 10%;
+  font-size:30px;
+  font-weight:normal;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.header .btnright {
+  position: absolute;
+  right: 0%;
+  top: 35px;
+  height: auto;
+  margin-right: 80px;
+  display: inline-block;
+  margin-left: 100px;
+}
+
+/* --------------------------- sidebar*/
+#boardside * {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0;
+  }
+  
+  #boardside .sidebar {
+    background: #bbb;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    padding: 20px 0;
+    z-index: 1;
+    transition: all 0.35s;
+  }
+  
+  #boardside .sidebar .cont {
+    position: fixed;
+    top: 15%;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: #bbb;
+    z-index: 5;
+  }
+  
+  #boardside .sidebar .cont > ul { margin: 20px;  }
+  #boardside .sidebar .cont > ul >li {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 30px;
+    list-style: none;
+  }
+  #boardside .sidebar .cont > ul >li > a {
+    display: inline-block;
+    width: auto;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+  }
+  
+  #boardside .sidebar .cont > ul > li:active,
+  #boardside .sidebar .cont > ul > li:hover,
+  #boardside .sidebar .cont > ul > li:focus {
+    background-color: #373737;
+  }
+  
+  #boardside input[id="menuicon"]{
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label + div {
+    left: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label {
+    display: block;
+    width: 15px;
+    height: 17px;
+    position: fixed;
+    cursor: pointer;
+    margin: 35px;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label {
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"] + label span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    background: #000;
+    transition: all .35s;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(1) {
+    top: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(2) {
+    top: 51%;
+    
+    transform: translateY(-60%);
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span {
+    background: #fff;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(1){
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  #boardside input[id="menuicon"]:checked + label span:nth-child(2){
+    opacity: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(3){
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+  
+  #boardside .background {
+    position: fixed;
+    top: 0%;
+    right: 0;
+    width: calc(100% - 300px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all .35s;
+    opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+  }
+  
+input#menuicon.hidden {
+  visibility: hidden;
+}
+
+  input#menuicon:checked ~ .sidebar .cont { left: 0; transition: all .35s; }
+  input#menuicon:checked ~ .sidebar .background { 
+    opacity: 1;
+    visibility: visible;
+    transition: all .35s;
+}
+  
+input#menuicon.hidden {
+  visibility: hidden;
+}
+
+  input#menuicon:checked ~ .sidebar .cont { left: 0; transition: all .35s; }
+  input#menuicon:checked ~ .sidebar .background { 
+    opacity: 1;
+    visibility: visible;
+    transition: all .35s;
+}
+
+.footer {
+    background: rgb(33, 32, 33);
+    min-width: 1200px;
+    height: 100px;
+    color: #fefefe;
+    text-align: center;
+    position: relative;
+}
+
+.footer .service-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0 0 0;
+}
+.footer .service-menu ul {
+    display: flex;
+    margin: 0 0 10px 0;
+}
+
+.footer .service-menu a {
+    color: #fefefe;
+    padding: 0 20px 0 0;
+}
+
+.list_footer	{margin-top: 40px;}
+.list_footer .bt_write	{float: right; margin-right: 0;}
+.list_footer .paging	{position: relative; margin-top: 15px; height: 48px; padding: 0 36px; box-sizing: border-box; background-color: #FFF; border-radius: 5px; text-align: center; font-size: 12px;}
+.ppbt_search{  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list_footer .paging .paging_wrap	{padding-top: 15px;}
+.list_footer .paging .bt_last	{margin-left: 5px;}
+.list_footer .paging .bt_first	{margin-right: 5px;}
+.list_footer .paging .bt_prev	{display: inline-block; position: absolute; top: 0; left: 0; max-width: 16px; height: 46px; line-height: 46px; padding: 0 10px; text-align: center; cursor: default;}
+.list_footer .paging .bt_next	{left: auto; right: 0; border-right: none !important;}
+.list_footer .paging .bt_prev.active	{transition-property: color; transition-duration: 0.2s; transition-timing-function: ease-in; cursor: pointer;}
+.paging .page_num	{display: inline-block; margin: 0 3px; padding: 3px 6px 2px; font-size: 11px; line-height: 100%;}
+.paging .page_num.on	{border-radius: 2px;}
+.manage_article	{display: none;}
 
 #wrap{width: 100%; color: #000;}
 
 /* index 페이지  */
 #header{ height:80px;  }
-#header .container{margin-top: 10px; border-top: 2px solid #000;}
+#header .container{margin-top: 10px; border-top: 2px;}
 #header .top{ line-height: 80px}
 #header .top .logo{ display: inline-block;  width: 80px; float: left;font-size: 1.7rem; text-align: center;}
 #header .top .title{display: inline-block;   width: 200px; float: left;}
@@ -14,33 +352,24 @@
 #header .top .logoin-signup ul li:first-child{border-right-style: dashed;border-right-width: 1px;} 
 #header .top .logoin-signup ul li a{ border: 1px solid #000;padding: 5px;border-radius: 10%;}
 
-#slide-dots{height: 70px;}
-#slide-dots .container{border-top: 3px solid #222; }
-#slide-dots ul.dots{ text-align: center;line-height: 70px;}
-#slide-dots ul.dots li{display: inline-block; width: 15px; height: 15px; margin: 5px;}
-#slide-dots ul.dots li button{font-size: 0; line-height: 0; display: block; width: 12px; height: 12px; cursor: pointer;background: #fff; border-radius: 50%; border: 1px solid #A5A5A5; }
-#slide-dots ul.dots li.active button{background: #A5A5A5;}
-
 .row{ width: 100%; position: relative;text-align: center;}
 .row .col-1{width: 5%; display: inline-block;}
 .row .col-4{ width: 25%; margin:0 2.5%; display: inline-block;}
 .row .col-12{ width: 74%; margin:0; display: inline-block; }
-/* 컨텐츠 레이아웃 */
-.container{width: 1200px; margin: 0 auto; height: inherit; border-left: 2px solid #222;border-right: 2px solid #222}
 
-#contents .container {padding-bottom: 69px;border-top: 1px solid #424242; border-bottom: 2px solid #000; padding-top: 20px;}
-#contents .container .row .col-4 .board{border: 2px solid #424242; border-radius: 30px;}
-#contents .container .board .board-title{height: 60px; border-bottom: 2px solid #424242; position: relative; line-height: 60px;}
-#contents .container .board .board-title div{position: absolute; width: 33px; top:11px; left: 20px;}
-#contents .container .board .board-title div img{width:100%;}
-#contents .container .board .board-title h3{font-size: 1.4rem; text-align: center;}
-#contents .container .board .list{ padding: 0px 25px; background-color: none; margin-bottom: 80px;}
-#contents .container .board .list ul li{font-size: 1rem; line-height: 3;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;}
+/* 컨텐츠 레이아웃 */
+
+#content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 /* sub_list 페이지  */
-table {display: block;max-width: -moz-fit-content;max-width: fit-content;margin: 0 auto;overflow-x: auto;white-space: nowrap;}
-td{max-width:380px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+table {display: block;max-width: -moz-fit-content; max-width: fit-content;margin: 0 auto;overflow-x: auto;white-space: nowrap;}
+td{max-width:620px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 
 #contents .container.sub_list { padding-top: 10px; border-bottom: 0px;}
 
@@ -51,26 +380,18 @@ td{max-width:380px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
 #contents .container .row .col-12 .table-head span{position: absolute; top: 0px; left: 0px;}
 #contents .container .row .col-12 .table-head h2{font-size: 1.5rem;padding-left: 30px;}
 #contents .container .row .col-12 .table-head .table-sub-n{font-size: 1.0rem;  padding-left: 50px;}
-#contents .container .row .col-12 .table-head div button{position: absolute;top:10px; right: 10px; padding:5px 18px; font-size: 1.2rem; border: 1px solid #000;}
 #contents .container .row .col-12 .table-div{margin-top: 15px;}
 #contents .container .row .col-12 .table-div table{width: 100%;}
-#contents .container .row .col-12 .table-div table thead th{font-size: 1.2rem; font-weight: 400;}
+#contents .container .row .col-12 .table-div table thead th{font-size: 1.2rem; font-weight: 1000;}
 #contents .container .row .col-12 .table-div table tbody tr{height: 40px;}
 #contents .container .row .col-12 .table-div table tbody td{font-size: 0.9rem;padding: 2px 15px;text-align: left; }
+.btn-7{color:white; text-decoration: none; border-radius: 5px; position: absolute;top:10px; right: 10px; padding:5px 18px; font-size: 1.2rem; border: 1px solid 	#FFFFFF; background-color: #78A1E2 }
 
 
 .pagination{padding-top: 20px;}
 .pagination a{text-decoration: none;color: black;  padding: 8px 10px;text-decoration: none;}
 .pagination a.active{border:  1px solid;}
 
-#footer .container{ border-top: 0px;}
-#footer .container .row .col-12{background-color: #EDEDED;min-height: 100px;}
-#footer .container .search {padding-top: 20px; padding-bottom: 10px;}
-#footer .container .search .btn{padding: 4px 18px;border: 1px solid #000; font-size: 1rem;background: #ededed;}
-
-#footer .container .search input{padding: 4px 2px;border: 1px solid #000; font-size: 0.8rem; background: #ededed; width: 300px; height: 34px;}
-#footer .container .search .search-btn{ position: relative;left: -4px; top: 1px;}
-#footer .container .search  #daterange{ left: -4px; width: 190px;padding: 0px 1px;}
    
 .daterangepicker .table-condensed tbody tr td.available:first-child {
      color: rgb(196, 26, 26);

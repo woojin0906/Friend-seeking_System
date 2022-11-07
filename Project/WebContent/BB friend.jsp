@@ -1,26 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="board.Traffic"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap"
-    rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
+<%
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	Class.forName("com.mysql.jdbc.Driver"); // JDBC 드라이버 로딩
+	String dbUrl = "jdbc:mysql://localhost:3306/friend?useUnicode=true&characterEncoding=utf8"; // 데이터베이스 정보
+	String dbId = "friends"; // DB 아이디
+	String dbPw = "2022server"; // DB 패스워드
+%>
   <header class="header">
-    <a href="index.jsp"><img class="logoimg" src="image/logo_header.png"></a>
+    <a href="#"><img class="logoimg" src="image/logo_mod.png"></a>
     <div class="btnright">
       <button class="custom-btn btn-3"><span>Log In</span></button>
       <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -72,113 +81,71 @@
                   <div class="table-sub-n">n개의 글</div>
                 </div>
                 <div>
-                  <form method="get" action="writingFrame.jsp">
-					<button type="submit">글작성</button>
-				  </form>
+                  <a href="writingFrame.jsp" class="btn-7">글작성</a>
                 </div>
               </div>
               <div class="table-div">
                 <table>
                   <thead>
                     <tr>
-                      <th>작성자</th>
-                      <th>제목</th>
-                      <th>출발지</th>
-                      <th>인원</th>
+                      <th>글제목</th>
+                      <th>작성자</th> <!-- 여기에는 작성자 이름을 받아올 예정 -->
+                      <th>종류</th> <!-- 카풀&택시 -->
+                      <th>시간</th>
                       <th>성별</th>
-                      <th>작성시간</th>
+                      <th>인원</th> <!-- 2~5명 , 5명이상 , 상관없음 -->
+                      <th>출발지</th> 
+                      <th>도착지</th>
+                      <th>기타내용</th> 
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                    <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                                        <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-                                        <tr>
-                      <td>글작성자가 들어갑니다.</td>
-                      <td>글 제목이 들어갑니다. 글제목이 들어갑니다.</td>
-                      <td>출발지&amp;도착지가 들어갑니다.</td>
-                      <td>인원수가 들어갑니다.</td>
-                      <td>성별</td>
-                      <td>작성일이 들어갑니다.</td>
-                    </tr>
-
+                  <%
+	              	Traffic traffic = null;
+	              	try {
+	              		String sql = "select * from traffic"; // SQL 쿼리
+	              		
+	              		conn = DriverManager.getConnection(dbUrl, dbId, dbPw); // DB 연결
+	              		pstmt = conn.prepareStatement(sql);
+	              		rs = pstmt.executeQuery();
+	              		
+	              		while(rs.next()) {
+	              			traffic = new Traffic();
+	              			traffic.setNumber(rs.getInt("number"));
+	              			traffic.setNickName(rs.getString("nickname"));
+	              			traffic.setTitle(rs.getString("title"));
+	              			Date promiseTime = rs.getDate("promiseTime");
+	              			traffic.setPromiseTime(promiseTime);
+	              			Date writeTime = rs.getDate("writeTime");
+	              			traffic.setWriteTime(writeTime);
+	              			traffic.setCount(rs.getString("count"));
+	              			traffic.setSex(rs.getString("sex"));
+	              			traffic.setStart(rs.getString("start"));
+	              			traffic.setDest(rs.getString("dest"));
+	              			traffic.setMain(rs.getString("main"));
+	              			traffic.setCategory(rs.getString("category"));
+                  %>
+           					 <tr>
+			                      <td><%= traffic.getTitle() %></td> <!-- 제목 -->
+			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->
+			                      <td><%= traffic.getCategory() %></td> <!-- 종류 -->
+			                      <td><%= traffic.getPromiseTime() %></td> <!-- 시간 -->
+			                      <td><%= traffic.getSex() %></td> <!-- 성별 -->
+			                      <td><%= traffic.getCount() %></td> <!-- 인원 -->
+			                      <td><%= traffic.getStart() %></td> <!-- 출발지 -->
+			                      <td><%= traffic.getDest() %></td> <!-- 도착지 -->
+			                      <td><%= traffic.getMain() %></td> <!-- 기타내용 -->
+                    		</tr>
+           			<%
+	              		}
+	              	} catch(Exception e) {
+	              		e.printStackTrace();
+	              	} finally {
+	              		 // DB 자원 해제
+	              		if(pstmt != null) { pstmt.close(); }
+	              		if(conn != null) { conn.close(); }
+	              	}
+                  %>
                   </tbody>
                 </table>
               </div>
@@ -186,7 +153,7 @@
           </div>
         </div>
       </div>
-
+      
       <footer class="list_footer">
         <div class="footer_wrap" style="right: 0;">
           <div class="ppbt_area">
@@ -257,7 +224,6 @@
           123-1234
           10:00 - 18:00(Lunch 12:00 - 13:00)</p>
       </div>
-
     </div>
   </div>
 
