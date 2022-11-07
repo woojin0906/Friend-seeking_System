@@ -230,10 +230,14 @@ th, td {
   width: 110px;
  
 }
-#hidden { height: 40px; }
+#hidden { 
+	height: 40px; 
+	padding-left: 10px;
+}
 #context { 
   height: 150px; 
   border: 1px solid #d8d6d6; 
+  padding-left: 10px;
  }
 
 #btn, #btn_check {
@@ -257,6 +261,9 @@ th, td {
   border-left: none;
   border-right: none;
   border-bottom: 3px solid #78A1E2;
+  padding-left: 2px;
+  font-size:20px;
+ 
 }
 #date { 
   width: 100px;

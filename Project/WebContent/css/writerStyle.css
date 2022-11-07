@@ -211,7 +211,7 @@ main {
     margin-bottom: 100px;
 }
 .main_name {
-    margin-left: 350px;
+    margin-left: 360px;
     margin-bottom: 10px;
     margin-top: 10px;
     color: #78A1E2;
@@ -232,13 +232,16 @@ th {
     padding-left: 15px; 
     padding-right: 15px;
   }
-
+#type {
+	margin: 10px;
+}
 #text { 
     border: 1px solid #cacaca; 
-    padding: 5px; margin: 5px; 
+    padding: 7px; margin: 1px; 
+    font-size: 13px;
   }
-#gender { margin: 7px; }
-#person { margin: 7px; }
+#gender { margin: 9px; }
+#person { margin: 9px; }
 #context { border: 1px solid #d8d6d6; }
 #btn {
     margin: auto;
@@ -367,4 +370,38 @@ footer .phone {
 }
 .btn-3 span:hover:after {
   width: 100%;
+}
+
+
+#popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 20%;
+	height: 20%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.3vw;
+	background-color: white;
+	text-align: center;
+	line-height: 500%;
+	box-shadow: 0px 0px 15px black;
+	border-radius: 10px;
+}
+
+.close {
+	opacity: 0%;
+	z-index: -1;
+}
+
+
+#closeBtn {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 20%;
+	height: 20%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
 }
