@@ -16,35 +16,9 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <title>글모음 홈페이지</title>
 </head>
 <body>
- <%
-   // Connection conn = null;
-	//Statement stmt = null;
-	//ResultSet rs = null;
-	
-		//String nickName = request.getParameter("_nickName");
 
-//	var lastData = localStorage.getItem('_nickName');
-
-	
-	//try {
-	//	Class.forName("com.mysql.cj.jdbc.Driver"); 
-	//	conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-	//	stmt = conn.createStatement();
-		//rs = stmt.executeQuery("select title, category, promisetime, sex, count, start, dest, main, writetime from traffic from traffic where nickname = '" + nickName + "'");
-		
-	//	while(rs.next()) {
 			
-	//		 	}
 
-	//	rs.close();
-	//	stmt.close();
-	//	conn.close();
-
-	//} catch(Exception e) {
-	//	e.printStackTrace();
-	//}
-
-   %>
 
     <header class="header">
         <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
@@ -81,16 +55,36 @@ pageEncoding="UTF-8" import="java.sql.*"%>
      <form action="writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
         
+		 <%
+    Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+		//String nickName = request.getParameter("_nickName");
+
+//	var lastData = localStorage.getItem('_nickName');
+
+	// writingFrame으로 부터 작성자 받아오기
+	String nickname = (String) session.getAttribute("_nickname");
+	
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver"); 
+		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery("select title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nickname + "'");
 		
+		while(rs.next()) {
+			%>
+			
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
-                 <td id="table_top"><input type="hidden" name="_title" value=""/></td>
+                 <td id="table_top"><input type="hidden" name="_title" value=""/><%=rs.getString("title") %></td>
                  <td id="date">작성일자</td>
-                 <td id="date_hidden"><input type="hidden" name="_date" value=""/></td>
+                 <td id="date_hidden"><input type="hidden" name="_date" value=""/><%=rs.getString("writetime") %></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_nickName" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="hidden"><input type="hidden" name="_nickName" value=""/><%=nickname %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                  <td id="btn_writePost1">
                      <input id="btn" type="submit" value="수정하기">
                  </td>
@@ -101,33 +95,43 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              </tr>
       		 <tr>
                  <th>종류</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="" /></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_type" value="" /><%=rs.getString("category") %></td>        
              </tr>
              <tr>
                  <th>시간</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" /></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_time" value="" /><%=rs.getString("promisetime") %></td>        
              </tr>
              <tr>
                  <th>성별</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_gender" value=""/><%=rs.getString("sex") %></td>        
              </tr>
              <tr>
                  <th>인원</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_person" value=""/><%=rs.getString("count") %></td>        
              </tr>
              <tr>
                  <th>출발지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value=""/></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value=""/><%=rs.getString("start") %></td>        
              </tr>
              <tr>
                  <th>도착지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value=""/></td>        
+                 <td id="hidden" colspan="3"><input type="hidden" name="_arrival" value=""/><%=rs.getString("dest") %></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td id="context" colspan="3"><input type="hidden" name="_context" value=""/></td>        
+                 <td id="context" colspan="3"><input type="hidden" name="_context" value=""/><%=rs.getString("main") %></td>        
              </tr>
-             
+             	<%		 	}
+
+		rs.close();
+		stmt.close();
+		conn.close();
+
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+
+   %>
      
          </table>    
          </form>

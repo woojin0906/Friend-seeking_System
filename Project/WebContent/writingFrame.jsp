@@ -55,13 +55,16 @@
 				let val = $('#popup').text();
 				$('.background').addClass('close');
 					
-				if(val == "글이 등록되었습니다.확인")
-					window.location.href = "writePost.jsp?_nickName=" + nick;
-			
+				if(val == "글이 등록되었습니다.확인"){
+					
+					window.location.href = "writePost.jsp";
+				}
 			});
 </script>
 
-
+<%
+String id = (String) session.getAttribute("ID");
+%>
 
 	 <header class="header">
         <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
@@ -107,7 +110,7 @@
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td><input id="_nickName" type="text" name="_nickName" size="50" maxlength="100" value=""/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                    <td><input id="_nickName" type="text" name="_nickName" size="50" maxlength="100" value=""/><%=id %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                 </tr>
          		<tr>
                     <th>종류</th>
@@ -197,7 +200,7 @@
 	PreparedStatement stmt = null;
 
 	Date nowTime = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String date = sf.format(nowTime);
 	
 	String title = request.getParameter("_title");
@@ -230,6 +233,9 @@
 			
 			stmt.executeUpdate();
 
+			// writePost로 작성자 넘기기
+			session.setAttribute("_nickname", nickName);
+			
 			out.println("<div class=background><div id=popup>"+ "글이 등록되었습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		stmt.close();
