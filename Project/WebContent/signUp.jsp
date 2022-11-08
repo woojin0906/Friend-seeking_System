@@ -109,6 +109,7 @@
 						<option value="남자">남자</option>
 						<option value="여자">여자</option>
 					</select>
+				</form>
 					<img id="personImg" src="image/person.png">
 					<img id="keyImg" src="image/key.png">
 					<img id="nickname" src="image/nicknameImg.png">
@@ -116,7 +117,6 @@
 					<img id="sexImg" src="image/sexImg.png">
 					<img id="telImg" src="image/telImg.png">
 					<button id="signupBtn" type="button">회원가입</button>
-				</form>
 				<button id="cancelBtn" type="button" onclick="location.href='loginFrame.jsp'">취소</button>
 			</div>
 			<div id="right">
