@@ -107,8 +107,19 @@
 			            }
 						
 						if(pwdCheck) {
+							
+							sql = "select nickname from member where id='" + id + "'";
+							stmt = conn.createStatement();
+							rs = stmt.executeQuery(sql);
+							String nickname = null;
+							
+							while(rs.next()){
+				               	nickname = rs.getString(1);
+							}
+							
 							response.sendRedirect("index.jsp");
 							session.setAttribute("ID", id);
+							session.setAttribute("NICK", nickname);
 						} else{
 						out.println("<div class=background><div id=popup>"+ "비밀번호가 일치하지 않습니다." 
 						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
