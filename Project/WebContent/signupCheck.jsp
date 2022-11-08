@@ -1,3 +1,7 @@
+<!-- 
+	작성자: 김지웅
+	회원 가입에 필요한 정보를 입력하고 유효성 검사 및 signupCheck로 데이터 전송하는 페이지
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
@@ -72,27 +76,19 @@
 						pstmt.executeUpdate();
 						request.setAttribute("_res", "완료");
 						pageContext.forward("signUp.jsp");
-// 						out.println("<div class=background><div id=popup>"+ "회원가입이 완료되었습니다." 
-// 						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 					}
 					else {
 						if(infoState == false && infoState2 == false){
 							request.setAttribute("_res", "중복 아이디,닉네임");
 							pageContext.forward("signUp.jsp");
-// 							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디와 닉네임입니다." 
-// 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 						else if(infoState == false){
 							request.setAttribute("_res", "중복 아이디");
 							pageContext.forward("signUp.jsp");
-// 							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디입니다." 
-// 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 						else if(infoState2 == false){ 
 							request.setAttribute("_res", "중복 닉네임");
 							pageContext.forward("signUp.jsp");
-// 							out.println("<div class=background><div id=popup>"+ "이미 사용중인 닉네임입니다." 
-// 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 						}
 					}
 				}

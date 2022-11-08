@@ -1,9 +1,9 @@
 <!-- 
 	작성자: 김지웅
-	회원 가입에 필요한 정보를 입력하고 유효성 검사 및 signupCheck로 데이터 전송하는 페이지
+	signUp으로부터 데이터를 받고 회원가입을 검증하는 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -130,7 +130,22 @@
 			String res = (String) request.getAttribute("_res");
 			if (res == null) res = "";
 			
-			
+			if (res.equals("중복 아이디,닉네임")){
+				out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디와 닉네임입니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			} 
+			else if (res.equals("중복 아이디")) {
+				out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디입니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			}
+			else if (res.equals("중복 닉네임")) {
+				out.println("<div class=background><div id=popup>"+ "이미 사용중인 닉네임입니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			}
+			else if (res.equals("완료")) {
+				out.println("<div class=background><div id=popup>"+ "회원가입이 완료되었습니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			}
 		%>
 	</body>
 </html>
