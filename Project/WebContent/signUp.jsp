@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 김지웅
-	회원가입하는 페이지
+	회원 가입에 필요한 정보를 입력하고 유효성 검사 및 signupCheck로 데이터 전송하는 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
@@ -98,7 +98,7 @@
 		<div class="signupArea">
 			<div id="left">
 				<p>회원가입</p>
-				<form id="_dataForm" action="signUp.jsp" method="post">
+				<form id="_dataForm" action="signupCheck.jsp" method="post">
 					<input name="_id" id="_id" type="text" placeholder="아이디">
 					<input name="_pwd" id="_pwd" type="password" placeholder="비밀번호">
 					<input name="_nickname" id="_nickname" type="text" placeholder="닉네임">
@@ -126,89 +126,11 @@
 		
 		<%
 			request.setCharacterEncoding("UTF-8");
-		
-			String id = request.getParameter("_id");
-			String pwd = request.getParameter("_pwd");
-			String nickname = request.getParameter("_nickname");
-			String name = request.getParameter("_name");
-			String sex = request.getParameter("_sex");
-			String tel = request.getParameter("_tel");
 			
-			if( id == null ) id="";
-			if( pwd == null ) pwd="";
-			if( nickname == null) nickname="";
-			if( name == null ) name="";
-			if (sex == null ) sex=""; 
-			if( tel == null ) tel="";
+			String res = (String) request.getAttribute("_res");
+			if (res == null) res = "";
 			
-			try {
-				Connection conn = null;
-				Statement stmt = null;
-				ResultSet rs = null;
-				PreparedStatement pstmt = null;
-				boolean infoState = true, infoState2 = true;
-				String infoMsg;
-				String sql;
-				
-				if( !id.equals("") && !pwd.equals("") && !nickname.equals("") && 
-						!name.equals("") && !sex.equals("") && !tel.equals("")){
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					String url = "jdbc:mysql://localhost:3306/friend";
-					conn  = DriverManager.getConnection(url, "friends", "2022server");
-					
-					sql = "select id from member";
-					stmt = conn.createStatement();
-					rs = stmt.executeQuery(sql);
-					
-					while(rs.next()){
-		               	String user = rs.getString(1);
-						if(user.equals(id)){
-							infoState = false;
-							break;
-						}
-		            }
-					
-					sql = "select nickname from member";
-					stmt = conn.createStatement();
-					rs = stmt.executeQuery(sql);
-					
-					while(rs.next()){
-		               	String nick = rs.getString(1);
-						if(nick.equals(nickname)){
-							infoState2 = false;
-							break;
-						}
-		            }
-					
-					if(infoState && infoState2) {
-						sql = "insert into member values('" 
-						+ id + "','" +  pwd + "','" + name + "','" + sex + "','" + tel
-						+ "','" + nickname + "')";
-						
-						pstmt = conn.prepareStatement(sql);
-						pstmt.executeUpdate();
-						out.println("<div class=background><div id=popup>"+ "회원가입이 완료되었습니다." 
-						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-					}
-					else {
-						if(infoState == false && infoState2 == false){
-							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디와 닉네임입니다." 
-							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-						}
-						else if(infoState == false){
-							out.println("<div class=background><div id=popup>"+ "이미 사용중인 아이디입니다." 
-							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-						}
-						else if(infoState2 == false){ 
-							out.println("<div class=background><div id=popup>"+ "이미 사용중인 닉네임입니다." 
-							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-						}
-					}
-				}
-					
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 		%>
 	</body>
 </html>
