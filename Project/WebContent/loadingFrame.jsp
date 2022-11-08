@@ -33,10 +33,14 @@
 							$('#moveKid').css({"top" : "29%", "left" : "64%"});
 							$('#info').css({"top" : "-23%", "left" : "-12%"});
 							$('#mainBody').addClass('move_gelatine');
+							setTimeout(function() {
+								location.replace("index.jsp");
+							}, 4000);
 						}, 1000);
 					}, 1500);
 				}, 3500);
 			}, 1000);
+			
 		</script>
 		
 		<div class="bottomDiv">
