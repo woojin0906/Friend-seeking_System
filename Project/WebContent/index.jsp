@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,17 +78,98 @@
             <div class="simple-view">
                 <a class="astyle" href="#"><p><img src="image/car.png">  붕붕 친구 게시판</p></a>
                 <hr class="hrstyle">
-                <!-- 글 제목 받아오기 -->
+                <%
+	                try {
+	    				Connection conn = null;
+	    				Statement stmt = null;
+	    				ResultSet rs = null;
+	    				String sql;
+	    				
+	   					Class.forName("com.mysql.cj.jdbc.Driver");
+	   					String url = "jdbc:mysql://localhost:3306/friend";
+	   					conn  = DriverManager.getConnection(url, "friends", "2022server");
+	   					
+	   					sql = "select category, title, number from traffic order by number desc limit 10";
+	   					stmt = conn.createStatement();
+	   					rs = stmt.executeQuery(sql);
+	   					
+	   					out.println("<table border=0>");
+	   					while(rs.next()){
+	   		               	String category = rs.getString(1);
+	   		               	String title = rs.getString(2);
+	   		               	String number = rs.getString(3);
+	   		               	out.println("<tr onClick=location.href='writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		            }
+	   					out.println("</table>");
+	    					
+	    			} catch (Exception e) {
+	    				e.printStackTrace();
+	    			}
+                %>
             </div>
             <div class="simple-view">
                 <a class="astyle" href="#"><p><img src="image/eat.png">  냠냠 친구 게시판</p></a>
                 <hr class="hrstyle">
-                <!-- 글 제목 받아이고 -->
+                <%
+	                try {
+	    				Connection conn = null;
+	    				Statement stmt = null;
+	    				ResultSet rs = null;
+	    				String sql;
+	    				
+	   					Class.forName("com.mysql.cj.jdbc.Driver");
+	   					String url = "jdbc:mysql://localhost:3306/friend";
+	   					conn  = DriverManager.getConnection(url, "friends", "2022server");
+	   					
+	   					sql = "select category, title, number from meal order by number desc limit 10";
+	   					stmt = conn.createStatement();
+	   					rs = stmt.executeQuery(sql);
+	   					
+	   					out.println("<table border=0>");
+	   					while(rs.next()){
+	   		               	String category = rs.getString(1);
+	   		               	String title = rs.getString(2);
+	   		               	String number = rs.getString(3);
+	   		               	out.println("<tr onClick=location.href='writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		            }
+	   					out.println("</table>");
+	    					
+	    			} catch (Exception e) {
+	    				e.printStackTrace();
+	    			}
+                %>
             </div>
             <div class="simple-view">
                 <a class="astyle" href="#"><p><img src="image/studying.png">  열공 친구 게시판</p></a>
                 <hr class="hrstyle">
-                <!-- 글 제목 받아오기 -->
+                <%
+                try {
+    				Connection conn = null;
+    				Statement stmt = null;
+    				ResultSet rs = null;
+    				String sql;
+    				
+   					Class.forName("com.mysql.cj.jdbc.Driver");
+   					String url = "jdbc:mysql://localhost:3306/friend";
+   					conn  = DriverManager.getConnection(url, "friends", "2022server");
+   					
+   					sql = "select category, title, number from study order by number desc limit 10";
+   					stmt = conn.createStatement();
+   					rs = stmt.executeQuery(sql);
+   					
+   					out.println("<table border=0>");
+   					while(rs.next()){
+   		               	String category = rs.getString(1);
+   		               	String title = rs.getString(2);
+   		               	String number = rs.getString(3);
+   		               	out.println("<tr onClick=location.href='writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+   		            }
+   					out.println("</table>");
+    					
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+                %>
             </div>
         </div>
     </div>
