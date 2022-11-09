@@ -14,10 +14,23 @@
 <body>
     <header class="header">
         <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
-        <div class="btnright">
-            <button class="custom-btn btn-3"><span>Log In</span></button>
-            <button class="custom-btn btn-3"><span>Sign Up</span></button>
-        </div>
+		<!-- 로그인 했을 때 -->
+        <% 
+        String nick_getData = (String) session.getAttribute("NICK");
+        if(session.getAttribute("ID") != null) { %>
+ 	        <div class="btnright">
+ 	        	<%=nick_getData%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='logout.jsp'"><span>LogOut</span></button>
+ 	        </div>
+		<!-- 로그인 안 했을 때 -->
+        <% } else { %>
+ 	        <div class="btnright">
+ 	        	
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='signUp.jsp'"><span>Sign Up</span></button>
+ 	        </div>
+       	<% } %>
     </header>
     <div id="boardside">
         <input type="checkbox" id="menuicon">
