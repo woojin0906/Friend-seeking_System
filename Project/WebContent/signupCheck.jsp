@@ -56,7 +56,6 @@
 		            }
 					
 					sql = "select nickname from member";
-					stmt = conn.createStatement();
 					rs = stmt.executeQuery(sql);
 					
 					while(rs.next()){

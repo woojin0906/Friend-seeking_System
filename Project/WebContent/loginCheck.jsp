@@ -47,7 +47,6 @@
 					
 					if(idCheck) {
 						sql = "select password from member where id='" + id + "'";
-						stmt = conn.createStatement();
 						rs = stmt.executeQuery(sql);
 						
 						while(rs.next()){
@@ -60,7 +59,6 @@
 						if(pwdCheck) {
 							
 							sql = "select nickname from member where id='" + id + "'";
-							stmt = conn.createStatement();
 							rs = stmt.executeQuery(sql);
 							String nickname = null;
 							
