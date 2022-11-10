@@ -4,6 +4,8 @@
  -->
  <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8" import="java.sql.*" %>
+ <%@ page import="java.util.Date" %>
+ <%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,36 +18,47 @@
  <title>글수정 홈페이지</title>
 </head>
 <body>
+
+<script>
+
+	// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
+	$(document).on("click", "#btn", function(){
+		let titleval = $('#_title').val();
+		let typeval = $('#_type').val();
+		let genval = $('#_gender').val();
+		let perval = $('#_person').val();
+		let depval = $('#_depart').val();
+		let arrval = $('#_arrival').val();
+		let conval = $('#_context').val();
+		let timeval = $('#_time').val();
+		
+		let checkMsg;
+		let checkState = true;
+		
+		if (titleval == "" || typeval == "" || genval == "" || perval == ""
+			|| depval == "" || arrval == "" || conval == "" || timeval == ""){
+			checkMsg = "모든 입력값을 입력해주세요.";
+			checkState = false;
+			$('body').append("<div class=background><div id=popup>"+ checkMsg 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+		} 
+		
+		if(checkState == true)
+			$("#form_1").submit();
+		}
+	);
+
+</script>
 <%
-    Connection conn = null;
-  	PreparedStatement stmt = null;
+ 
+	String type = request.getParameter("_type");
+	String gender = request.getParameter("_gender");
+    String person = request.getParameter("_person");
 
-  	String title = request.getParameter("_title");
-  	String nickName = request.getParameter("_nickName");
-  	String type = request.getParameter("_type");
-  	String time = request.getParameter("_time");
-  	String gender = request.getParameter("_gender");
-  	String person = request.getParameter("_person");
-  	String depart = request.getParameter("_depart");
-  	String arrival = request.getParameter("_arrival");
-  	String context = request.getParameter("_context");
-
-  	
-  	
-  	/*try {
-  		Class.forName("com.mysql.cj.jdbc.Driver"); 
-  		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-  		stmt = conn.prepareStatement("select * from traffic");
-  		
-  		stmt.executeUpdate();
-  		
-  		stmt.close();
-  		conn.close();
-  	} catch(Exception e) {
-  		e.printStackTrace();
-  	}*/
-
-
+    // writePost로 부터 작성자 받아오기
+ 	String num = (String) session.getAttribute("NUM");
+ 	session.setAttribute("NUM", num);
+ 	
    %>
    
     <header class="header">
@@ -84,55 +97,58 @@
          </div>
          
      
-     <form action="writePost.jsp" method="get" >
+     <form id="form_1" action="updateCheck.jsp" method="post" >
          <table>
              <tr>
                  <th>제목</th>
-                 <td><input id="text" type="text" name="_title" size="120" maxlength="100" value="<%=title %>"/></td>
+                 <td><input id="text" type="text" name="_title" size="120" maxlength="100" value="<%=request.getParameter("_title") %>"/></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td><input id="text" type="text" name="_nickName" size="50" maxlength="100" value="<%=nickName %>"/></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td><%=request.getParameter("_nickName") %></td>       
              </tr>
       		 <tr>
                   <th>종류</th>
-                  <td><input id="type" type="radio" name="_type" value="택시"/>택시 
-                      <input id="type" type="radio" name="_type" value="카풀"/>카풀</td>        
+                  <td><input id="_type" type="radio" name="_type" value="택시" <% if("택시".equals(type)){%>checked<%}%>/>택시 
+                        <input id="_type" type="radio" name="_type" value="카풀" <% if("카풀".equals(type)){%>checked<%}%>/>카풀
+                  </td>        
              </tr>
              <tr>
                  <th>시간</th>
-                 <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="<%=time %>" /></td>        
+                 <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="<%=request.getParameter("_time") %>" /></td>        
              </tr>
              <tr>
                  <th>성별</th>
-                 <td><input id="gender" type="radio" name="_gender" value="여자"/>여자 
-                     <input id="gender" type="radio" name="_gender" value="남자"/>남자
-                     <input id="gender" type="radio" name="_gender" value="상관없음"/>상관없음
+                 <td><input id="_gender" type="radio" name="_gender" value="여자" <% if("여자".equals(gender)){%>checked<%}%>/>여자 
+                        <input id="_gender" type="radio" name="_gender" value="남자" <% if("남자".equals(gender)){%>checked<%}%>/>남자
+                        <input id="_gender" type="radio" name="_gender" value="상관없음" <% if("상관없음".equals(gender)){%>checked<%}%>/>상관없음
                  </td>        
              </tr>
              <tr>
                  <th>인원</th>
-                 <td><input id="person" type="radio" name="_person" value="2명"/>2명 
-                     <input id="person" type="radio" name="_person" value="3명"/>3명
-                     <input id="person" type="radio" name="_person" value="4명"/>4명
-                     <input id="person" type="radio" name="_person" value="5명 이상"/>5명 이상
-                     <input id="person" type="radio" name="_person" value="상관없음"/>상관없음
+                 <td><input id="_person" type="radio" name="_person" value="2명" <% if("2명".equals(person)){%>checked<%}%>/>2명 
+                     <input id="_person" type="radio" name="_person" value="3명" <% if("3명".equals(person)){%>checked<%}%>/>3명
+                     <input id="_person" type="radio" name="_person" value="4명" <% if("4명".equals(person)){%>checked<%}%>/>4명
+                     <input id="_person" type="radio" name="_person" value="5명 이상" <% if("5명 이상".equals(person)){%>checked<%}%>/>5명 이상
+                     <input id="_person" type="radio" name="_person" value="상관없음" <% if("상관없음".equals(person)){%>checked<%}%>/>상관없음
+
+                        
                  </td>        
              </tr>
              <tr>
                   <th>출발지</th>
-                  <td><input id="text" type="text" name="_depart" size="50" maxlength="100" value="<%=depart %>"/></td>        
+                  <td><input id="text" type="text" name="_depart" size="50" maxlength="100" value="<%=request.getParameter("_depart") %>"/></td>        
              </tr>
              <tr>
                    <th>도착지</th>
-                   <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value="<%=arrival %>"/></td>        
+                   <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value="<%=request.getParameter("_arrival") %>"/></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td><textarea id="context" name="_context" cols="122" rows="10" value="<%=context %>"></textarea></td>        
+                 <td><textarea id="context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
              </tr>
              <tr>
-                 <td colspan="2"><input id="btn" type="submit" value="수정하기"></td>
+                 <td colspan="2"><input id="btn" type="button" value="수정하기"></td>
              </tr>
          </table>    
          </form>
@@ -175,5 +191,6 @@
 
 </footer>
 </div>
+
 </body>
 </html>

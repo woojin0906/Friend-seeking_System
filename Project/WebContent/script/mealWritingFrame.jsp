@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글작성 페이지
+	냠냠친구 글작성 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" %>
@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/writerStyle.css">
-    <title>글작성 홈페이지</title>
+    <title>냠냠친구 글 작성</title>
 </head>
 <body>
 <script>
@@ -26,8 +26,8 @@
 				let typeval = $('#_type').val();
 				let genval = $('#_gender').val();
 				let perval = $('#_person').val();
-				let depval = $('#_depart').val();
 				let arrval = $('#_arrival').val();
+				let alcval = $('#_alcohol').val();
 				let conval = $('#_context').val();
 				let timeval = $('#_time').val();
 				
@@ -35,7 +35,7 @@
 				let checkState = true;
 				
 				if (titleval == "" || typeval == "" || genval == "" || perval == ""
-						|| depval == "" || arrval == "" || conval == "" || timeval == ""){
+						|| alcval == "" || arrval == "" || conval == "" || timeval == ""){
 					checkMsg = "모든 입력값을 입력해주세요.";
 					checkState = false;
 					$('body').append("<div class=background><div id=popup>"+ checkMsg 
@@ -135,12 +135,14 @@
                     </td>        
                 </tr>
                 <tr>
-                    <th>출발지</th>
-                    <td><input id="_depart" type="text" name="_depart" size="50" maxlength="100" value=""/></td>        
+                    <th>도착지</th>
+                    <td> <td><input id="_arrival" type="text" name="_arrival" size="50" maxlength="100" value=""/></td>        
                 </tr>
                 <tr>
-                    <th>도착지</th>
-                    <td><input id="_arrival" type="text" name="_arrival" size="50" maxlength="100" value=""/></td>        
+                    <th>음주여부</th>
+                    <td><input id="_alcohol" type="radio" name="_alcohol" value="가능"/>가능 
+                        <input id="_alcohol" type="radio" name="_alcohol" value="불가능"/>불가능
+                    </td>        
                 </tr>
                 <tr>
                     <th>기타 내용</th>
@@ -205,8 +207,8 @@
 	String time = request.getParameter("_time");
 	String gender = request.getParameter("_gender");
 	String person = request.getParameter("_person");
-	String depart = request.getParameter("_depart");
 	String arrival = request.getParameter("_arrival");
+	String alcohol = request.getParameter("_alcohol");
 	String context = request.getParameter("_context");
 	
 	if( title == null ) title="";
@@ -214,17 +216,17 @@
 	if( time == null) time="";
 	if( gender == null) gender="";
 	if( person == null) person="";
-	if( depart == null) depart="";
+	if( alcohol == null) alcohol="";
 	if( arrival == null) arrival="";
 	if( context == null) context="";
 	
-	if( !title.equals("") && !time.equals("") && !person.equals("") && !gender.equals("") && !type.equals("") && !depart.equals("") && !arrival.equals("") && !context.equals("")) {
+	if( !title.equals("") && !time.equals("") && !person.equals("") && !gender.equals("") && !type.equals("") && !alcohol.equals("") && !arrival.equals("") && !context.equals("")) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 			
-				stmt = conn.prepareStatement("insert into traffic (nickname, title, writetime, count, sex, start, dest, main, promisetime, category) values ('" +
-						nick + "'," + "'" + title + "'," + "'" + date + "'," + "'" + person + "'," + "'" + gender + "'," + "'" + depart + "'," + "'" + arrival + "'," + "'" + context + "'," + "'" + time + "'," + "'" + type + "')");
+				stmt = conn.prepareStatement("insert into traffic (nickname, title, writetime, count, sex, drink, dest, main, promisetime, category) values ('" +
+						nick + "'," + "'" + title + "'," + "'" + date + "'," + "'" + person + "'," + "'" + gender + "'," + "'" + alcohol + "'," + "'" + arrival + "'," + "'" + context + "'," + "'" + time + "'," + "'" + type + "')");
 			
 			stmt.executeUpdate();
 
