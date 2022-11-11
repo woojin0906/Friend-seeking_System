@@ -65,7 +65,7 @@
 			String res = (String) request.getAttribute("_res");
 			if (res == null) res = "";
 			
-			if (res.equals("비밀번호 불일치")){
+			if (res.equals("비밀번호 불일치")){ 
 				out.println("<div class=background><div id=popup>"+ "비밀번호가 일치하지 않습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 			} 
