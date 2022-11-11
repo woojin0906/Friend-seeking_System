@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글작성 페이지
+	붕붕친구 글작성 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" %>
@@ -53,7 +53,7 @@
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
-					window.location.href = "writePost.jsp";
+					window.location.href = "Traffic_writePost.jsp";
 				}
 			});
 </script>
@@ -61,6 +61,9 @@
 <%
 	String nick = (String) session.getAttribute("NICK");
 	session.setAttribute("NICK", nick);
+	// String nick = (String) session.getAttribute("NICK");
+	 String number = (String) session.getAttribute("NUMBER");
+	// <input type="hidden" name="_number" value="<%=number>">
 %>
 
 	 <header class="header">
@@ -99,7 +102,7 @@
             </div>
             
         
-        <form id="form_1" action="writingFrame.jsp" method="post" >
+        <form id="form_1" action="Traffic_writingFrame.jsp" method="post" >
             <table>
                 <tr>
                     <th>제목</th>
@@ -107,7 +110,7 @@
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td><%=nick %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                    <td><%=nick %><input type="hidden" name="_nickname" value="<%=nick%>"></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                 </tr>
          		<tr>
                     <th>종류</th>

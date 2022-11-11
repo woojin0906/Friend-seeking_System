@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글모음 + 참여자 페이지
+	붕붕친구 글모음 + 참여자 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" import="java.sql.*"%>
@@ -50,7 +50,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <main>
      <div class="main">
            
-     <form action="writingChangeFrame.jsp" method="get" >
+     <form action="Traffic_writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
         
 	<%
@@ -59,22 +59,28 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		// writingFrame으로 부터 작성자 받아오기
-		//String nickname = (String) session.getAttribute("NICK");
-		//session.setAttribute("NICK", nickname);
-		
 		String number = request.getParameter("number");
-		String num = (String) session.getAttribute("NUM");
-	
+		//session.setAttribute("NUM", number);
+		//String nick = request.getParameter("_nickname");
+		String nick = (String) session.getAttribute("NICK");
+		if(number == null) number = "";
+		if(nick == null) nick = "";
+		
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number);
 		
+		if(!number.equals("")) {
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number);
+		} 
+		if(!nick.equals("")) {
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
+		}
+
 		while(rs.next()) {
 			%>
-			
+			<input type="hidden" name="_number" value="<%=number %>"/>
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
@@ -134,7 +140,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
      
          </table>    
          </form>
-     <div class="table2">
+ <!--  <div class="table2">
          <form>
              <h2>참여자</h2>
              <table id="_talbe_participants">
@@ -175,7 +181,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
                  </tr>
              </table>
          </form>
-         </div>
+         </div>  -->  
      </div>
  </main>
 

@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" media="screen" href="css/writerStyle.css">
-    <title>냠냠친구 글 작성</title>
+    <title>냠냠친구 글작성 홈페이지</title>
 </head>
 <body>
 <script>
@@ -26,8 +26,8 @@
 				let typeval = $('#_type').val();
 				let genval = $('#_gender').val();
 				let perval = $('#_person').val();
+				let alcohol = $('#_alcohol').val();
 				let arrval = $('#_arrival').val();
-				let alcval = $('#_alcohol').val();
 				let conval = $('#_context').val();
 				let timeval = $('#_time').val();
 				
@@ -35,7 +35,7 @@
 				let checkState = true;
 				
 				if (titleval == "" || typeval == "" || genval == "" || perval == ""
-						|| alcval == "" || arrval == "" || conval == "" || timeval == ""){
+						|| alcohol == "" || arrval == "" || conval == "" || timeval == ""){
 					checkMsg = "모든 입력값을 입력해주세요.";
 					checkState = false;
 					$('body').append("<div class=background><div id=popup>"+ checkMsg 
@@ -53,7 +53,7 @@
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
-					window.location.href = "writePost.jsp";
+					window.location.href = "Meal_writePost.jsp";
 				}
 			});
 </script>
@@ -99,7 +99,7 @@
             </div>
             
         
-        <form id="form_1" action="writingFrame.jsp" method="post" >
+        <form id="form_1" action="Meal_writingFrame.jsp" method="post" >
             <table>
                 <tr>
                     <th>제목</th>
@@ -111,8 +111,12 @@
                 </tr>
          		<tr>
                     <th>종류</th>
-                    <td><input id="_type" type="radio" name="_type" value="택시"/>택시 
-                        <input id="_type" type="radio" name="_type" value="카풀"/>카풀</td>        
+                     <td>
+                     	<input id="_type" type="radio" name="_type" value="한식"/>한식
+                    	<input id="_type" type="radio" name="_type" value="양식"/>양식 
+                        <input id="_type" type="radio" name="_type" value="일식"/>일식 
+                        <input id="_type" type="radio" name="_type" value="중식"/>중식
+                    </td>        
                 </tr>
                 <tr>
                     <th>시간</th>
@@ -120,7 +124,8 @@
                 </tr>
                 <tr>
                     <th>성별</th>
-                    <td><input id="_gender" type="radio" name="_gender" value="여자"/>여자 
+                    <td>
+                    	<input id="_gender" type="radio" name="_gender" value="여자"/>여자 
                         <input id="_gender" type="radio" name="_gender" value="남자"/>남자
                         <input id="_gender" type="radio" name="_gender" value="상관없음"/>상관없음
                     </td>        
@@ -135,14 +140,14 @@
                     </td>        
                 </tr>
                 <tr>
-                    <th>도착지</th>
-                    <td> <td><input id="_arrival" type="text" name="_arrival" size="50" maxlength="100" value=""/></td>        
-                </tr>
-                <tr>
                     <th>음주여부</th>
                     <td><input id="_alcohol" type="radio" name="_alcohol" value="가능"/>가능 
                         <input id="_alcohol" type="radio" name="_alcohol" value="불가능"/>불가능
                     </td>        
+                </tr>
+                <tr>
+                    <th>도착지</th>
+                    <td><input id="_arrival" type="text" name="_arrival" size="50" maxlength="100" value=""/></td>        
                 </tr>
                 <tr>
                     <th>기타 내용</th>
@@ -207,8 +212,8 @@
 	String time = request.getParameter("_time");
 	String gender = request.getParameter("_gender");
 	String person = request.getParameter("_person");
-	String arrival = request.getParameter("_arrival");
 	String alcohol = request.getParameter("_alcohol");
+	String arrival = request.getParameter("_arrival");
 	String context = request.getParameter("_context");
 	
 	if( title == null ) title="";
@@ -225,7 +230,7 @@
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 			
-				stmt = conn.prepareStatement("insert into traffic (nickname, title, writetime, count, sex, drink, dest, main, promisetime, category) values ('" +
+				stmt = conn.prepareStatement("insert into meal (nickname, title, writetime, count, sex, drink, dest, main, promisetime, category) values ('" +
 						nick + "'," + "'" + title + "'," + "'" + date + "'," + "'" + person + "'," + "'" + gender + "'," + "'" + alcohol + "'," + "'" + arrival + "'," + "'" + context + "'," + "'" + time + "'," + "'" + type + "')");
 			
 			stmt.executeUpdate();

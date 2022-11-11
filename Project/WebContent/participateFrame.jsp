@@ -12,40 +12,50 @@
  <title>참여자 홈페이지</title>
 </head>
 <body>
-
-
-
 <div class="table2">
-         <form>
+         <form action="participateFrame.jsp" method="get">
              <h2>참여자</h2>
              <table id="_talbe_participants">
-                 <tr>
+                 <tr>	
+                 	 <th>번호</th>
+                 	 <th>글 번호</th>
                      <th>이름</th>
                      <th>성별</th>
                      <th>전화번호</th>
                  </tr>
-                 <%
+      <%
 	    Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		String nickname = (String) session.getAttribute("NICK");
-		session.setAttribute("NICK", nickname);
+		String number = request.getParameter("_number");
+		String nick = request.getParameter("_nickName");
+		
+		if(number == null) number = "";
 		
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("select * from member where nickname = '" + nickname + "'");
+		if(!number.equals("") && !nick.equals("")) {
+		rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
+		}
+		else if(!nick.equals("")) {
+		rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'order by number desc limit 1");
+			
+		}
 
 		// 포인터 얻어와야함 -> rs.next()
 		while(rs.next()) {
-		
+			
+			String num = rs.getString("number");
 			String name = rs.getString("name");
 			String sex = rs.getString("sex");
 			String phone = rs.getString("phone");
 			
 			out.println("<tr>");
+			out.println("<td>" + num + "</td>");
+			out.println("<td>" + number + "</td>");
 			out.println("<td>" + name + "</td>");
 			out.println("<td>" + sex + "</td>");
 			out.println("<td>" + phone + "</td>");
@@ -60,7 +70,7 @@
 	}
 	
 %>
-                 
+                 <input id="btn" type="button" value="참여하기">
              </table>
          </form>
          </div>

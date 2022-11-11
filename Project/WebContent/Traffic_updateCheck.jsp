@@ -1,3 +1,7 @@
+<!-- 
+	작성자: 전우진
+	붕붕친구 글수정 update문
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
@@ -20,11 +24,16 @@
 			String date = sf.format(nowTime);
 			
 		    // writePost로 부터 넘버값 받아서 update하기
-			String num = (String) session.getAttribute("NUM");
- 			session.setAttribute("NUM", num);
+			//String num = (String) session.getAttribute("NUM");
+ 			//session.setAttribute("NUM", num);
 			
+ 			
+ 			String number = request.getParameter("number");
+ 			if(number == null) number = "";
+ 			
 			String title = request.getParameter("_title");
-			String nickname = request.getParameter("_nickName");
+			String nickname = request.getParameter("_nickname");
+			System.out.println(nickname);
 			String type = request.getParameter("_type");
 			String time = request.getParameter("_time");
 			String gender = request.getParameter("_gender");
@@ -37,7 +46,14 @@
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver"); 
 					conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-					stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', start = '" + depart + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + num + "'");
+					
+					if(!number.equals("") && !nickname.equals("")) {
+						stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', start = '" + depart + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + number + "'");
+					}
+					else if(!nickname.equals("")){
+						stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', start = '" + depart + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where nickname ='" + nickname + "'order by number desc limit 1");
+					
+					}
 					
 					stmt.executeUpdate();
 					
@@ -47,7 +63,7 @@
 					stmt.close();
 					conn.close();
 
-					response.sendRedirect("writePost.jsp");
+					response.sendRedirect("Traffic_writePost.jsp");
 				} catch(Exception e) {
 					e.printStackTrace();
 				}

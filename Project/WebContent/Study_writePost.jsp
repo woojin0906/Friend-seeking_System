@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글모음 + 참여자 페이지
+	열공친구 글모음 + 참여자 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" import="java.sql.*"%>
@@ -50,23 +50,27 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <main>
      <div class="main">
            
-     <form action="writingChangeFrame.jsp" method="get" >
+     <form action="Study_writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
         
-		 <%
-    Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
-	// writingFrame으로 부터 작성자 받아오기
-	String nickname = (String) session.getAttribute("NICK");
-	session.setAttribute("NICK", nickname);
+	<%
+            		
+	    Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		// writingFrame으로 부터 작성자 받아오기
+		//String nickname = (String) session.getAttribute("NICK");
+		//session.setAttribute("NICK", nickname);
+		
+		String number = request.getParameter("number");
+		String num = (String) session.getAttribute("NUM");
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("select title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nickname + "' order by writetime desc limit 1");
+		rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, dest, main, writetime from study where number = '" + number);
 		
 		while(rs.next()) {
 			%>
@@ -79,7 +83,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_nickName" value="<%=nickname %>"/><%=nickname %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="hidden"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                  <td id="btn_writePost1">
                      <input id="btn" type="submit" value="수정하기">
                  </td>
@@ -103,10 +107,6 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              <tr>
                  <th>인원</th>
                  <td id="hidden" colspan="3"><input type="hidden" name="_person" value="<%=rs.getString("count") %>"/><%=rs.getString("count") %></td>        
-             </tr>
-             <tr>
-                 <th>출발지</th>
-                 <td id="hidden" colspan="3"><input type="hidden" name="_depart" value="<%=rs.getString("start") %>"/><%=rs.getString("start") %></td>        
              </tr>
              <tr>
                  <th>도착지</th>
@@ -212,4 +212,4 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 </footer>
 </div>
 </body>
-</html>>
+</html>

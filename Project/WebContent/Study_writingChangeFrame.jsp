@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글수정 페이지
+	열공친구 글수정 페이지
  -->
  <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8" import="java.sql.*" %>
@@ -27,7 +27,6 @@
 		let typeval = $('#_type').val();
 		let genval = $('#_gender').val();
 		let perval = $('#_person').val();
-		let alcohol = $('#_alcohol').val();
 		let arrval = $('#_arrival').val();
 		let conval = $('#_context').val();
 		let timeval = $('#_time').val();
@@ -36,7 +35,7 @@
 		let checkState = true;
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
-			|| alcohol == "" || arrval == "" || conval == "" || timeval == ""){
+			|| arrval == "" || conval == "" || timeval == ""){
 			checkMsg = "모든 입력값을 입력해주세요.";
 			checkState = false;
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
@@ -98,7 +97,7 @@
          </div>
          
      
-     <form id="form_1" action="updateCheck.jsp" method="post" >
+     <form id="form_1" action="Study_updateCheck.jsp" method="post" >
          <table>
              <tr>
                  <th>제목</th>
@@ -110,8 +109,11 @@
              </tr>
       		 <tr>
                   <th>종류</th>
-                  <td><input id="_type" type="radio" name="_type" value="택시" <% if("택시".equals(type)){%>checked<%}%>/>택시 
-                        <input id="_type" type="radio" name="_type" value="카풀" <% if("카풀".equals(type)){%>checked<%}%>/>카풀
+                  <td>
+                      <input id="_type" type="radio" name="_type" value="한식" <% if("한식".equals(type)){%>checked<%}%>/>한식
+                      <input id="_type" type="radio" name="_type" value="양식" <% if("양식".equals(type)){%>checked<%}%>/>양식 
+                      <input id="_type" type="radio" name="_type" value="일식" <% if("일식".equals(type)){%>checked<%}%>/>일식 
+                      <input id="_type" type="radio" name="_type" value="중식" <% if("중식".equals(type)){%>checked<%}%>/>중식
                   </td>        
              </tr>
              <tr>
@@ -132,18 +134,11 @@
                      <input id="_person" type="radio" name="_person" value="4명" <% if("4명".equals(person)){%>checked<%}%>/>4명
                      <input id="_person" type="radio" name="_person" value="5명 이상" <% if("5명 이상".equals(person)){%>checked<%}%>/>5명 이상
                      <input id="_person" type="radio" name="_person" value="상관없음" <% if("상관없음".equals(person)){%>checked<%}%>/>상관없음
-
-                        
                  </td>        
              </tr>
              <tr>
                    <th>도착지</th>
                    <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value="<%=request.getParameter("_arrival") %>"/></td>        
-             </tr>
-             <tr>
-                  <th>음주여부</th>
-                  <td><input id="_alcohol" type="radio" name="_alcohol" value="가능" <% if("가능".equals(alcohol)){%>checked<%}%>/>가능 
-                        <input id="_alcohol" type="radio" name="_alcohol" value="불가능" <% if("불가능".equals(alcohol)){%>checked<%}%>/>불가능
              </tr>
              <tr>
                  <th>기타 내용</th>

@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	글수정 페이지
+	붕붕친구 글수정 페이지
  -->
  <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8" import="java.sql.*" %>
@@ -50,15 +50,16 @@
 
 </script>
 <%
- 
+	String number = request.getParameter("number");
 	String type = request.getParameter("_type");
 	String gender = request.getParameter("_gender");
     String person = request.getParameter("_person");
-
+    System.out.println(number);
+    System.out.println(request.getParameter("_nickName"));
     // writePost로 부터 작성자 받아오기
- 	String num = (String) session.getAttribute("NUM");
- 	session.setAttribute("NUM", num);
- 	
+ 	//String num = (String) session.getAttribute("NUM");
+ 	//session.setAttribute("NUM", num);
+
    %>
    
     <header class="header">
@@ -97,15 +98,15 @@
          </div>
          
      
-     <form id="form_1" action="updateCheck.jsp" method="post" >
+     <form id="form_1" action="Traffic_updateCheck.jsp" method="post" >
          <table>
-             <tr>
+             <tr><input type="hidden" name="_number" value="<%=number %>"/>
                  <th>제목</th>
                  <td><input id="text" type="text" name="_title" size="120" maxlength="100" value="<%=request.getParameter("_title") %>"/></td>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td><%=request.getParameter("_nickName") %></td>       
+                 <td><input type="hidden" name="_nickname" value="<%=request.getParameter("_nickName") %>"/><%=request.getParameter("_nickName") %></td>       
              </tr>
       		 <tr>
                   <th>종류</th>
