@@ -3,7 +3,7 @@
 	붕붕친구 글모음 + 참여자 페이지
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" import="java.sql.*"%>
+pageEncoding="UTF-8" import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -54,33 +54,37 @@ pageEncoding="UTF-8" import="java.sql.*"%>
          <table id="_table_writerPage">
         
 	<%
-            		
-	    Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		String number = request.getParameter("number");
-		//session.setAttribute("NUM", number);
-		//String nick = request.getParameter("_nickname");
-		String nick = (String) session.getAttribute("NICK");
-		if(number == null) number = "";
-		if(nick == null) nick = "";
-		
 	try {
+		 	Connection conn = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+
+			String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
+			String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
+			String id = (String) session.getAttribute("ID");		
+			
+			session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
+			session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
+			
+			if(number == null) number = "";
+			if(nick == null) nick = "";
+			
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
 		
+		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
 		if(!number.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number);
 		} 
+		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
 		if(!nick.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
 		}
 
 		while(rs.next()) {
 			%>
-			<input type="hidden" name="_number" value="<%=number %>"/>
+			<input type="hidden" name="_number" value="<%=number %>"/> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
@@ -89,14 +93,8 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1">
-                     <input id="btn" type="submit" value="수정하기">
-                 </td>
-                 <td id="btn_writePost2">
-                 	<input id="btn_check" type="button" value="참여하기" onclick="location.href='participateFrame.jsp'"/>
-                 </td>
-             
+                 <td id="hidden" colspan="2"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="btn_writePost1"><input id="btn" type="submit" value="수정하기"></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -126,8 +124,66 @@ pageEncoding="UTF-8" import="java.sql.*"%>
                  <th>기타 내용</th>
                  <td id="context" colspan="3"><input type="hidden" name="_context" value="<%=rs.getString("main") %>"/><%=rs.getString("main") %></td>        
              </tr>
-             	<%		 	}
+         </table>    
+         </form>
+      <%
+		}
+		rs.close();
+		stmt.close();
+		conn.close();
 
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+		%>
+		
+	  <div class="table2">
+         <form>
+             <h2>참여자</h2>
+             <input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/>
+             <table id="_talbe_participants">
+                 <tr>
+                     <th>이름</th>
+                     <th>성별</th>
+                     <th>전화번호</th>
+                 </tr>
+     <%
+        try {
+        	Connection conn = null;
+      		Statement stmt = null;
+      		ResultSet rs = null;
+
+      		String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
+      		session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
+      		String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
+      		String id = (String) session.getAttribute("ID");		
+      		session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
+      		
+	   		if(number == null) number = "";
+	    	if(nick == null) nick = "";
+	    	
+	        Class.forName("com.mysql.cj.jdbc.Driver"); 
+	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+	        stmt = conn.createStatement();
+         		
+			//if(!number.equals("")) {
+				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + "48" + "'");
+			//} 
+			
+			//if(!nick.equals("")) {
+			//	rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
+			//}
+			
+			while(rs.next()) {
+      %> 	
+                 <tr>
+                     <td><input type="hidden" name="_name" value=""/><%=rs.getString("name") %></td>
+                     <td><input type="hidden" name="_sex" value=""/><%=rs.getString("sex") %></td>
+                     <td><input type="hidden" name="_phone" value=""/><%=rs.getString("phone") %></td>
+                 </tr>
+              
+     <%		 	
+		}
 		rs.close();
 		stmt.close();
 		conn.close();
@@ -137,55 +193,13 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 	}
 
    %>
-     
-         </table>    
-         </form>
- <!--  <div class="table2">
-         <form>
-             <h2>참여자</h2>
-             <table id="_talbe_participants">
-                 <tr>
-                     <th>이름</th>
-                     <th>성별</th>
-                     <th>전화번호</th>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
-                 <tr>
-                     <td><input type="hidden" name="_name" value=""/></td>
-                     <td><input type="hidden" name="_sex" value=""/></td>
-                     <td><input type="hidden" name="_phone" value=""/></td>
-                 </tr>
              </table>
          </form>
-         </div>  -->  
+         </div> 
      </div>
  </main>
 
- <footer>
+ <!-- <footer>
 
      <nav id="bottom_menu">
          <ul>
@@ -219,7 +233,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
          </ul>
      </div>
 
-</footer>
+</footer>  -->
 </div>
 </body>
 </html>

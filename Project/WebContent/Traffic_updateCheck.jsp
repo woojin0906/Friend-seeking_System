@@ -27,7 +27,7 @@
 			//String num = (String) session.getAttribute("NUM");
  			//session.setAttribute("NUM", num);
 			
- 			
+ 			// hidden으로 숨겨진 number값을 받아와 해당하는 넘버값의 글 수정하기
  			String number = request.getParameter("number");
  			if(number == null) number = "";
  			
@@ -47,9 +47,12 @@
 					Class.forName("com.mysql.cj.jdbc.Driver"); 
 					conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 					
+					// 게시판에서 글보기로 넘어온 경우 넘버와 닉이 공백이 아님
 					if(!number.equals("") && !nickname.equals("")) {
 						stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', start = '" + depart + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + number + "'");
 					}
+					
+					// 게시판에서 글 작성 후 글보기로 넘어온 경우 넘버가 없으므로 닉이 공백이 아님
 					else if(!nickname.equals("")){
 						stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', start = '" + depart + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where nickname ='" + nickname + "'order by number desc limit 1");
 					

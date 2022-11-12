@@ -36,7 +36,7 @@
 		let checkState = true;
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
-			|| depval == "" || arrval == "" || conval == "" || timeval == ""){
+			|| depval == "" || arrval == "" || conval == "" || timeval == "") {
 			checkMsg = "모든 입력값을 입력해주세요.";
 			checkState = false;
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
@@ -50,15 +50,13 @@
 
 </script>
 <%
+	// 글 보기에서 글의 내용 가져오기
 	String number = request.getParameter("number");
 	String type = request.getParameter("_type");
 	String gender = request.getParameter("_gender");
     String person = request.getParameter("_person");
     System.out.println(number);
     System.out.println(request.getParameter("_nickName"));
-    // writePost로 부터 작성자 받아오기
- 	//String num = (String) session.getAttribute("NUM");
- 	//session.setAttribute("NUM", num);
 
    %>
    
