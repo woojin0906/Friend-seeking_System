@@ -20,7 +20,7 @@
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
  	        	<%=nick_getData%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3"><span>Mypage</span></button>
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
  	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->
@@ -43,9 +43,9 @@
             <div class="cont">
                 <ul>
                     <li><a href="PostMain.jsp">전체 글 보기</a></li>
-                    <li><a href="BB/BB_friend.jsp">붕붕</a></li>
-                    <li><a href="NN/NN_friend.jsp">냠냠</a></li>
-                    <li><a href="YG/YG_friend.jsp">열공</a></li>                        
+                    <li><a href="BB/BB_friend.jsp">붕붕친구</a></li>
+                    <li><a href="NN/NN_friend.jsp">냠냠친구</a></li>
+                    <li><a href="YG/YG_friend.jsp">열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
