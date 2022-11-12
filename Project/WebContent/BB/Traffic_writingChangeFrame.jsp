@@ -14,7 +14,7 @@
  <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="stylesheet" type="text/css" media="screen" href="css/writerStyle.css">
+ <link rel="stylesheet" type="text/css" media="screen" href="../css/writerStyle.css">
  <title>글수정 홈페이지</title>
 </head>
 <body>
@@ -37,16 +37,17 @@
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
 			|| depval == "" || arrval == "" || conval == "" || timeval == "") {
-			checkMsg = "모든 입력값을 입력해주세요.";
-			checkState = false;
-			$('body').append("<div class=background><div id=popup>"+ checkMsg 
-					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			console.log("Test");
+		//	checkMsg = "모든 입력값을 입력해주세요.";
+		//	checkState = false;
+		//	$('body').append("<div class=background><div id=popup>"+ checkMsg 
+		//			+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		} 
 		
-		if(checkState == true)
-			$("#form_1").submit();
-		}
-	);
+		//if(checkState == true)
+		//	$("#form_1").submit();
+		//}
+	});
 
 </script>
 <%
@@ -61,7 +62,7 @@
    %>
    
     <header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
             <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -147,7 +148,7 @@
                  <td><textarea id="context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
              </tr>
              <tr>
-                 <td colspan="2"><input id="btn" type="button" value="수정하기"></td>
+                 <td colspan="2"><Button id="btn" type="button">수정하기</Button></td>
              </tr>
          </table>    
          </form>

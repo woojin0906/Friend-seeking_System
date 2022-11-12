@@ -49,7 +49,7 @@
 			
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
-				$('.background').addClass('close');
+				$('.background').remove();
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
@@ -58,15 +58,7 @@
 			});
 </script>
 
-<%
-	
-	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
-	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
-	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
-	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
-%>
-
-	 <header class="header">
+    <header class="header">
         <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
@@ -93,6 +85,14 @@
             <label for="menuicon" class="background"></label>
         </div>
     </div>
+         
+<%
+	
+	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
+	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
+	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
+	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
+%>
        
 <div id="main_footer">
     <main>
@@ -190,8 +190,8 @@
             </ul>
         </div>
 
-</div>
 </footer>
+</div>
 <%
 	request.setCharacterEncoding("UTF-8");
 	

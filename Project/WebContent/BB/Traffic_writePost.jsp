@@ -13,13 +13,13 @@ pageEncoding="UTF-8" import="java.sql.*" %>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="stylesheet" type="text/css" media="screen" href="css/writePostStyle.css">
+ <link rel="stylesheet" type="text/css" media="screen" href="../css/writePostStyle.css">
  <title>글모음 홈페이지</title>
 </head>
 <body>
 
     <header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
             <button class="custom-btn btn-3"><span>Sign Up</span></button>
