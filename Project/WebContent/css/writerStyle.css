@@ -256,9 +256,9 @@ th {
 
 /* footer */
 footer {
-    height : 280px;
-    background-color: white;
-    color : black;
+    height : 330px;
+    background-color: black;
+    color : white;
     border-top: 1px solid #e3e3e3;
 }
 #bottom_menu ul {

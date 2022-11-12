@@ -12,7 +12,7 @@
 		<title>Welcome</title>
 		
  		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
-		<link href="css/loadingStyle.css?ver=1" rel="stylesheet" type="text/css">
+		<link href="../css/loadingStyle.css?ver=1" rel="stylesheet" type="text/css">
  		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
 							$('#info').css({"top" : "-23%", "left" : "-12%"});
 							$('#mainBody').addClass('move_gelatine');
 							setTimeout(function() {
-								location.replace("index.jsp");
+								location.replace("MainPage.jsp");
 							}, 4000);
 						}, 1000);
 					}, 1500);
@@ -46,9 +46,9 @@
 		<div class="bottomDiv">
 			<div>
 				<h2 id="info">친구 구할 땐?</h2>
-				<img id="logoImg" src="image/logo.png">
-				<img id="moveKid" src="image/moveKid.png">
-				<img id="hiMsg" src="image/msg.png">
+				<img id="logoImg" src="../image/logo.png">
+				<img id="moveKid" src="../image/moveKid.png">
+				<img id="hiMsg" src="../image/msg.png">
 			</div>
 		</div>
 	</body>

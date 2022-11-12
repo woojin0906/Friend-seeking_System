@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 	String dbPw = "2022server"; // DB 패스워드
 %>
   <header class="header">
-    <a href="#"><img class="logoimg" src="image/logo_mod.png"></a>
+    <a href="#"><img class="logoimg" src="../image/logo_mod.png"></a>
     <div class="btnright">
       <button class="custom-btn btn-3"><span>Log In</span></button>
       <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -81,7 +81,7 @@
                   <div class="table-sub-n">n개의 글</div>
                 </div>
                 <div>
-                  <a href="writingFrame.jsp" class="btn-7">글작성</a>
+                  <a href="Meal_writingFrame.jsp" class="btn-7">글작성</a>
                 </div>
               </div>
               <div class="table-div">

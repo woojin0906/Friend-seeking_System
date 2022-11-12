@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <a href="MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
         String nick_getData = (String) session.getAttribute("NICK");
@@ -21,14 +21,14 @@
  	        <div class="btnright">
  	        	<%=nick_getData%>님 환영합니다.
  	            <button id="mypageBtn" class="custom-btn btn-3"><span>Mypage</span></button>
- 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='logout.jsp'"><span>LogOut</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->
         <% } else { %>
  	        <div class="btnright">
  	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='signUp.jsp'"><span>Sign Up</span></button>
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
     </header>
@@ -42,10 +42,10 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="#">전체 글 보기</a></li>
-                    <li><a href="#">붕붕</a></li>
-                    <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        <li><a href="#">게시판 이름</a></li>
+                    <li><a href="PostMain.jsp">전체 글 보기</a></li>
+                    <li><a href="BB/BB_friend.jsp">붕붕</a></li>
+                    <li><a href="NN/NN_friend.jsp">냠냠</a></li>
+                    <li><a href="YG/YG_friend.jsp">열공</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -76,7 +76,7 @@
         <hr>
         <div id="wrap">
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="image/car.png">  붕붕 친구 게시판</p></a>
+                <a class="astyle" href="BB/BB_friend.jsp"><p><img src="../image/car.png">  붕붕 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -98,7 +98,7 @@
 	   		               	String category = rs.getString(1);
 	   		               	String title = rs.getString(2);
 	   		               	String number = rs.getString(3);
-	   		               	out.println("<tr onClick=location.href='Traffic_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		               	out.println("<tr onClick=location.href='BB/Traffic_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
 	    					
@@ -108,7 +108,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="image/eat.png">  냠냠 친구 게시판</p></a>
+                <a class="astyle" href="NN/NN_friend.jsp"><p><img src="../image/eat.png">  냠냠 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -130,7 +130,7 @@
 	   		               	String category = rs.getString(1);
 	   		               	String title = rs.getString(2);
 	   		               	String number = rs.getString(3);
-	   		               	out.println("<tr onClick=location.href='Meal_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		               	out.println("<tr onClick=location.href='NN/Meal_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
 	    					
@@ -140,7 +140,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="#"><p><img src="image/studying.png">  열공 친구 게시판</p></a>
+                <a class="astyle" href="YG_friend.jsp"><p><img src="../image/studying.png">  열공 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
                 try {
@@ -162,7 +162,7 @@
    		               	String category = rs.getString(1);
    		               	String title = rs.getString(2);
    		               	String number = rs.getString(3);
-   		               	out.println("<tr onClick=location.href='Study_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+   		               	out.println("<tr onClick=location.href='YG/Study_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
    		            }
    					out.println("</table>");
     					
