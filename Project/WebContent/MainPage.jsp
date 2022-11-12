@@ -4,11 +4,16 @@
 <html lang="en">
 <head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/index_style.css">
+    <link rel="stylesheet" type="text/css" href="css/mainPageStyle.css">
     <script src="script/header.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	
     <title>Document</title>
 </head>
 <body>

@@ -2,7 +2,7 @@
 
 
 * { 
-    font-family:'Noto Sans KR', sans-serif;
+    font-family:'Do Hyeon', sans-serif;
 }
 
 .header {
@@ -197,7 +197,7 @@ input#menuicon.hidden {
     visibility: visible;
     transition: all .35s;
 }
-/* -------------------------ÀüÃ¼ */
+/* -------------------------ï¿½ï¿½Ã¼ */
 #content {
   width: 100%;
   display: flex;
@@ -280,7 +280,7 @@ input#menuicon.hidden {
     z-index: -100;
   }
 
-/* °Ô½Ã±Û */
+/* ï¿½Ô½Ã±ï¿½ */
 #wrap {
   z-index: -100;
   position: relative;
@@ -298,7 +298,7 @@ input#menuicon.hidden {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* °Ô½Ã±Û ¿ä¼Ò width 360px */
+/* ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ width 360px */
 #wrap .simple-view {
   border: solid 1px #000;
   border-radius: 20px;
@@ -321,8 +321,8 @@ input#menuicon.hidden {
 }
 
 #wrap .simple-view > a > p > img {
-  width: 21px;
-  height: 21px;
+  width: 25px;
+  height: 25px;
 }
 
 #wrap .simple-view .hrstyle {
@@ -371,7 +371,7 @@ input#menuicon.hidden {
   height: 100%;
 }
 .btn-3:before,
-.btn-3:after { /* ¸¶¿ì½º È£¹ö ½Ã ¿À¸¥ÂÊ, À§ »ö»ó */
+.btn-3:after { /* ï¿½ï¿½ï¿½ì½º È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
   position: absolute;
   content: "";
   right: 0;

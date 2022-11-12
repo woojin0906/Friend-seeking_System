@@ -21,7 +21,12 @@
       </div>
       <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
       <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div>
-      <div class="name">닉네임(아이디)이 들어감</div>
+      <div class="name">
+      		<%
+      			String nick_getData = (String) session.getAttribute("NICK");
+      			out.println(nick_getData + "님");
+      		%>
+      </div>
       <div class="about">간단한 자기소개(없어도됨)</div>
       <!-- <div class="social-icons">
         <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
