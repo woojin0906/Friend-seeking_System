@@ -11,7 +11,7 @@
 		<title>sign up</title>
 	
 		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
-		<link href="css/signupStyle.css?ver=1" rel="stylesheet" type="text/css">
+		<link href="../css/signupStyle.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -97,17 +97,17 @@
 						<option value="여자">여자</option>
 					</select>
 				</form>
-					<img id="personImg" src="image/person.png">
-					<img id="keyImg" src="image/key.png">
-					<img id="nickname" src="image/nicknameImg.png">
-					<img id="nameImg" src="image/nameImg.png">
-					<img id="sexImg" src="image/sexImg.png">
-					<img id="telImg" src="image/telImg.png">
+					<img id="personImg" src="../image/person.png">
+					<img id="keyImg" src="../image/key.png">
+					<img id="nickname" src="../image/nicknameImg.png">
+					<img id="nameImg" src="../image/nameImg.png">
+					<img id="sexImg" src="../image/sexImg.png">
+					<img id="telImg" src="../image/telImg.png">
 					<button id="signupBtn" type="button">회원가입</button>
 					<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
 			</div>
 			<div id="right">
-				<img id="logo" src="image/signUpLogo.png">
+				<img id="logo" src="../image/signUpLogo.png">
 			</div>
 		</div>
 		

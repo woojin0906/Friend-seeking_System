@@ -68,7 +68,7 @@
 							
 							session.setAttribute("ID", id);
 							session.setAttribute("NICK", nickname);
-							response.sendRedirect("index.jsp");
+							response.sendRedirect("../MainPage.jsp");
 						} else{
 							request.setAttribute("_res", "비밀번호 불일치");
 							pageContext.forward("loginFrame.jsp");

@@ -11,7 +11,7 @@
 		<title>Find password</title>
 		
 		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
-		<link href="css/findPwd.css?ver=1" rel="stylesheet" type="text/css">
+		<link href="../css/findPwd.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -52,14 +52,14 @@
 				<input name="_name" id="_name" type="text" placeholder="이름">
 				<input name="_tel" id="_tel" type="text" placeholder="전화번호">
 			</Form>
-			<img id="personImg" src="image/person.png">
-			<img id="nameImg" src="image/nameImg.png">
-			<img id="telImg" src="image/telImg.png">
+			<img id="personImg" src="../image/person.png">
+			<img id="nameImg" src="../image/nameImg.png">
+			<img id="telImg" src="../image/telImg.png">
 			<button id="findBtn" type="button">찾기</button>
 			<button id="cancelBtn" type="button" onclick="history.back()">취소</button>
 		</div>
-		<img id="kid" src="image/moveKid.png">
-		<img id="kid2" src="image/kid.png">
+		<img id="kid" src="../image/moveKid.png">
+		<img id="kid2" src="../image/kid.png">
 		<%
 			request.setCharacterEncoding("UTF-8");
 			

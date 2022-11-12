@@ -10,7 +10,7 @@
 		<%
 			session.removeAttribute("ID");
 			session.removeAttribute("NICK");
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("../MainPage.jsp");
 		%>
 	</body>
 </html>
