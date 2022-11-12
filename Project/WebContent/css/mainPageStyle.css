@@ -19,6 +19,7 @@
   -moz-transition: height 0.3s;
   transition: height 0.3s;
   display: inline-block;
+  font-size: 20px;
 }
 
 .header .logoimg {
@@ -97,7 +98,7 @@
     color: #fff;
     padding: 10px;
     margin: 10px;
-    font-size: 15px;
+    font-size: 25px;
   }
   
   #boardside .sidebar .cont > ul > li:active,
@@ -296,6 +297,7 @@ input#menuicon.hidden {
   align-items: center;
   display: flex;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
 }
 
 /* �Խñ� ��� width 360px */
@@ -363,6 +365,7 @@ input#menuicon.hidden {
   padding: 0;
   border: none;
   margin-left: 10px;
+  font-size: 17px;
 }
 .btn-3 span {
   position: relative;
