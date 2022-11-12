@@ -116,10 +116,8 @@
 	              			traffic.setNumber(rs.getInt("_number"));
 	              			traffic.setNickName(rs.getString("_nickname"));
 	              			traffic.setTitle(rs.getString("_title"));
-	              			Date promiseTime = rs.getDate("_promiseTime");
-	              			traffic.setPromiseTime(promiseTime);
-	              			Date writeTime = rs.getDate("_writeTime");
-	              			traffic.setWriteTime(writeTime);
+	              			traffic.setPromiseTime(rs.getString("_promiseTime"));
+	              			traffic.setWriteTime(rs.getString("_writeTime"));
 	              			traffic.setCount(rs.getString("_count"));
 	              			traffic.setSex(rs.getString("_sex"));
 	              			traffic.setStart(rs.getString("_start"));
