@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
+        <a href="MainPage.jsp"><img class ="logoimg"src="image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
         String nick_getData = (String) session.getAttribute("NICK");
@@ -76,7 +76,7 @@
         <hr>
         <div id="wrap">
             <div class="simple-view">
-                <a class="astyle" href="BB/BB_friend.jsp"><p><img src="../image/car.png">  붕붕 친구 게시판</p></a>
+                <a class="astyle" href="BB/BB_friend.jsp"><p><img src="image/car.png">  붕붕 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -108,7 +108,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="NN/NN_friend.jsp"><p><img src="../image/eat.png">  냠냠 친구 게시판</p></a>
+                <a class="astyle" href="NN/NN_friend.jsp"><p><img src="image/eat.png">  냠냠 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -140,7 +140,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="YG_friend.jsp"><p><img src="../image/studying.png">  열공 친구 게시판</p></a>
+                <a class="astyle" href="YG_friend.jsp"><p><img src="image/studying.png">  열공 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
                 try {
