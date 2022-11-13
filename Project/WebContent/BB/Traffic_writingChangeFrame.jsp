@@ -20,7 +20,11 @@
 <body>
 
 <script>
-
+	$(document).on("click", "#closeBtn", function(e) {
+		let val = $('#popup').text();
+		$('.background').remove();
+	});
+	
 	// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
 	$(document).on("click", "#btn", function(){
 		let titleval = $('#_title').val();
@@ -37,17 +41,17 @@
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
 			|| depval == "" || arrval == "" || conval == "" || timeval == "") {
-			console.log("Test");
-		//	checkMsg = "모든 입력값을 입력해주세요.";
-		//	checkState = false;
-		//	$('body').append("<div class=background><div id=popup>"+ checkMsg 
-		//			+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+
+			checkMsg = "모든 입력값을 입력해주세요.";
+			checkState = false;
+			$('body').append("<div class=background><div id=popup>"+ checkMsg 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		} 
 		
-		//if(checkState == true)
-		//	$("#form_1").submit();
-		//}
-	});
+		if(checkState)
+			$("#form_1").submit();
+		}
+	);
 
 </script>
 <%
@@ -148,7 +152,7 @@
                  <td><textarea id="context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
              </tr>
              <tr>
-                 <td colspan="2"><Button id="btn" type="button">수정하기</Button></td>
+                 <td colspan="2"><button id="btn" type="button">수정하기</button></td>
              </tr>
          </table>    
          </form>
@@ -191,6 +195,5 @@
 
 </footer>
 </div>
-
 </body>
 </html>

@@ -246,21 +246,20 @@ th, td {
 
 #btn, #btn_check {
   padding: 10px 15px 10px 15px; 
-  font-size: 13px; 
+  font-size: 14px; 
   background-color: #78A1E2;
   color: white;
   border: 1px solid #78A1E2;
   border-radius: 5px;
 }
+#btn_check {
+  margin-left: 1300px;
+  margin-bottom: 10px;
+}
 #btn_writePost1 {
-  text-align: right;
-  border-right: none;
+  text-align: center;
 }
-#btn_writePost2 {
-  border-left: none;
-  text-align: right;
-  padding-right: 20px;
-}
+
 #table_top {
   border-left: none;
   border-right: none;
@@ -298,7 +297,7 @@ th, td {
 }
 .table2 h2 {
   color:#78A1E2;
-  margin: 50px 0px 10px 410px;
+  margin: 50px 0px 0px 500px;
 }
 #_talbe_participants td { 
  height: 30px;

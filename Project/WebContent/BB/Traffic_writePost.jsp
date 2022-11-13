@@ -17,7 +17,33 @@ pageEncoding="UTF-8" import="java.sql.*" %>
  <title>글모음 홈페이지</title>
 </head>
 <body>
-
+<%
+	String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
+	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
+	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
+	String id = (String) session.getAttribute("ID");		
+	session.setAttribute("ID", id);
+%>
+<script>
+	$(document).on("click", "#btn", function(){
+		let nickval = $('#_nickName').val();
+		
+		let checkMsg;
+		let checkState = true;
+	
+		if (!nickval.equls(nick)){
+			checkMsg = "수정할 권한이 없습니다.";
+			checkState = false;
+			
+			$('body').append("<div class=background><div id=popup>"+ checkMsg 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+		}
+		
+		if (checkState)
+			$("#_form_data").submit();
+			window.location.href = "Traffic_writingFrame.jsp";
+	});
+</script>
     <header class="header">
         <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
@@ -50,7 +76,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
  <main>
      <div class="main">
            
-     <form action="Traffic_writingChangeFrame.jsp" method="get" >
+     <form id="form_data" action="Traffic_writingChangeFrame.jsp" method="get" >
          <table id="_table_writerPage">
         
 	<%
@@ -59,10 +85,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			Statement stmt = null;
 			ResultSet rs = null;
 
-			String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
-			String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-			String id = (String) session.getAttribute("ID");		
-			
 			session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
 			session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 			
@@ -94,7 +116,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <tr>
                  <th>작성자</th>
                  <td id="hidden" colspan="2"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><input id="btn" type="submit" value="수정하기"></td>
+                 <td id="btn_writePost1"><button id="btn" type="submit" >수정하기</button></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -153,12 +175,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
       		Statement stmt = null;
       		ResultSet rs = null;
 
-      		String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
-      		session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
-      		String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-      		String id = (String) session.getAttribute("ID");		
-      		session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
-      		
 	   		if(number == null) number = "";
 	    	if(nick == null) nick = "";
 	    	
@@ -166,13 +182,13 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
          		
-			//if(!number.equals("")) {
-				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + "48" + "'");
-			//} 
+			if(!number.equals("")) {
+				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
+			} 
 			
-			//if(!nick.equals("")) {
-			//	rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
-			//}
+			if(!nick.equals("")) {
+				rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
+			}
 			
 			while(rs.next()) {
       %> 	

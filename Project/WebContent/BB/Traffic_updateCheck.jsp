@@ -60,13 +60,11 @@
 					
 					stmt.executeUpdate();
 					
-					out.println("<div class=background><div id=popup>"+ "글이 수정되었습니다." 
-							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+					response.sendRedirect("Traffic_writePost.jsp");
 					
 					stmt.close();
 					conn.close();
 
-					response.sendRedirect("Traffic_writePost.jsp");
 				} catch(Exception e) {
 					e.printStackTrace();
 				}

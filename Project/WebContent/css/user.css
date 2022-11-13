@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+
+* { 
+    font-family:'Noto Sans KR', sans-serif;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #78A1E2;
+  color:#000;
+  z-index: 0;
+  height: 120px;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  display: inline-block;
+}
+
+.header .logoimg {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  width: 160px;
+  height: 70px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.header h1 {
+  position: absolute;
+  left: 10%;
+  font-size:30px;
+  font-weight:normal;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.header .btnright {
+  position: absolute;
+  right: 0%;
+  top: 35px;
+  height: auto;
+  margin-right: 80px;
+  display: inline-block;
+  margin-left: 100px;
+}
+
+/* --------------------------- sidebar*/
+#boardside * {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0;
+  }
+  
+  #boardside .sidebar {
+    background: #bbb;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    padding: 20px 0;
+    z-index: 1;
+    transition: all 0.35s;
+  }
+  
+  #boardside .sidebar .cont {
+    position: fixed;
+    top: 15%;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: #bbb;
+    z-index: 5;
+  }
+  
+  #boardside .sidebar .cont > ul { margin: 20px;  }
+  #boardside .sidebar .cont > ul >li {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 30px;
+    list-style: none;
+  }
+  #boardside .sidebar .cont > ul >li > a {
+    display: inline-block;
+    width: auto;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+  }
+  
+  #boardside .sidebar .cont > ul > li:active,
+  #boardside .sidebar .cont > ul > li:hover,
+  #boardside .sidebar .cont > ul > li:focus {
+    background-color: #373737;
+  }
+  
+  #boardside input[id="menuicon"]{
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label + div {
+    left: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label {
+    display: block;
+    width: 15px;
+    height: 17px;
+    position: fixed;
+    cursor: pointer;
+    margin: 35px;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label {
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"] + label span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    background: #000;
+    transition: all .35s;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(1) {
+    top: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(2) {
+    top: 51%;
+    
+    transform: translateY(-60%);
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span {
+    background: #fff;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(1){
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  #boardside input[id="menuicon"]:checked + label span:nth-child(2){
+    opacity: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(3){
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+  
+  #boardside .background {
+    position: fixed;
+    top: 0%;
+    right: 0;
+    width: calc(100% - 300px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all .35s;
+    opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+  }
+  
+input#menuicon.hidden {
+  visibility: hidden;
+}
+
+  input#menuicon:checked ~ .sidebar .cont { left: 0; transition: all .35s; }
+  input#menuicon:checked ~ .sidebar .background { 
+    opacity: 1;
+    visibility: visible;
+    transition: all .35s;
+}
+
+#main_footer {
+	width: 100%;  
+	position: absolute;
+  	top: 300px; 
+  	 z-index: -100;
+}
+#user {
+	height: 600px;
+}
+#user h1 {
+	margin-left: 825px;
+    color: #78A1E2;
+}
+table {
+    border-top: 3px solid #78A1E2;
+    border-collapse: collapse;
+    margin: auto;
+  }
+  th, td {
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 15px;
+    font-size: 20px;
+  }
+th { 
+    text-align: left; 
+    padding-left: 15px; 
+    padding-right: 15px;
+  }
+
+#btn {
+	margin-left: 870px;
+	margin-top: 25px;
+    display: block;
+    padding: 12px 40px 12px 40px; 
+    font-size: 16px; 
+    background-color: #78A1E2;
+    color: white;
+    border: 1px solid #78A1E2;
+    border-radius: 5px;
+}
+
+/* footer */
+footer {
+    height : 300px;
+    background-color: #e1e1e1;
+    color : white;
+    border-top: 1px solid #e3e3e3;
+}
+#bottom_menu ul {
+    padding : 0px 0 0 30px;
+    font-weight: bold;
+}
+#bottom_menu li {
+    display: inline;
+    margin-right: 20px;
+}
+footer .items {
+    float: left;
+    margin : 0px 20px 0 30px;
+}
+
+footer .items ul { margin-top: 2px; }
+footer .items li { margin-top: 2px; list-style: none; }
+footer .phone {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* button */
+.custom-btn {
+  width: 100px;
+  height: 40px;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-3 {
+  background: rgb(148, 185, 255);
+  background: linear-gradient(0deg, rgb(187, 213, 255) 0%, rgb(120, 161, 226) 100%);
+  width: 100px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  margin-left: 10px;
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after { /* ���콺 ȣ�� �� ������, �� ���� */
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  /* background: #ccc; */
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+  background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgb(188, 207, 255);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: rgb(188, 207, 255);
+  transition: all 0.2s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+
+
+#popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 20%;
+	height: 20%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.3vw;
+	background-color: white;
+	text-align: center;
+	line-height: 500%;
+	box-shadow: 0px 0px 15px black;
+	border-radius: 10px;
+}
+
+.close {
+	opacity: 0%;
+	z-index: -1;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 100%;
+  backdrop-filter: blur(4px);
+}
+
+#closeBtn {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 20%;
+	height: 20%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.1vw;
+}
