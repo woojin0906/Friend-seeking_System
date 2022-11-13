@@ -10,7 +10,7 @@
 <html>
 <head>
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <script src="script/header.js" type="text/javascript"></script>
+ <script src="../script/header.js" type="text/javascript"></script>
  <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +27,7 @@
 	
 	// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
 	$(document).on("click", "#btn", function(){
-		let titleval = $('#_title').val();
+		let titleval = $('#text').val();
 		let typeval = $('#_type').val();
 		let genval = $('#_gender').val();
 		let perval = $('#_person').val();
@@ -38,18 +38,27 @@
 		
 		let checkMsg;
 		let checkState = true;
+		console.log("titleval값: " + titleval);
+		console.log("typeval값: " + typeval);
+		console.log("genval값: " + genval);
+		console.log("perval값: " + perval);
+		console.log("depval값: " + depval);
+		console.log("arrval값: " + arrval);
+		console.log("conval값: " + conval);
+		console.log("timeval값: " + timeval);
+		
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
 			|| depval == "" || arrval == "" || conval == "" || timeval == "") {
-
+			console.log("Test");
 			checkMsg = "모든 입력값을 입력해주세요.";
 			checkState = false;
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		} 
 		
-		if(checkState)
-			$("#form_1").submit();
+// 		if(checkState)
+// 			$("#form_1").submit();
 		}
 	);
 
