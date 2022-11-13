@@ -25,6 +25,12 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	session.setAttribute("ID", id);
 %>
 <script>
+
+	$(document).on("click", "#closeBtn", function(e) {
+		let val = $('#popup').text();
+		$('.background').remove();
+	});
+
 	$(document).on("click", "#btn", function(){
 		let nickval = $('#_nickName').val();
 		
@@ -41,7 +47,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		
 		if (checkState)
 			$("#_form_data").submit();
-			window.location.href = "Traffic_writingFrame.jsp";
+			window.location.href = "Traffic_writingChangeFrame.jsp";
 	});
 </script>
     <header class="header">
@@ -84,7 +90,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		 	Connection conn = null;
 			Statement stmt = null;
 			ResultSet rs = null;
-
 			session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
 			session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 			
@@ -103,7 +108,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		if(!nick.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
 		}
-
 		while(rs.next()) {
 			%>
 			<input type="hidden" name="_number" value="<%=number %>"/> <!-- 글 수정 시 글 번호 필요 -->
@@ -115,7 +119,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden" colspan="2"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                  <td id="btn_writePost1"><button id="btn" type="submit" >수정하기</button></td>
              </tr>
       		 <tr>
@@ -153,7 +157,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		rs.close();
 		stmt.close();
 		conn.close();
-
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -174,7 +177,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
         	Connection conn = null;
       		Statement stmt = null;
       		ResultSet rs = null;
-
 	   		if(number == null) number = "";
 	    	if(nick == null) nick = "";
 	    	
@@ -203,11 +205,9 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		rs.close();
 		stmt.close();
 		conn.close();
-
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
-
    %>
              </table>
          </form>
@@ -216,7 +216,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
  </main>
 
  <!-- <footer>
-
      <nav id="bottom_menu">
          <ul>
              <li>구해줘! 프렌즈</li>
@@ -248,7 +247,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <li>구해줘! 프렌즈</li>
          </ul>
      </div>
-
 </footer>  -->
 </div>
 </body>

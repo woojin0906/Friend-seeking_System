@@ -1,6 +1,6 @@
 <!-- 
 	작성자: 전우진
-	붕붕친구 사용자 확인 페이지
+	붕붕친구 사용자 확인 페이지user
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" %>
@@ -8,7 +8,7 @@
 <html>
 <head>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="script/header.js" type="text/javascript"></script>
+	<script src="../script/header.js" type="text/javascript"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +20,13 @@
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
 				$('.background').remove();
+			});
+			
+			$(document).on("click", "#btn", function(){
+				$('body').append("<div class=background><div id=popup>"+ "참여되었습니다"
+						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+				
+				$("#form_1").submit();
 			});
 		</script>
     <header class="header">
@@ -53,7 +60,7 @@
 <div id="main_footer">
 <div id="user">
 	<h1>참여자 정보 확인</h1>
-<form action="Traffic_participateUser.jsp" method="post">
+<form id="form_1" action="../participateCheck.jsp" method="post">
 	<table border=1>
 
 	<%
@@ -142,40 +149,5 @@
         </div>
 </footer>
 </div>
-<%
-			try {
-				request.setCharacterEncoding("UTF-8");
-				
-				Connection conn = null;
-				PreparedStatement stmt = null;
-				String sql;
-					
-				String number = request.getParameter("_number");
-				String id = request.getParameter("_id");
-				String name = request.getParameter("_name");
-				String sex = request.getParameter("_sex");
-				String phone = request.getParameter("_phone");
-				
-				if( name == null ) name="";
-				if( sex == null ) sex="";
-				if( phone == null ) phone="";
-				
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					String url = "jdbc:mysql://localhost:3306/friend";
-					conn  = DriverManager.getConnection(url, "friends", "2022server");
-					sql = "insert into trafficParticipate (number, id, name, sex, phone) values ('" + "48" + "', '" + id + "', '" + name + "', '" + sex + "', '" + phone + "')";
-					stmt = conn.prepareStatement(sql);
-					
-					stmt.executeUpdate();
-					
-					out.println("<div class=background><div id=popup>"+ "참여되었습니다." 
-							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-					
-					stmt.close();
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		%>
 </body>
 </html>

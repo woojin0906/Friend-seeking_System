@@ -27,7 +27,7 @@
 	
 	// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
 	$(document).on("click", "#btn", function(){
-		let titleval = $('#text').val();
+		let titleval = $('#_title').val();
 		let typeval = $('#_type').val();
 		let genval = $('#_gender').val();
 		let perval = $('#_person').val();
@@ -57,11 +57,10 @@
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		} 
 		
-// 		if(checkState)
-// 			$("#form_1").submit();
+ 		if(checkState)
+ 			$("#form_1").submit();
 		}
 	);
-
 </script>
 <%
 	// 글 보기에서 글의 내용 가져오기
@@ -71,7 +70,6 @@
     String person = request.getParameter("_person");
     System.out.println(number);
     System.out.println(request.getParameter("_nickName"));
-
    %>
    
     <header class="header">
@@ -114,7 +112,7 @@
          <table>
              <tr><input type="hidden" name="_number" value="<%=number %>"/>
                  <th>제목</th>
-                 <td><input id="text" type="text" name="_title" size="120" maxlength="100" value="<%=request.getParameter("_title") %>"/></td>
+                 <td><input id="_title" type="text" name="_title" size="120" maxlength="100" value="<%=request.getParameter("_title") %>"/></td>
              </tr>
              <tr>
                  <th>작성자</th>
@@ -128,7 +126,7 @@
              </tr>
              <tr>
                  <th>시간</th>
-                 <td><input id="text" type="text" name="_time" size="50" maxlength="100" value="<%=request.getParameter("_time") %>" /></td>        
+                 <td><input id="_time" type="text" name="_time" size="50" maxlength="100" value="<%=request.getParameter("_time") %>" /></td>        
              </tr>
              <tr>
                  <th>성별</th>
@@ -150,15 +148,15 @@
              </tr>
              <tr>
                   <th>출발지</th>
-                  <td><input id="text" type="text" name="_depart" size="50" maxlength="100" value="<%=request.getParameter("_depart") %>"/></td>        
+                  <td><input id="_depart" type="text" name="_depart" size="50" maxlength="100" value="<%=request.getParameter("_depart") %>"/></td>        
              </tr>
              <tr>
                    <th>도착지</th>
-                   <td><input id="text" type="text" name="_arrival" size="50" maxlength="100" value="<%=request.getParameter("_arrival") %>"/></td>        
+                   <td><input id="_arrival" type="text" name="_arrival" size="50" maxlength="100" value="<%=request.getParameter("_arrival") %>"/></td>        
              </tr>
              <tr>
                  <th>기타 내용</th>
-                 <td><textarea id="context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
+                 <td><textarea id="_context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
              </tr>
              <tr>
                  <td colspan="2"><button id="btn" type="button">수정하기</button></td>

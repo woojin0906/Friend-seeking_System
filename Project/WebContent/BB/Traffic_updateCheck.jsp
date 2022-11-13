@@ -33,7 +33,6 @@
  			
 			String title = request.getParameter("_title");
 			String nickname = request.getParameter("_nickname");
-			System.out.println(nickname);
 			String type = request.getParameter("_type");
 			String time = request.getParameter("_time");
 			String gender = request.getParameter("_gender");
