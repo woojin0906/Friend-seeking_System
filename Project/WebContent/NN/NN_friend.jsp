@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 	String dbPw = "2022server"; // DB 패스워드
 %>
   <header class="header">
-    <a href="#"><img class="logoimg" src="../image/logo_mod.png"></a>
+    <a href="#"><img class="logoimg" src="image/logo_mod.png"></a>
     <div class="btnright">
       <button class="custom-btn btn-3"><span>Log In</span></button>
       <button class="custom-btn btn-3"><span>Sign Up</span></button>
@@ -79,11 +79,10 @@
                   <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
                   <h2>냠냠친구 게시판</h2>
                   <div class="table-sub-n">n개의 글</div>
-                </div>
-                <div>
+                <%if(session.getAttribute("ID") != null){%> <!--  비로그인시 숨기기 -->
                   <a href="Meal_writingFrame.jsp" class="btn-7">글작성</a>
+                  <%}%>
                 </div>
-              </div>
               <div class="table-div">
                 <table>
                   <thead>
@@ -115,8 +114,7 @@
 	              			meal.setNumber(rs.getInt("_number"));
 	              			meal.setNickName(rs.getString("_nickname"));
 	              			meal.setTitle(rs.getString("_title"));
-	              			Date promiseTime = rs.getDate("_promiseTime");
-	              			meal.setPromiseTime(promiseTime);
+	              			meal.setPromiseTime(rs.getString("_promiseTime"));
 	              			Date writeTime = rs.getDate("_writeTime");
 	              			meal.setWriteTime(writeTime);
 	              			meal.setCount(rs.getString("_count"));
@@ -157,7 +155,7 @@
         </div>
       </div>
       
-      <footer class="list_footer">
+      <div class="list_footer">
         <div class="footer_wrap" style="right: 0;">
           <div class="ppbt_area">
             <div class="ppbt_left">
@@ -211,22 +209,42 @@
               class="page_num">10</a> ... <a class="bt_page bt_last" href="#" title="last page">끝 페이지</a>
           </div>
         </div>
-      </footer>
-
-      <div class="footer">
-        <div class="service-menu">
-          <ul>
-            <li><a href="#">구해줘 프렌즈!</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">저작권 정보</a></li>
-            <li><a href="#">이용 안내</a></li>
-          </ul>
+<footer>
+        <nav id="bottom_menu">
+            <ul>
+                <li>구해줘! 프렌즈</li>
+                <li>개인정보처리방침</li>
+                <li>저작권 정보</li>
+                <li>이용 안내</li>
+            </ul>
+        </nav>
+        <div class="items">
+            <h2 class="items_name">문의전화</h2>
+            <ul>
+                <li class="phone">123-1234</li>
+                <li>10:00 - 18:00(Lunch 12:00 - 13:00)</li>
+            </ul>
         </div>
-        <p class="copy">문의전화
-          123-1234
-          10:00 - 18:00(Lunch 12:00 - 13:00)</p>
-      </div>
+        <div class="items">
+            <h2 class="items_name">구해줘! 프렌즈</h2>
+            <ul>
+                <li>주소 : 인천광역시 남구 인하로 100</li>
+                <li>전화 : 031-123-1234</li>
+                <li>팩스 : 031-123-1234</li>
+                <li>이메일 : 123-12-12345</li>
+            </ul>
+        </div>
+        <div class="items">
+            <h2 class="items_name">입금 정보</h2>
+            <ul>
+            	<li>구해줘! 프렌즈</li>
+                <li>농협 123-123-123456</li>
+                
+            </ul>
+        </div>
+
+</footer>
+
     </div>
   </div>
 
