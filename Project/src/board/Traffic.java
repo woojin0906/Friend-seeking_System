@@ -7,7 +7,7 @@ public class Traffic {
 	private int number = 0;
 	private String nickName = "";
 	private String title = "";
-	private String promiseTime;
+	private String promiseTime = "";
 	private Date writeTime;
 	private String count = "";
 	private String sex = "";
