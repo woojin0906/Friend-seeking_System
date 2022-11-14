@@ -7,7 +7,7 @@ public class Meal {
 	private int number = 0;
 	private String nickName = "";
 	private String title = "";
-	private Date promiseTime;
+	private String promiseTime;
 	private Date writeTime;
 	private String count = "";
 	private String drink = "";
@@ -34,10 +34,10 @@ public class Meal {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getPromiseTime() {
+	public String getPromiseTime() {
 		return promiseTime;
 	}
-	public void setPromiseTime(Date promiseTime) {
+	public void setPromiseTime(String promiseTime) {
 		this.promiseTime = promiseTime;
 	}
 	public Date getWriteTime() {
