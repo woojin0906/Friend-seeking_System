@@ -7,8 +7,8 @@ public class Traffic {
 	private int number = 0;
 	private String nickName = "";
 	private String title = "";
-	private String promiseTime = "";
-	private String writeTime = "";
+	private String promiseTime;
+	private Date writeTime;
 	private String count = "";
 	private String sex = "";
 	private String start = "";
@@ -34,20 +34,20 @@ public class Traffic {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getPromiseTime() {
-		return promiseTime;
-	}
 	public String getPromiseTime() {
 		return promiseTime;
 	}
 	public void setPromiseTime(String promiseTime) {
 		this.promiseTime = promiseTime;
 	}
-	public String getWriteTime() {
+	public Date getWriteTime() {
 		return writeTime;
 	}
-	public void setWriteTime(String writeTime) {
+	public void setWriteTime(Date writeTime) {
 		this.writeTime = writeTime;
+	}
+	public String getCount() {
+		return count;
 	}
 	public void setCount(String count) {
 		this.count = count;
