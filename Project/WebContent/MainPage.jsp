@@ -106,7 +106,7 @@
 	   		               	String category = rs.getString(1);
 	   		               	String title = rs.getString(2);
 	   		               	String number = rs.getString(3);
-	   		               	out.println("<tr onClick=location.href='BB/Traffic_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		               	out.println("<tr onClick=location.href='BB/Traffic_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
 	    					
@@ -138,7 +138,7 @@
 	   		               	String category = rs.getString(1);
 	   		               	String title = rs.getString(2);
 	   		               	String number = rs.getString(3);
-	   		               	out.println("<tr onClick=location.href='NN/Meal_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+	   		               	out.println("<tr onClick=location.href='NN/Meal_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
 	    					
@@ -170,7 +170,7 @@
    		               	String category = rs.getString(1);
    		               	String title = rs.getString(2);
    		               	String number = rs.getString(3);
-   		               	out.println("<tr onClick=location.href='YG/Study_writePost.jsp?id="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
+   		               	out.println("<tr onClick=location.href='YG/Study_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
    		            }
    					out.println("</table>");
     					

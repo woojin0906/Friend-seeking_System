@@ -70,6 +70,11 @@
     String person = request.getParameter("_person");
     System.out.println(number);
     System.out.println(request.getParameter("_nickName"));
+    out.println("넘버값: " + number);
+    out.println("타입값: " + type);
+    out.println("젠더값: " + gender);
+    out.println("사람값: " + person);
+    
    %>
    
     <header class="header">

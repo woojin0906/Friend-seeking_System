@@ -33,21 +33,22 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 
 	$(document).on("click", "#btn", function(){
 		let nickval = $('#_nickName').val();
-		
+		console.log(nickval);
 		let checkMsg;
 		let checkState = true;
-	
-		if (!nickval.equls(nick)){
+		
+		if (nickval != <%=nick%>){
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 	}
-		
-		if (checkState)
-			$("#_form_data").submit();
+		console.log(checkMsg);
+		if (checkState){
+			$("#form_data").submit();
 			window.location.href = "Traffic_writingChangeFrame.jsp";
+		}
 	});
 </script>
     <header class="header">
@@ -82,7 +83,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
  <main>
      <div class="main">
            
-     <form id="form_data" action="Traffic_writingChangeFrame.jsp" method="get" >
+     <form id="form_data" action="Traffic_writingChangeFrame.jsp" method="post" >
          <table id="_table_writerPage">
         
 	<%
@@ -103,7 +104,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number + "'");
 		} 
 		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
-		if(!nick.equals("")) {
+		else if(!nick.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
 		}
 		while(rs.next()) {
