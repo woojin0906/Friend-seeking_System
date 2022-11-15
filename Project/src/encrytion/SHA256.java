@@ -14,13 +14,13 @@ public class SHA256 {
 		return bytesToHex(md.digest());
 	}
 	
-	
 	// 바이트 형식의 문자열을 16진수 문자열로 변환해주는 메서드
 	private String bytesToHex(byte[] bytes) {
         StringBuilder builder = new StringBuilder();
         for (byte b : bytes) {
             builder.append(String.format("%02x", b));
         }
+        
         return builder.toString();
     }
 }
