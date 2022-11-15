@@ -211,9 +211,7 @@ main {
     margin-bottom: 100px;
 }
 .main_name {
-    margin-left: 460px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    text-align: center;
     color: #78A1E2;
 }
 table {

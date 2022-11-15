@@ -22,12 +22,12 @@
 				$('.background').remove();
 			});
 			
-			$(document).on("click", "#btn", function(){
+			/*$(document).on("click", "#btn", function(){
 				$('body').append("<div class=background><div id=popup>"+ "참여되었습니다"
 						+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 				
 				$("#form_1").submit();
-			});
+			});*/
 		</script>
     <header class="header">
         <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
@@ -76,7 +76,7 @@
 			session.setAttribute("ID", id);
 			String number = request.getParameter("number");
 			session.setAttribute("NUM", number);
-			
+			String nick = request.getParameter("_nickName");
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 			stmt = conn.createStatement();
@@ -86,6 +86,7 @@
 				%>
 				<tr><input type="hidden" name="_number" value="<%=number %>">
 					<input type="hidden" name="_id" value="<%=id %>">
+					<input type="hidden" name="_nickName" value="<%=nick %>">
 					<th>이름</th>
 					<td><input id="text" type="hidden" name="_name" value="<%=rs.getString("name") %>"><%=rs.getString("name") %></td>
 				</tr>
@@ -109,7 +110,7 @@
 		}
 	%>
 	</table>
-	<button id="btn" type="button">참여하기</button>
+	<button id="btn" type="submit">참여하기</button>
 	</form>
 		</div>
 	

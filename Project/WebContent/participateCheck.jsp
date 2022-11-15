@@ -20,8 +20,10 @@
 				Connection conn = null;
 				PreparedStatement stmt = null;
 				String sql;
-					
+				
+				String numb = (String) session.getAttribute("NUM");
 				String number = request.getParameter("_number");
+				int num =  Integer.parseInt(numb);
 				String id = request.getParameter("_id");
 				String name = request.getParameter("_name");
 				String sex = request.getParameter("_sex");
@@ -34,7 +36,7 @@
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
-					sql = "insert into trafficParticipate (number, id, name, sex, phone) values ('" + "48" + "', '" + id + "', '" + name + "', '" + sex + "', '" + phone + "')";
+					sql = "insert into trafficParticipate (id, number, name, sex, phone) values ('" + id + "', '" + num + "', '" + name + "', '" + sex + "', '" + phone + "')";
 					stmt = conn.prepareStatement(sql);
 					
 					stmt.executeUpdate();

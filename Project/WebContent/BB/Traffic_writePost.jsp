@@ -43,7 +43,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-		}
+	}
 		
 		if (checkState)
 			$("#_form_data").submit();
@@ -90,8 +90,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		 	Connection conn = null;
 			Statement stmt = null;
 			ResultSet rs = null;
-			session.setAttribute("ID", id);								// 참여하기를 위해 ID 세션에 넘기기
-			session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 			
 			if(number == null) number = "";
 			if(nick == null) nick = "";
@@ -102,7 +100,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		
 		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
 		if(!number.equals("")) {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number);
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number + "'");
 		} 
 		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
 		if(!nick.equals("")) {
@@ -110,9 +108,9 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		}
 		while(rs.next()) {
 			%>
-			<input type="hidden" name="_number" value="<%=number %>"/> <!-- 글 수정 시 글 번호 필요 -->
+			<input type="hidden" name="_number" value="<%=number %>"/><%=number %> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
-                 <th id="table_top"><h2>제목</h2></th>
+                 <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
                  <td id="date">작성일자</td>
                  <td id="date_hidden"><input type="hidden" name="_date" value="<%=rs.getString("writetime") %>"/><%=rs.getString("writetime") %></td>
@@ -120,7 +118,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <tr>
                  <th>작성자</th>
                  <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><button id="btn" type="submit" >수정하기</button></td>
+                 <td id="btn_writePost1"><button id="btn" type="button" >수정하기</button></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -164,13 +162,17 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		
 	  <div class="table2">
          <form>
-             <h2>참여자</h2>
-             <input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/>
              <table id="_talbe_participants">
+     		
+             <tr><td class="name" id="border" colspan=2><h2>참여자</h2></td>
+         
+             <td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/></td>
+             
+             </tr>
                  <tr>
-                     <th>이름</th>
-                     <th>성별</th>
-                     <th>전화번호</th>
+                     <th class="border_th" id="table_border">이름</th>
+                     <th class="border_th" id="table_border">성별</th>
+                     <th class="border_th" id="table_border">전화번호</th>
                  </tr>
      <%
         try {
@@ -184,7 +186,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
          		
-			if(!number.equals("")) {
+			if(!number.equals("") && !nick.equals("")) {
 				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
 			} 
 			
@@ -195,11 +197,10 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			while(rs.next()) {
       %> 	
                  <tr>
-                     <td><input type="hidden" name="_name" value=""/><%=rs.getString("name") %></td>
-                     <td><input type="hidden" name="_sex" value=""/><%=rs.getString("sex") %></td>
-                     <td><input type="hidden" name="_phone" value=""/><%=rs.getString("phone") %></td>
+                     <td id="table_border"><input type="hidden" name="_name" value=""/><%=rs.getString("name") %></td>
+                     <td id="table_border"><input type="hidden" name="_sex" value=""/><%=rs.getString("sex") %></td>
+                     <td id="table_border"><input type="hidden" name="_phone" value=""/><%=rs.getString("phone") %></td>
                  </tr>
-              
      <%		 	
 		}
 		rs.close();
@@ -215,7 +216,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
      </div>
  </main>
 
- <!-- <footer>
+ <footer>
      <nav id="bottom_menu">
          <ul>
              <li>구해줘! 프렌즈</li>
@@ -247,7 +248,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <li>구해줘! 프렌즈</li>
          </ul>
      </div>
-</footer>  -->
+</footer>  
 </div>
 </body>
 </html>

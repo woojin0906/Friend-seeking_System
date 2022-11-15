@@ -21,7 +21,10 @@
         <a href="MainPage.jsp"><img class ="logoimg"src="image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
+        String id = (String) session.getAttribute("ID");		
+    	session.setAttribute("ID", id);
         String nick_getData = (String) session.getAttribute("NICK");
+        session.setAttribute("NICK", nick_getData);	
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
  	        	<%=nick_getData%>님 환영합니다.

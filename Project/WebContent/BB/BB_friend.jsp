@@ -20,13 +20,18 @@
 
 <body>
 <%
+
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	Class.forName("com.mysql.jdbc.Driver"); // JDBC 드라이버 로딩
+	Class.forName("com.mysql.cj.jdbc.Driver"); // JDBC 드라이버 로딩
 	String dbUrl = "jdbc:mysql://localhost:3306/friend?useUnicode=true&characterEncoding=utf8"; // 데이터베이스 정보
 	String dbId = "friends"; // DB 아이디
 	String dbPw = "2022server"; // DB 패스워드
+	String id = (String) session.getAttribute("ID");		
+	session.setAttribute("ID", id);
+	String nick = (String) session.getAttribute("NICK");
+	session.setAttribute("NICK", nick);						// 글 수정을 위해 글 번호 세션에 넘기기
 %>
   <header class="header">
     <a href="#"><img class="logoimg" src="image/logo_mod.png"></a>
@@ -89,7 +94,7 @@
                 <table>
                   <thead>
                     <tr>
-                    
+                      <th>글 번호</th>
                       <th>작성자</th>
                       <th>제목</th> 
                       <th>종류</th> <!-- 카풀&택시 -->
@@ -106,7 +111,7 @@
                   <%
 	              	Traffic traffic = null;
 	              	try {
-	              		String sql = "select * from traffic"; // SQL 쿼리
+	              		String sql = "select * from traffic order by number desc"; // SQL 쿼리
 	              		
 	              		conn = DriverManager.getConnection(dbUrl, dbId, dbPw); // DB 연결
 	              		pstmt = conn.prepareStatement(sql);
@@ -114,21 +119,21 @@
 	              		
 	              		while(rs.next()) {
 	              			traffic = new Traffic();
-	              			traffic.setNumber(rs.getInt("_number"));
-	              			traffic.setNickName(rs.getString("_nickname"));
-	              			traffic.setTitle(rs.getString("_title"));
-	              			traffic.setPromiseTime(rs.getString("_promiseTime"));
-	              			Date writeTime = rs.getDate("_writeTime");
+	              			traffic.setNumber(rs.getInt("number"));
+	              			traffic.setNickName(rs.getString("nickname"));
+	              			traffic.setTitle(rs.getString("title"));
+	              			traffic.setPromiseTime(rs.getString("promiseTime"));
+	              			Date writeTime = rs.getDate("writeTime");
 	              			traffic.setWriteTime(writeTime);
-	              			traffic.setCount(rs.getString("_count"));
-	              			traffic.setSex(rs.getString("_sex"));
-	              			traffic.setStart(rs.getString("_start"));
-	              			traffic.setDest(rs.getString("_dest"));
-	              			traffic.setMain(rs.getString("_main"));
-	              			traffic.setCategory(rs.getString("_category"));
+	              			traffic.setCount(rs.getString("count"));
+	              			traffic.setSex(rs.getString("sex"));
+	              			traffic.setStart(rs.getString("start"));
+	              			traffic.setDest(rs.getString("dest"));
+	              			traffic.setMain(rs.getString("main"));
+	              			traffic.setCategory(rs.getString("category"));
                   %>
            					 <tr>
-           					 
+           					 	  <td><%= traffic.getNumber()%></td> <!-- 작성자 -->    
 			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->           					 
 			                      <td><%= traffic.getTitle() %></td> <!-- 제목 -->
 			                      <td><%= traffic.getCategory() %></td> <!-- 종류 -->
@@ -149,6 +154,7 @@
 	              		if(pstmt != null) { pstmt.close(); }
 	              		if(conn != null) { conn.close(); }
 	              	}
+		}
                   %>
                   </tbody>
                 </table>

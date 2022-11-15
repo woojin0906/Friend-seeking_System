@@ -208,7 +208,7 @@ input#menuicon.hidden {
 	height: 600px;
 }
 #user h1 {
-	margin-left: 825px;
+	text-align: center;
     color: #78A1E2;
 }
 table {
@@ -216,7 +216,7 @@ table {
     border-collapse: collapse;
     margin: auto;
   }
-  th, td {
+th, td {
     border-left: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
     border-bottom: 1px solid #e3e3e3;
@@ -230,9 +230,9 @@ th {
   }
 
 #btn {
-	margin-left: 870px;
-	margin-top: 25px;
-    display: block;
+	display: block;
+	
+	margin: 10px auto;
     padding: 12px 40px 12px 40px; 
     font-size: 16px; 
     background-color: #78A1E2;

@@ -142,7 +142,6 @@
                      <input id="_person" type="radio" name="_person" value="4명" <% if("4명".equals(person)){%>checked<%}%>/>4명
                      <input id="_person" type="radio" name="_person" value="5명 이상" <% if("5명 이상".equals(person)){%>checked<%}%>/>5명 이상
                      <input id="_person" type="radio" name="_person" value="상관없음" <% if("상관없음".equals(person)){%>checked<%}%>/>상관없음
-
                         
                  </td>        
              </tr>
@@ -199,7 +198,6 @@
              <li>구해줘! 프렌즈</li>
          </ul>
      </div>
-
 </footer>
 </div>
 </body>
