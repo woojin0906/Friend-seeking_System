@@ -2,7 +2,7 @@
 	작성자: 김지웅
 	로그인 정보를 입력받고 유효성 검사 및 loginCheck로 데이터 전송하는 페이지
  -->
-<%@ page import="encrytion.RSA"%>
+<%@ page import="encrytion.RSA" import="java.security.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,8 +39,13 @@
 							+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 				}
 				
-				if (checkState)
+				if (checkState) {
+					let rsa = new RSA();
+					let cipherID = rsa.encrytionRSA(idval, <%=publicKey%>);
+					
+					$("#_id").attr("value", cipherID);
 					$("#_loginData").submit();
+				}
 			});
 		</script>
 		<div class="loginArea">
@@ -60,20 +65,33 @@
 				<button id="lostPwd" type="button" onclick="location.href='findPwd.jsp'">비밀번호를 잊으셨나요?</button>
 			</div>
 		</div>
+		
 		<%
 			request.setCharacterEncoding("UTF-8");
-		
+			
+			// 공개키와 개인키 생성
+			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");  //암호 알고리즘 RSA로 지정
+			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
+			
+			KeyPair keyPair = generator.genKeyPair();
+			Key publicKey = keyPair.getPublic();
+			Key privateKey = keyPair.getPrivate();
+			
+			session.setAttribute("privateKey", privateKey);
+			System.out.println("개인키값: " + privateKey);
+			
 			String res = (String) request.getAttribute("_res");
 			if (res == null) res = "";
 			
-			if (res.equals("비밀번호 불일치")){ 
+			if (res.equals("비밀번호 불일치")) { 
 				out.println("<div class=background><div id=popup>"+ "비밀번호가 일치하지 않습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-			} 
+			}
 			else if (res.equals("아이디 불일치")) {
 				out.println("<div class=background><div id=popup>"+ "아이디가 없거나 일치하지 않습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 			}
 		%>
+		
 	</body>
 </html>
