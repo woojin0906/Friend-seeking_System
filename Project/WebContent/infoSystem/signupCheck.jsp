@@ -2,8 +2,9 @@
 	작성자: 김지웅
 	회원 가입에 필요한 정보를 입력하고 유효성 검사 및 signupCheck로 데이터 전송하는 페이지
  -->
+<%@ page import="encrytion.SHA256"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*"%>
+    pageEncoding="UTF-8" import="java.sql.*" import="java.security.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,6 +28,8 @@
 			if( name == null ) name="";
 			if (sex == null ) sex=""; 
 			if( tel == null ) tel="";
+			
+			SHA256 sha256 = new SHA256();
 			
 			try {
 				Connection conn = null;
@@ -67,8 +70,10 @@
 		            }
 					
 					if(infoState && infoState2) {
+						String encPwd = sha256.enc256(pwd);
+						
 						sql = "insert into member values('" 
-						+ id + "','" +  pwd + "','" + name + "','" + sex + "','" + tel
+						+ id + "','" +  encPwd + "','" + name + "','" + sex + "','" + tel
 						+ "','" + nickname + "')";
 						
 						pstmt = conn.prepareStatement(sql);

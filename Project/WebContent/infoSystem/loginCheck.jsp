@@ -2,7 +2,7 @@
 	작성자: 김지웅
 	loginFrame으로부터 데이터를 받고 로그인을 검증하는 페이지
  -->
-
+<%@ page import="encrytion.SHA256"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
@@ -21,6 +21,8 @@
 			if( id == null ) id="";
 			if( pwd == null ) pwd="";
 			
+			SHA256 sha256 = new SHA256();
+			
 			try {
 				Connection conn = null;
 				Statement stmt = null;
@@ -29,6 +31,9 @@
 				boolean idCheck = false, pwdCheck = false;
 				
 				if( !id.equals("") && !pwd.equals("")) {
+					
+					String encPwd = sha256.enc256(pwd); // 입력한 패스워드 SHA256으로 암호화
+					out.println("입력받은 비밀번호 암호화처리: " + encPwd);
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
@@ -50,8 +55,8 @@
 						rs = stmt.executeQuery(sql);
 						
 						while(rs.next()){
-			               	String password = rs.getString(1);
-							if(password.equals(pwd)){
+			               	String password = rs.getString(1); //DB에 받아온 패스워드
+							if(password.equals(encPwd)){
 								pwdCheck = true;
 							}
 			            }
