@@ -18,6 +18,34 @@
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 	</head>
 	<body>
+	<%
+			request.setCharacterEncoding("UTF-8");
+		
+			// 공개키와 개인키 생성
+			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");  //암호 알고리즘 RSA로 지정
+			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
+
+			KeyPair keyPair = generator.genKeyPair();
+			Key publicKey = keyPair.getPublic();
+			Key privateKey = keyPair.getPrivate();
+			
+			session.setAttribute("privateKey", privateKey);
+			System.out.println("개인키값: " + privateKey);
+			
+			String res = (String) request.getAttribute("_res");
+			if (res == null) res = "";
+			
+			if (res.equals("비밀번호 불일치")) { 
+				out.println("<div class=background><div id=popup>"+ "비밀번호가 일치하지 않습니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			}
+			
+			else if (res.equals("아이디 불일치")) {
+				out.println("<div class=background><div id=popup>"+ "아이디가 없거나 일치하지 않습니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			} 
+		%>
+		
 		<script>
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
@@ -65,33 +93,5 @@
 				<button id="lostPwd" type="button" onclick="location.href='findPwd.jsp'">비밀번호를 잊으셨나요?</button>
 			</div>
 		</div>
-		
-		<%
-			request.setCharacterEncoding("UTF-8");
-			
-			// 공개키와 개인키 생성
-			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");  //암호 알고리즘 RSA로 지정
-			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
-			
-			KeyPair keyPair = generator.genKeyPair();
-			Key publicKey = keyPair.getPublic();
-			Key privateKey = keyPair.getPrivate();
-			
-			session.setAttribute("privateKey", privateKey);
-			System.out.println("개인키값: " + privateKey);
-			
-			String res = (String) request.getAttribute("_res");
-			if (res == null) res = "";
-			
-			if (res.equals("비밀번호 불일치")) { 
-				out.println("<div class=background><div id=popup>"+ "비밀번호가 일치하지 않습니다." 
-					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-			}
-			else if (res.equals("아이디 불일치")) {
-				out.println("<div class=background><div id=popup>"+ "아이디가 없거나 일치하지 않습니다." 
-					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
-			}
-		%>
-		
 	</body>
 </html>
