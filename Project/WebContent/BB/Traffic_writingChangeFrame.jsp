@@ -63,6 +63,7 @@
 	);
 </script>
 <%
+	request.setCharacterEncoding("UTF-8");
 	// 글 보기에서 글의 내용 가져오기
 	String number = request.getParameter("number");
 	String type = request.getParameter("_type");

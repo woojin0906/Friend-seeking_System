@@ -119,7 +119,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <tr>
                  <th>작성자</th>
                  <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><button id="btn" type="button" >수정하기</button></td>
+                 <td id="btn_writePost1"><button id="btn" type="submit" >수정하기</button></td>
              </tr>
       		 <tr>
                  <th>종류</th>
