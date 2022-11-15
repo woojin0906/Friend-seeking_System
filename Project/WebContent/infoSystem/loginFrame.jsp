@@ -68,11 +68,36 @@
 				}
 				
 				if (checkState) {
-					let rsa = new RSA();
-					let cipherID = rsa.encrytionRSA(idval, <%=publicKey%>);
+					//JS 변수(idval)을 JSP에 던져주기 위한 ajax 익명 function
+					(function(){
+						$.ajax({
+		                    type: "POST",
+		                    url: "../infoSystem/loginFrame.jsp",
+		                    data: { _idval: idval }
+		                });
+					})();
+					
+					<%
+						String idval = request.getParameter("_idval");
+						boolean val = true;
+						
+						if ( idval == null)	{
+							idval="";
+							val = false;
+						}
+						
+						if (val) {
+							RSA rsa = new RSA();
+							String cipherID = rsa.encrytionRSA(idval, publicKey);
+							System.out.println("암호화 한 ID값 : " + cipherID);
+						}
+					%>
 					
 					$("#_id").attr("value", cipherID);
-					$("#_loginData").submit();
+					let val = $("#_id").val();
+					
+					console.log("id의 바뀐값: " + val);
+// 					$("#_loginData").submit();
 				}
 			});
 		</script>

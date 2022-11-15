@@ -9,15 +9,15 @@ import javax.crypto.Cipher;
 
 public class RSA {
 
-		// 공개, 개인키 생성후 키 저장
-		public void createKeyBox(Key publicKey, Key privateKey) throws NoSuchAlgorithmException {
-			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
-			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
-			
-			KeyPair keyPair = generator.genKeyPair();
-			publicKey = keyPair.getPublic();
-			privateKey = keyPair.getPrivate();
-		}
+//		// 공개, 개인키 생성후 키 저장
+//		public void createKeyBox(Key publicKey, Key privateKey) throws NoSuchAlgorithmException {
+//			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
+//			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
+//			
+//			KeyPair keyPair = generator.genKeyPair();
+//			publicKey = keyPair.getPublic();
+//			privateKey = keyPair.getPrivate();
+//		}
 		
 		// RSA로 전달받은 평문 암호화
 		public String encrytionRSA(String plainText, Key publicKey) throws Exception {
