@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/profileview_css.css">
+    <link rel="stylesheet" type="text/css" href="../css/profileview_css.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 <body>
+<header class="header">
+        <a href="MainPage.jsp"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
+		<button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+	</header>
   <div class="wrapper">
-      <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
-      <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div>
       <div class="name">닉네임(아이디)이 들어감</div>
       <div class="buttons"><button>내가 쓴 글</button></div>
       <hr>
@@ -62,7 +65,40 @@
         </tr>
         </tbody>
     </table>
-
   </div>
+  <footer>
+
+     <nav id="bottom_menu">
+         <ul>
+             <li>구해줘! 프렌즈</li>
+             <li>개인정보처리방침</li>
+             <li>저작권 정보</li>
+             <li>이용 안내</li>
+         </ul>
+     </nav>
+     <div class="items">
+         <h2 class="items_name">문의전화</h2>
+         <ul>
+             <li class="phone">123-1234</li>
+             <li>10:00 - 18:00(Lunch 12:00 - 13:00)</li>
+         </ul>
+     </div>
+     <div class="items">
+         <h2 class="items_name">구해줘! 프렌즈</h2>
+         <ul>
+             <li>주소 : 인천광역시 남구 인하로 100</li>
+             <li>전화 : 031-123-1234</li>
+             <li>팩스 : 031-123-1234</li>
+             <li>이메일 : 123-12-12345</li>
+         </ul>
+     </div>
+     <div class="items">
+         <h2 class="items_name">입금 정보</h2>
+         <ul>
+             <li>농협 123-123-123456</li>
+             <li>구해줘! 프렌즈</li>
+         </ul>
+     </div>
+  
 </body>
 </html>

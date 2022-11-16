@@ -19,7 +19,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 <body>
 
     <header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
             <button class="custom-btn btn-3"><span>Log In</span></button>
             <button class="custom-btn btn-3"><span>Sign Up</span></button>
