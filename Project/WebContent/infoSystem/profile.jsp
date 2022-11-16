@@ -13,7 +13,7 @@
 </head>
 <body>
  <header class="header">
-    <a href="MainPage.jsp"><img class ="logoimg"src="image/logo_mod.png"></a>
+    <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
     <div class="btnright">
     <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
     <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
