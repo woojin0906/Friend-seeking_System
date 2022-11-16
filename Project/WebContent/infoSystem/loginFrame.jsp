@@ -3,6 +3,12 @@
 	로그인 정보를 입력받고 유효성 검사 및 loginCheck로 데이터 전송하는 페이지
  -->
 <%@ page import="encrytion.RSA" import="java.security.*"%>
+<%@page import="java.security.PublicKey"%>
+<%@page import="java.security.spec.RSAPublicKeySpec"%>
+<%@page import="java.security.PrivateKey"%>
+<%@page import="java.security.KeyFactory"%>
+<%@page import="java.security.KeyPair"%>
+<%@page import="java.security.KeyPairGenerator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +18,11 @@
 		<title>login</title>
 	
 		<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+		<script type="text/javascript" src="../script/rsa.js"></script>
+		<script type="text/javascript" src="../script/jsbn.js"></script>
+		<script type="text/javascript" src="../script/prng4.js"></script>
+		<script type="text/javascript" src="../script/rng.js"></script>
+		
 		<link href="../css/loginStyle.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +37,14 @@
 			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
 
 			KeyPair keyPair = generator.genKeyPair();
-			Key publicKey = keyPair.getPublic();
-			Key privateKey = keyPair.getPrivate();
+			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+			
+			PublicKey publicKey = keyPair.getPublic();
+			PrivateKey privateKey = keyPair.getPrivate();
+
+			RSAPublicKeySpec publicSpec = (RSAPublicKeySpec) keyFactory.getKeySpec(publicKey, RSAPublicKeySpec.class);
+			String publicKeyModulus = publicSpec.getModulus().toString(16);
+			String publicKeyExponent = publicSpec.getPublicExponent().toString(16);
 			
 			session.setAttribute("privateKey", privateKey);
 			System.out.println("개인키값: " + privateKey);
@@ -46,7 +63,7 @@
 			} 
 		%>
 		
-		<script>
+		<script type="text/javascript">
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
 				$('.background').remove();
@@ -68,35 +85,20 @@
 				}
 				
 				if (checkState) {
-					//JS 변수(idval)을 JSP에 던져주기 위한 ajax 익명 function
-					(function(){
-						$.ajax({
-		                    type: "POST",
-		                    url: "../infoSystem/loginFrame.jsp",
-		                    data: { _idval: idval }
-		                });
-					})();
+					let rsaPublicKeyModulus = "<%=publicKeyModulus%>";
+			    	let rsaPublicKeyExponent = "<%=publicKeyExponent%>";
+			    	
+			    	let rsa = new RSAKey();
+				    rsa.setPublic(rsaPublicKeyModulus, rsaPublicKeyExponent);
+				    
+				    let cipherID = rsa.encrypt(idval);
+				    let cipherPW = rsa.encrypt(pwdval);
+				    
+					$("#_RSAID").attr("value", cipherID);
+					$("#_RSAPW").attr("value", cipherPW);
 					
-					<%
-						String idval = request.getParameter("_idval");
-						boolean val = true;
-						
-						if ( idval == null)	{
-							idval="";
-							val = false;
-						}
-						
-						if (val) {
-							RSA rsa = new RSA();
-							String cipherID = rsa.encrytionRSA(idval, publicKey);
-							System.out.println("암호화 한 ID값 : " + cipherID);
-						}
-					%>
-					
-					$("#_id").attr("value", cipherID);
-					let val = $("#_id").val();
-					
-					console.log("id의 바뀐값: " + val);
+					let val1 = $("#_RSAID").val();
+					let val2 = $("#_RSAID").val();
 // 					$("#_loginData").submit();
 				}
 			});
@@ -108,9 +110,11 @@
 			<div id="right">
 				<p>계정이 없으세요?</p>
 				<button id="signUp" type="button" onclick="location.href='signUp.jsp'">만들기</button>
+				<input name="_id" id="_id" type="text" placeholder="아이디">
+				<input name="_pwd" id="_pwd" type="password" placeholder="비밀번호">
 				<Form id="_loginData" action="loginCheck.jsp" method="post">
-					<input name="_id" id="_id" type="text" placeholder="아이디">
-					<input name="_pwd" id="_pwd" type="password" placeholder="비밀번호">
+					<input type="hidden" name="_RSAID" id="_RSAID" value="" />
+					<input type="hidden" name="_RSAPW" id="_RSAPW" value="" />
 				</Form>
 				<img id="personImg" src="../image/person.png">
 				<img id="keyImg" src="../image/key.png">
