@@ -2,7 +2,7 @@
 	작성자: 김지웅
 	로그인 정보를 입력받고 유효성 검사 및 loginCheck로 데이터 전송하는 페이지
  -->
-<%@ page import="encrytion.RSA" import="java.security.*"%>
+<%-- <%@ page import="encrytion.RSA" import="java.security.*"%> --%>
 <%@page import="java.security.PublicKey"%>
 <%@page import="java.security.spec.RSAPublicKeySpec"%>
 <%@page import="java.security.PrivateKey"%>
@@ -35,7 +35,7 @@
 			// 공개키와 개인키 생성
 			KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");  //암호 알고리즘 RSA로 지정
 			generator.initialize(2048); // 키 사이즈가 부족하지 않게 넉넉하게 줌
-
+			
 			KeyPair keyPair = generator.genKeyPair();
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 			
@@ -46,8 +46,8 @@
 			String publicKeyModulus = publicSpec.getModulus().toString(16);
 			String publicKeyExponent = publicSpec.getPublicExponent().toString(16);
 			
+			// 세션에 개인키 저장, 복호화하는 곳에서 가져가서 복호화에 사용함
 			session.setAttribute("privateKey", privateKey);
-			System.out.println("개인키값: " + privateKey);
 			
 			String res = (String) request.getAttribute("_res");
 			if (res == null) res = "";
@@ -97,9 +97,7 @@
 					$("#_RSAID").attr("value", cipherID);
 					$("#_RSAPW").attr("value", cipherPW);
 					
-					let val1 = $("#_RSAID").val();
-					let val2 = $("#_RSAID").val();
-// 					$("#_loginData").submit();
+					$("#_loginData").submit();
 				}
 			});
 		</script>
