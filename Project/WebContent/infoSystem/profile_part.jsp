@@ -13,63 +13,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="header">
+    <header class="header">
         <a href="MainPage.jsp"><img class ="logoimg"src="image/logo_mod.png"></a>
+        <div class="btnright">
         <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
 		<button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+        </div>
 	</header>
-	
-  	<div class="wrapper">      
-	    <div class="name">닉네임(아이디)이 들어감</div>
-	    <div class="buttons"><button>참여한 글</button></div>
-	    <hr>
-	    
-	    <!-- 테이블 수정 -->
-	    <table>
-	    	<thead>
-	        <tr>
-	        	<th>Number</th>
-	            <th>Last Name</th>
-	            <th>Phone</th>
-	            <th>Email</th>
-	            <th>Date of Birth</th>
-	        </tr>
-	        </thead>
-	        <tbody>
-	        <tr>
-	        	<td>James</td>
-	            <td>Matman</td>
-	            <td>(713) 123-8965</td>
-	            <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-	            <td>01/13/1979</td>
-	        </tr>
-	        <tr>
-	            <td>Johnny</td>
-	            <td>Smith</td>
-	            <td>(713) 584-9614</td>
-	            <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
-	            <td>06/09/1971</td>
-	        </tr>
-	        <tr>
-	            <td>Susan</td>
-	            <td>Johnson</td>
-	            <td>(713) 847-1124</td>
-	            <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
-	            <td>08/25/1965</td>
-	        </tr>
-	        <tr>
-	            <td>Tracy</td>
-	            <td>Richardson</td>
-	            <td>(713) 245-4821</td>
-	            <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
-	            <td>03/13/1980</td>
-	        </tr>
-	        </tbody>
-		</table>
-		
-	</div>
-	
-	<footer>
+    <div class="wrapper">
+      <div class="name">닉네임(아이디)이 들어감</div>
+      <div class="buttons"><button>내가 쓴 글</button></div>
+      <hr>
+      <!-- 테이블 수정 -->
+      <table>
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+        <tr>
+            <td>James</td>
+            <td>Matman</td>
+            <td>(713) 123-8965</td>
+            <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
+            <td>01/13/1979</td>
+        </tr>
+        <tr>
+            <td>Johnny</td>
+            <td>Smith</td>
+            <td>(713) 584-9614</td>
+            <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
+            <td>06/09/1971</td>
+        </tr>
+        <tr>
+            <td>Susan</td>
+            <td>Johnson</td>
+            <td>(713) 847-1124</td>
+            <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
+            <td>08/25/1965</td>
+        </tr>
+        <tr>
+            <td>Tracy</td>
+            <td>Richardson</td>
+            <td>(713) 245-4821</td>
+            <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
+            <td>03/13/1980</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <footer>
+
      <nav id="bottom_menu">
          <ul>
              <li>구해줘! 프렌즈</li>
@@ -101,6 +102,6 @@
              <li>구해줘! 프렌즈</li>
          </ul>
      </div>
-	</footer>
+  </footer>
 </body>
 </html>
