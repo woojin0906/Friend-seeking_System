@@ -16,6 +16,7 @@ public class RSA {
 		    return decryptedValue;
 		}
 		
+		// 16진수를 바이트 배열로 변환하는 메서드
 		public static byte[] hexToByteArray(String hex) {
 		    if (hex == null || hex.length() % 2 != 0) {
 		        return new byte[]{};

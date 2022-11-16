@@ -29,6 +29,7 @@
 			if (sex == null ) sex=""; 
 			if( tel == null ) tel="";
 			
+			// sha256 객체를 생성
 			SHA256 sha256 = new SHA256();
 			
 			try {
@@ -40,16 +41,19 @@
 				String infoMsg;
 				String sql;
 				
+				// 모든 데이터가 받아와졌는지 확인
 				if( !id.equals("") && !pwd.equals("") && !nickname.equals("") && 
 						!name.equals("") && !sex.equals("") && !tel.equals("")){
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
 					
+					// member 테이블의 모든 id를 가져옴
 					sql = "select id from member";
 					stmt = conn.createStatement();
 					rs = stmt.executeQuery(sql);
 					
+					// 입력한 id가 이미 사용중인지 확인
 					while(rs.next()){
 		               	String user = rs.getString(1);
 						if(user.equals(id)){
@@ -58,9 +62,11 @@
 						}
 		            }
 					
+					// member 테이블의 모든 닉네임을 가져옴
 					sql = "select nickname from member";
 					rs = stmt.executeQuery(sql);
 					
+					// 입력한 닉네임이 이미 사용중인지 확인
 					while(rs.next()){
 		               	String nick = rs.getString(1);
 						if(nick.equals(nickname)){
@@ -69,7 +75,9 @@
 						}
 		            }
 					
+					// id와 닉네임이 모두 중복이 아니라면 member 테이블에 회원정보 삽입
 					if(infoState && infoState2) {
+						// 비밀번호를 SHA256 일방향 해시 암호로 암호화 처리
 						String encPwd = sha256.enc256(pwd);
 						
 						sql = "insert into member values('" 
