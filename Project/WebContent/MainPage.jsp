@@ -181,7 +181,38 @@
             </div>
         </div>
     </div>
-    
-    
+    <footer>
+     <nav id="bottom_menu">
+         <ul>
+             <li>구해줘! 프렌즈</li>
+             <li>개인정보처리방침</li>
+             <li>저작권 정보</li>
+             <li>이용 안내</li>
+         </ul>
+     </nav>
+     <div class="items">
+         <h2 class="items_name">문의전화</h2>
+         <ul>
+             <li class="phone">123-1234</li>
+             <li>10:00 - 18:00(Lunch 12:00 - 13:00)</li>
+         </ul>
+     </div>
+     <div class="items">
+         <h2 class="items_name">구해줘! 프렌즈</h2>
+         <ul>
+             <li>주소 : 인천광역시 남구 인하로 100</li>
+             <li>전화 : 031-123-1234</li>
+             <li>팩스 : 031-123-1234</li>
+             <li>이메일 : 123-12-12345</li>
+         </ul>
+     </div>
+     <div class="items">
+         <h2 class="items_name">입금 정보</h2>
+         <ul>
+             <li>농협 123-123-123456</li>
+             <li>구해줘! 프렌즈</li>
+         </ul>
+     </div>
+	</footer>
 </body>
 </html>
