@@ -18,10 +18,12 @@
         <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
 		<button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
 	</header>
+	
   	<div class="wrapper">      
 	    <div class="name">닉네임(아이디)이 들어감</div>
 	    <div class="buttons"><button>참여한 글</button></div>
 	    <hr>
+	    
 	    <!-- 테이블 수정 -->
 	    <table>
 	    	<thead>
@@ -64,9 +66,10 @@
 	        </tr>
 	        </tbody>
 		</table>
+		
 	</div>
+	
 	<footer>
-
      <nav id="bottom_menu">
          <ul>
              <li>구해줘! 프렌즈</li>

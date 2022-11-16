@@ -31,9 +31,9 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Date of Birth</th>
-    
         </tr>
         </thead>
+        
         <tbody>
         <tr>
             <td>James</td>
@@ -99,6 +99,6 @@
              <li>±∏«ÿ¡‡! «¡∑ª¡Ó</li>
          </ul>
      </div>
-  
+  </footer>
 </body>
 </html>
