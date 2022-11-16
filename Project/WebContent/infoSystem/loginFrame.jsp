@@ -2,13 +2,14 @@
 	작성자: 김지웅
 	로그인 정보를 입력받고 유효성 검사 및 loginCheck로 데이터 전송하는 페이지
  -->
-<%-- <%@ page import="encrytion.RSA" import="java.security.*"%> --%>
-<%@page import="java.security.PublicKey"%>
-<%@page import="java.security.spec.RSAPublicKeySpec"%>
-<%@page import="java.security.PrivateKey"%>
-<%@page import="java.security.KeyFactory"%>
-<%@page import="java.security.KeyPair"%>
-<%@page import="java.security.KeyPairGenerator"%>
+
+<!-- 페이지가 너무 무거워지는 것 같아 필요 요소만 import -->
+<%@ page import="java.security.PublicKey"%>
+<%@ page import="java.security.spec.RSAPublicKeySpec"%>
+<%@ page import="java.security.PrivateKey"%>
+<%@ page import="java.security.KeyFactory"%>
+<%@ page import="java.security.KeyPair"%>
+<%@ page import="java.security.KeyPairGenerator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 	</head>
 	<body>
-	<%
+	<%	
 			request.setCharacterEncoding("UTF-8");
 		
 			// 공개키와 개인키 생성
