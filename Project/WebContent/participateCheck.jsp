@@ -29,6 +29,7 @@
 				String sex = request.getParameter("_sex");
 				String phone = request.getParameter("_phone");
 				
+				System.out.println(numb);
 				if( name == null ) name="";
 				if( sex == null ) sex="";
 				if( phone == null ) phone="";

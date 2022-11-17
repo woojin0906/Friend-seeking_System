@@ -10,17 +10,18 @@
 <html>
 <head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="script/header.js" type="text/javascript"></script>
+	<script src="../script/header.js" type="text/javascript"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" media="screen" href="css/writerStyle.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/writerStyle.css">
     <title>냠냠친구 글작성 홈페이지</title>
 </head>
 <body>
 <script>
 			
-			// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
+			//input에 데이터를 모두 입력했는지 검사하고,
+			// 데이터 유효성 검사를 한 뒤 submit 하여 데이터 전송하는 function
 			$(document).on("click", "#btn", function(){
 				let titleval = $('#_title').val();
 				let typeval = $('#_type').val();
@@ -46,10 +47,10 @@
 					$("#form_1").submit();
 				}
 	);
-			
+			//가상으로 삽입한 팝업창을 닫는 function	
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
-				$('.background').addClass('close');
+				$('.background').remove();
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
@@ -61,14 +62,28 @@
 <%
 	String nick = (String) session.getAttribute("NICK");
 	session.setAttribute("NICK", nick);
+	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
+	session.setAttribute("ID", id);
 %>
-
-	 <header class="header">
-        <a href="#"><img class ="logoimg"src="image/logo_mod.png"></a>
-        <div class="btnright">
-            <button class="custom-btn btn-3"><span>Log In</span></button>
-            <button class="custom-btn btn-3"><span>Sign Up</span></button>
-        </div>
+<header class="header">
+        <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
+		<!-- 로그인 했을 때 -->
+        <% 
+  
+        if(session.getAttribute("ID") != null) { %>
+ 	        <div class="btnright">
+ 	        	<%=nick%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        </div>
+		<!-- 로그인 안 했을 때 -->
+        <% } else { %>
+ 	        <div class="btnright">
+ 	        	
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	        </div>
+       	<% } %>
     </header>
     <div id="boardside">
         <input type="checkbox" id="menuicon">
@@ -80,11 +95,10 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="#">전체 글 보기</a></li>
-                    <li><a href="#">붕붕</a></li>
-                    <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        
-                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
+                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -107,7 +121,7 @@
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td><%=nick %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                    <td><%=nick %><input type="hidden" name="_nickname" value="<%=nick%>"></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                 </tr>
          		<tr>
                     <th>종류</th>
@@ -235,9 +249,6 @@
 			
 			stmt.executeUpdate();
 
-			// writePost로 작성자 넘기기
-			
-			
 			out.println("<div class=background><div id=popup>"+ "글이 등록되었습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		stmt.close();

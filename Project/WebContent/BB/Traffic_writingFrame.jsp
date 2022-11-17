@@ -20,7 +20,8 @@
 <body>
 <script>
 			
-			// input에 데이터를 입력했는지 검사 후 submit 하여 데이터 전송
+			//input에 데이터를 모두 입력했는지 검사하고,
+			// 데이터 유효성 검사를 한 뒤 submit 하여 데이터 전송하는 function
 			$(document).on("click", "#btn", function(){
 				let titleval = $('#_title').val();
 				let typeval = $('#_type').val();
@@ -46,7 +47,7 @@
 					$("#form_1").submit();
 				}
 	);
-			
+			//가상으로 삽입한 팝업창을 닫는 function	
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
 				$('.background').remove();
@@ -57,13 +58,33 @@
 				}
 			});
 </script>
+<%
+	// 값 잘 받아옴
+	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
+	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
+	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
+	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
+%>
 
     <header class="header">
-        <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
-        <div class="btnright">
-            <button class="custom-btn btn-3"><span>Log In</span></button>
-            <button class="custom-btn btn-3"><span>Sign Up</span></button>
-        </div>
+        <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
+		<!-- 로그인 했을 때 -->
+        <% 
+  
+        if(session.getAttribute("ID") != null) { %>
+ 	        <div class="btnright">
+ 	        	<%=nick%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        </div>
+		<!-- 로그인 안 했을 때 -->
+        <% } else { %>
+ 	        <div class="btnright">
+ 	        	
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	        </div>
+       	<% } %>
     </header>
     <div id="boardside">
         <input type="checkbox" id="menuicon">
@@ -75,25 +96,16 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="#">전체 글 보기</a></li>
-                    <li><a href="#">붕붕</a></li>
-                    <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        
-                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
+                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-         
-<%
-	
-	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
-	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
-	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
-	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
-%>
-       
+
 <div id="main_footer">
     <main>
         <div class="main">

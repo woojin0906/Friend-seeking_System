@@ -23,10 +23,6 @@
 			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String date = sf.format(nowTime);
 			
-		    // writePost로 부터 넘버값 받아서 update하기
-			//String num = (String) session.getAttribute("NUM");
- 			//session.setAttribute("NUM", num);
-			
  			// hidden으로 숨겨진 number값을 받아와 해당하는 넘버값의 글 수정하기
  			String number = request.getParameter("number");
  			if(number == null) number = "";

@@ -33,33 +33,46 @@
 	String nick = (String) session.getAttribute("NICK");
 	session.setAttribute("NICK", nick);						// 글 수정을 위해 글 번호 세션에 넘기기
 %>
-  <header class="header">
-    <a href="#"><img class="logoimg" src="image/logo_mod.png"></a>
-    <div class="btnright">
-      <button class="custom-btn btn-3"><span>Log In</span></button>
-      <button class="custom-btn btn-3"><span>Sign Up</span></button>
+
+ <header class="header">
+        <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
+		<!-- 로그인 했을 때 -->
+        <% 
+  
+        if(session.getAttribute("ID") != null) { %>
+ 	        <div class="btnright">
+ 	        	<%=nick%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        </div>
+		<!-- 로그인 안 했을 때 -->
+        <% } else { %>
+ 	        <div class="btnright">
+ 	        	
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	        </div>
+       	<% } %>
+    </header>
+    <div id="boardside">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <div class="cont">
+                <ul>
+                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
+                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
+                </ul>
+            </div>
+            <label for="menuicon" class="background"></label>
+        </div>
     </div>
-  </header>
-  <div id="boardside">
-    <input type="checkbox" id="menuicon">
-    <label for="menuicon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-    <div class="sidebar">
-      <div class="cont">
-        <ul>
-          <li><a href="#">전체 글 보기</a></li>
-          <li><a href="#">붕붕</a></li>
-          <li><a href="#">게시판 이름</a></li>
-          <li><a href="#">게시판 이름</a></li>
-          <li><a href="#">게시판 이름</a></li>
-        </ul>
-      </div>
-      <label for="menuicon" class="background"></label>
-    </div>
-  </div>
 
   <div id="wrap">
     <div id="header">
@@ -131,9 +144,13 @@
 	              			traffic.setDest(rs.getString("dest"));
 	              			traffic.setMain(rs.getString("main"));
 	              			traffic.setCategory(rs.getString("category"));
+	              			String number = rs.getString("number");
+	              			System.out.println(number);
+           					out.println("<tr>");
+           					out.println("<td><a href='Traffic_writePost.jsp?number="+number+"'>" + number + "</a></td>");
+           					
+           					 	   
                   %>
-           					 <tr>
-           					 	  <td><%= traffic.getNumber()%></td> <!-- 작성자 -->    
 			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->           					 
 			                      <td><%= traffic.getTitle() %></td> <!-- 제목 -->
 			                      <td><%= traffic.getCategory() %></td> <!-- 종류 -->
@@ -256,6 +273,5 @@
 
     </div>
   </div>
-
 </body>
 </html>

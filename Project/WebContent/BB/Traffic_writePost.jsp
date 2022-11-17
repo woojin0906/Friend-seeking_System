@@ -21,19 +21,23 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
 	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
+	session.setAttribute("NICK", nick);
 	String id = (String) session.getAttribute("ID");		
 	session.setAttribute("ID", id);
-%>
-<script>
 
+%>
+
+<script>
+	//가상으로 삽입한 팝업창을 닫는 function	
 	$(document).on("click", "#closeBtn", function(e) {
 		let val = $('#popup').text();
 		$('.background').remove();
 	});
 
+	// 작성자와 현재 웹을 사용하는 사용자의 nickname이 동일한지 검사한 뒤, 수정하기 위한 데이터를 전송하는 function
 	$(document).on("click", "#btn", function(){
 		let nickval = $('#_nickName').val();
-		console.log(nickval);
+
 		let checkMsg;
 		let checkState = true;
 		
@@ -44,19 +48,32 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 	}
-		console.log(checkMsg);
-		if (checkState){
+		if (checkState == true) {
 			$("#form_data").submit();
 			window.location.href = "Traffic_writingChangeFrame.jsp";
 		}
 	});
+
 </script>
     <header class="header">
-        <a href="#"><img class ="logoimg"src="../image/logo_mod.png"></a>
-        <div class="btnright">
-            <button class="custom-btn btn-3"><span>Log In</span></button>
-            <button class="custom-btn btn-3"><span>Sign Up</span></button>
-        </div>
+        <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
+		<!-- 로그인 했을 때 -->
+        <% 
+  
+        if(session.getAttribute("ID") != null) { %>
+ 	        <div class="btnright">
+ 	        	<%=nick%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        </div>
+		<!-- 로그인 안 했을 때 -->
+        <% } else { %>
+ 	        <div class="btnright">
+ 	        	
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	        </div>
+       	<% } %>
     </header>
     <div id="boardside">
         <input type="checkbox" id="menuicon">
@@ -68,23 +85,21 @@ pageEncoding="UTF-8" import="java.sql.*" %>
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="#">전체 글 보기</a></li>
-                    <li><a href="#">붕붕</a></li>
-                    <li><a href="#">게시판 이름</a></li>
-                    <li><a href="#">게시판 이름</a></li>                        
-                    <li><a href="#">게시판 이름</a></li>
+                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
+                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-         
+
 <div id="main_footer">
- <main>
-     <div class="main">
-           
-     <form id="form_data" action="Traffic_writingChangeFrame.jsp" method="post" >
-         <table id="_table_writerPage">
+ 	<main>
+	     <div class="main">
+	     <form id="form_data" action="Traffic_writePost.jsp" method="post" >
+	         <table id="_table_writerPage">
         
 	<%
 	try {
@@ -107,9 +122,10 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		else if(!nick.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
 		}
+		
 		while(rs.next()) {
 			%>
-			<input type="hidden" name="_number" value="<%=number %>"/><%=number %> <!-- 글 수정 시 글 번호 필요 -->
+			 <input type="hidden" name="_number" value="<%=number %>"/><%=number %> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
@@ -119,7 +135,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <tr>
                  <th>작성자</th>
                  <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><button id="btn" type="submit" >수정하기</button></td>
+                 <td id="btn_writePost1"><button id="btn" type="button" >수정하기</button></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -166,9 +182,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <table id="_talbe_participants">
      		
              <tr><td class="name" id="border" colspan=2><h2>참여자</h2></td>
-         
              <td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/></td>
-             
              </tr>
                  <tr>
                      <th class="border_th" id="table_border">이름</th>
@@ -186,7 +200,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	        Class.forName("com.mysql.cj.jdbc.Driver"); 
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
-         		
+	        
 			if(!number.equals("") && !nick.equals("")) {
 				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
 			} 
