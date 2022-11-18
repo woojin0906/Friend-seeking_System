@@ -41,7 +41,7 @@
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver"); 
 					conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-					stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', drink = '" + alcohol + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + num + "'");
+					stmt = conn.prepareStatement("update meal set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', drink = '" + alcohol + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + num + "'");
 					
 					stmt.executeUpdate();
 					

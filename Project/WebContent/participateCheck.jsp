@@ -14,13 +14,11 @@
 </head>
 <body>
 <%
-			try {
+			
 				request.setCharacterEncoding("UTF-8");
-				
-				Connection conn = null;
-				PreparedStatement stmt = null;
-				String sql;
-				
+	
+				String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
+				session.setAttribute("NICK", nick);
 				String numb = (String) session.getAttribute("NUM");
 				String number = request.getParameter("_number");
 				int num =  Integer.parseInt(numb);
@@ -28,21 +26,48 @@
 				String name = request.getParameter("_name");
 				String sex = request.getParameter("_sex");
 				String phone = request.getParameter("_phone");
-				
-				System.out.println(numb);
+				System.out.println("사용자 닉 : " + nick);				
+		
 				if( name == null ) name="";
 				if( sex == null ) sex="";
 				if( phone == null ) phone="";
 				
+				try {
+					
+					Connection conn = null;
+					Statement sstmt = null;
+					PreparedStatement stmt = null;
+					ResultSet rs = null;
+					String sql;
+					boolean infoState = true;
+					
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
-					sql = "insert into trafficParticipate (id, number, name, sex, phone) values ('" + id + "', '" + num + "', '" + name + "', '" + sex + "', '" + phone + "')";
-					stmt = conn.prepareStatement(sql);
 					
-					stmt.executeUpdate();
+					sql = "select * from member";
+					sstmt = conn.createStatement();
+					rs = stmt.executeQuery(sql);
 					
-					response.sendRedirect("BB/Traffic_writePost.jsp");
+					while(rs.next()){
+		               	String nickname = rs.getString("nickname");
+						if(nickname.equals(nick)){
+							infoState = false;
+							break;
+						}
+		            }
+					if(infoState) {
+						sql = "insert into trafficParticipate (id, number, name, sex, phone) values ('" + id + "', '" + num + "', '" + name + "', '" + sex + "', '" + phone + "')";
+						stmt = conn.prepareStatement(sql);
+					
+						stmt.executeUpdate();
+						
+						response.sendRedirect("BB/Traffic_writePost.jsp");
+					} else {
+						request.setAttribute("_res", "중복 참여");
+						pageContext.forward("BB/Traffic_participateUser.jsp");
+					}
+
 					stmt.close();
 					conn.close();
 			} catch (Exception e) {

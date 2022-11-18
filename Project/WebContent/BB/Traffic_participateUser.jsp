@@ -37,9 +37,8 @@
   
         String id = (String) session.getAttribute("ID");
 		session.setAttribute("ID", id);
-		String number = request.getParameter("number");
+		String number = (String) session.getAttribute("NUM");
 		session.setAttribute("NUM", number);
-		System.out.println(number);
 		String nick = request.getParameter("_nickName"); // 작성자 nick
 		String nickName = (String) session.getAttribute("NICK"); // 현재 로그인된 nick
         if(session.getAttribute("ID") != null) { %>
@@ -165,5 +164,17 @@
         </div>
 </footer>
 </div>
+<%
+			request.setCharacterEncoding("UTF-8");
+			
+			String res = (String) request.getAttribute("_res");
+			if (res == null) res = "";
+			
+			if (res.equals("중복 참여")){
+				out.println("<div class=background><div id=popup>"+ "이미 참여했습니다." 
+					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+			} 
+			
+		%>
 </body>
 </html>

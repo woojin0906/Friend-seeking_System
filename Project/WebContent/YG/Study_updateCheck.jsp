@@ -26,7 +26,7 @@
 		    // writePost로 부터 넘버값 받아서 update하기
 			String num = (String) session.getAttribute("NUM");
  			session.setAttribute("NUM", num);
-			
+
 			String title = request.getParameter("_title");
 			String nickname = request.getParameter("_nickName");
 			String type = request.getParameter("_type");
@@ -40,7 +40,7 @@
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver"); 
 					conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-					stmt = conn.prepareStatement("update traffic set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + num + "'");
+					stmt = conn.prepareStatement("update study set nickname = '" + nickname + "', title = '" + title +  "', promisetime = '" + time + "', count = '" + person + "', sex = '" + gender + "', category = '" + type + "', dest = '" + arrival + "', main = '" + context + "', writetime = '" + date + "'where number ='" + num + "'");
 					
 					stmt.executeUpdate();
 					

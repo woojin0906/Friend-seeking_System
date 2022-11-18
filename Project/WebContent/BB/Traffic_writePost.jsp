@@ -24,7 +24,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	session.setAttribute("NICK", nick);
 	String id = (String) session.getAttribute("ID");		
 	session.setAttribute("ID", id);
-
 %>
 
 <script>
@@ -41,7 +40,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		let checkMsg;
 		let checkState = true;
 		
-		if (nickval != <%=nick%>){
+		if (!nickval.equals(<%=nick%>)){
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
@@ -135,7 +134,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <tr>
                  <th>작성자</th>
                  <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><button id="btn" type="button" >수정하기</button></td>
+                 <td id="btn_writePost1"><input id="btn" type="button" value="수정하기"></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -200,12 +199,12 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	        Class.forName("com.mysql.cj.jdbc.Driver"); 
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
-	        
-			if(!number.equals("") && !nick.equals("")) {
+	        System.out.println(number);
+			if(!number.equals("")) {
 				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
 			} 
 			
-			if(!nick.equals("")) {
+			else if(!nick.equals("")) {
 				rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
 			}
 			

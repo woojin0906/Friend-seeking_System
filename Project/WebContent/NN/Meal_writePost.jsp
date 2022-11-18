@@ -112,11 +112,11 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 		stmt = conn.createStatement();
 		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
 		if(!number.equals("")) {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number + "'");
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where number = '" + number + "'");
 		} 
 		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
 		else if(!nick.equals("")) {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where nickname = '" + nick + "'order by number desc limit 1");
 		}
 		
 		while(rs.next()) {
@@ -200,11 +200,11 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 	        stmt = conn.createStatement();
 	        
 			if(!number.equals("") && !nick.equals("")) {
-				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
+				rs = stmt.executeQuery("select * from mealParticipate where number = '" + number + "'");
 			} 
 			
 			if(!nick.equals("")) {
-				rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
+				rs = stmt.executeQuery("select * from mealParticipate where nickname = '" + nick + "'order by number desc limit 1");
 			}
 			
 			while(rs.next()) {
