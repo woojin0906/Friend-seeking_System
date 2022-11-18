@@ -51,7 +51,7 @@
 				<input name="_id" id="_id" type="text" placeholder="아이디">
 				<input name="_name" id="_name" type="text" placeholder="이름">
 				<input name="_tel" id="_tel" type="text" placeholder="전화번호">
-			</Form>
+			</Form> 
 			<img id="personImg" src="../image/person.png">
 			<img id="nameImg" src="../image/nameImg.png">
 			<img id="telImg" src="../image/telImg.png">
