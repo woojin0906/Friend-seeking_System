@@ -110,7 +110,10 @@
 	   		               	out.println("<tr onClick=location.href='BB/Traffic_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
-	    					
+	    				
+	   					rs.close();
+        				stmt.close();
+        				conn.close();
 	    			} catch (Exception e) {
 	    				e.printStackTrace();
 	    			}
@@ -142,7 +145,10 @@
 	   		               	out.println("<tr onClick=location.href='NN/Meal_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
 	   		            }
 	   					out.println("</table>");
-	    					
+	    				
+	   					rs.close();
+        				stmt.close();
+        				conn.close();
 	    			} catch (Exception e) {
 	    				e.printStackTrace();
 	    			}
@@ -174,7 +180,10 @@
    		               	out.println("<tr onClick=location.href='YG/Study_writePost.jsp?number="+number+"'><td>[ " + category + " ]</td><td>" + title + "</td></tr>");	
    		            }
    					out.println("</table>");
-    					
+    				
+   					rs.close();
+    				stmt.close();
+    				conn.close();
     			} catch (Exception e) {
     				e.printStackTrace();
     			}

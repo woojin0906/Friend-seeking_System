@@ -89,6 +89,9 @@
             							+number+">"+title+"</a></div><div class=writer>"+nickname+"</div><div class=date>"
             							+writetime+"</div><div class=category>"+category+"</div></div>");
             				}
+            				rs.close();
+            				stmt.close();
+            				conn.close();
 	                    %>
                 	</div>
                 <div class="page">
@@ -109,6 +112,9 @@
 	                    		max -= 10;
 	                    	}
                     	}
+                    	rs.close();
+        				stmt.close();
+        				conn.close();
                     %>
                 </div>
                 <div class="bt_wrap">
