@@ -36,11 +36,11 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	// 작성자와 현재 웹을 사용하는 사용자의 nickname이 동일한지 검사한 뒤, 수정하기 위한 데이터를 전송하는 function
 	$(document).on("click", "#btn", function(){
 		let nickval = $('#_nickName').val();
-
+		console.log(nickval);
 		let checkMsg;
 		let checkState = true;
 		
-		if (!nickval.equals(<%=nick%>)){
+		if (nickval != <%=nick%>) {
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
