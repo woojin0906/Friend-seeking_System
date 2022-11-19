@@ -39,17 +39,26 @@
 </header>
 
   <div class="wrapper small">
-      <div class="img-area">
-        <div class="inner-area">
-          <!-- 이미지가 들어가거나 삭제 -->
-        </div>
-      </div>
-      <div class="name">닉네임(아이디)이 들어감</div>
-      <div class="about">간단한 자기소개(없어도됨)</div>
+  	<div class="nameinfo">
+	  	<div class="nameabout">
+	      <div class="name">닉네임(아이디)이 들어감</div>
+	      <div class="about">회원 정보가 들어갑니다.</div>
+	      <div class="about">회원 정보가 들어갑니다.</div>
+	      <div class="about">회원 정보가 들어갑니다.</div>
+	      
+	    </div>
+	    <div class="rightinfo">
+	   		<div class="buttons smallbutton">
+				<button onclick="location.href='infochange.jsp'">내 정보 수정</button>
+	      	</div>
+	    </div>
+  	</div>
       
-      <div class="buttons">
-        <button onclick="location.href='profile_write.jsp'">내가 쓴 글</button>
-        <button onclick="location.href='prifile_part.jsp'">참여한 글</button>
+      <div class="center">
+	      <div class="buttons">
+	        <button onclick="location.href='profile_write.jsp'">내가 쓴 글</button>
+	        <button onclick="location.href='prifile_part.jsp'">참여한 글</button>
+	      </div>
       </div>
   </div>
 
