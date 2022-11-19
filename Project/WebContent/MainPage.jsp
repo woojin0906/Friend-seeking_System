@@ -66,7 +66,7 @@
         <div class="container">
             <div class="row">
                 <div class="photo-slider">
-                    <img src="https://4.bp.blogspot.com/-FYsWBy3Vyko/Vihu37d2rBI/AAAAAAAAAAU/iv_78Cy-cic/s1600/d30256.jpg" alt="" class="photo-slider-img">
+                    <img src="#" alt="" class="photo-slider-img">
                     <img src="http://times-bignews.com/UploadFiles/201508/images/20150804143239.jpg" alt="" class="photo-slider-img">
                     <img src="https://67.media.tumblr.com/f297ec85158c7767b52d8443513b5675/tumblr_nkasx4XoCN1u92dlto1_500.jpg" alt="" class="photo-slider-img">
                     <img src="http://down.qnwz.cn/uploads/allimg/140603/1-1406031521295E.jpg" alt="" class="photo-slider-img">
@@ -74,7 +74,6 @@
                 <div class="photo-controls">
                     <div class="photo-pagination">
                         <div class="photo-page active"><span></span></div>
-                        <div class="photo-page"><span></span></div>
                         <div class="photo-page"><span></span></div>
                         <div class="photo-page"><span></span></div>
                         <div class="photo-page"><span></span></div>

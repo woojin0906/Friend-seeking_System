@@ -235,6 +235,10 @@
               class="page_num">10</a> ... <a class="bt_page bt_last" href="#" title="last page">끝 페이지</a>
           </div>
         </div>
+        </div>
+
+    </div>
+  </div>
 <footer>
         <nav id="bottom_menu">
             <ul>
@@ -270,8 +274,5 @@
         </div>
 
 </footer>
-
-    </div>
-  </div>
 </body>
 </html>
