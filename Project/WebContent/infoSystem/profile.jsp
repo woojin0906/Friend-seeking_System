@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/profileview_css.css">
+<link rel="stylesheet" type="text/css" href="../css/profile_css.css">
 <script src="https://kit.fontawesome.com/7914cb2195.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +41,40 @@
   <div class="wrapper small">
   	<div class="nameinfo">
 	  	<div class="nameabout">
-	      <div class="name">닉네임(아이디)이 들어감</div>
-	      <div class="about">회원 정보가 들어갑니다.</div>
-	      <div class="about">회원 정보가 들어갑니다.</div>
-	      <div class="about">회원 정보가 들어갑니다.</div>
+	  	<%
+		String nick = (String) session.getAttribute("NICK");
+            		System.out.println("테스트");
+	request.setCharacterEncoding("UTF-8");
+	try {
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+
+	Class.forName("com.mysql.cj.jdbc.Driver"); 
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery("select * from member where nickname = '" + nick + "'");
+	
+	while(rs.next()) {
+		%>
+	      <div class="name">닉네임 : <%=nick %></div>
+	      <div class="about">이름 : <%=rs.getString("name") %></div>
+	      <div class="about">성별 : <%=rs.getString("sex") %></div>
+	      <div class="about">전화번호 : <%=rs.getString("phone") %></div>
 	      
+		<%
+	}
+	
+	rs.close();
+	stmt.close();
+	conn.close();
+
+} catch(Exception e) {
+	e.printStackTrace();
+}
+
+%>
 	    </div>
 	    <div class="rightinfo">
 	   		<div class="buttons smallbutton">
@@ -61,7 +90,6 @@
 	      </div>
       </div>
   </div>
-
   <footer>
 
     <nav id="bottom_menu">

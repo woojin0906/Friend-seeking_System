@@ -331,9 +331,7 @@ input#menuicon.hidden {
 	text-align: right;
 }
 
-#table_align th, td{
-	text-align: center;
-}
+
 .wrapper hr {
   position: relative;
   width: 80%;
@@ -347,14 +345,14 @@ input#menuicon.hidden {
 }
 .smallbutton {
 	width: 20px;
-	margin: 0 0 0 100px;
+	margin: 0 50px 0 50px;
 	align-items: center;
 }
 .wrapper .name{
   font-size: 30px;
   font-weight: 500;
   color: #31344b;
-  margin: 10px 0 15px 0;
+  margin: 60px 0 20px 0;
 }
 .wrapper .rightinfo {
 	font-size: 20px;
@@ -365,7 +363,7 @@ input#menuicon.hidden {
 .wrapper .nameabout {
 	display: flex;
 	flex-direction: column;
-	margin-left: 20px;
+	margin-left: 100px;
 }
 .wrapper .about{
   color: #44476a;
@@ -399,17 +397,13 @@ input#menuicon.hidden {
 	align-items: center;
 }
 .click_btns {
-	display: flex;
-	margin: 5px;
+	  display: flex;
+	  margin: 5px;
 }
 .click-btn {
 	padding: 5px 10px;
-	margin: 5px 5px 20px 5px;
-	font-size: 15px;
-	background-color: #78A1E2;
-    color: white;
-    border: 1px solid #78A1E2;
-    border-radius: 5px;
+	 margin: 5px;
+	 font-size: 15px;
 }
 
 .wrapper .buttons{
@@ -417,7 +411,7 @@ input#menuicon.hidden {
   width: 80%;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 .buttons button{
   position: relative;

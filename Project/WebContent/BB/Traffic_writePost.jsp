@@ -213,7 +213,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			} 
 			
 			else if(!nick.equals("")) {
-				rs = stmt.executeQuery("select * from trafficParticipate where nickname = '" + nick + "'order by number desc limit 1");
+				rs = stmt.executeQuery("select * from trafficParticipate where name = '" + nick + "'order by number desc limit 1");
 			}
 			
 			while(rs.next()) {

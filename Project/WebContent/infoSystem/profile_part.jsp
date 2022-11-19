@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 <body>
+<%
+	String nick = (String) session.getAttribute("NICK");
+	String id = (String) session.getAttribute("ID");
+%>
     <header class="header">
         <a href="MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
         <div class="btnright">
@@ -39,50 +43,62 @@
     </div>
 	</header>
     <div class="wrapper center">
-      <div class="name">닉네임(아이디)이 들어감</div>
-      <div class="buttons"><button>내가 쓴 글</button></div>
+      <div class="name"><%=nick %></div>
+      <div class="buttons"><button onclick="location.href='profile_write.jsp'">내가 쓴 글</button></div>
       <hr>
+      <div class="click_btns">
+		<button class="click-btn" id="btn-1" onClick="">붕붕친구</button>
+		<button class="click-btn" id="btn-2">냠냠친구</button>
+		<button class="click-btn" id="btn-3">열공친구</button></div>
       <!-- 테이블 수정 -->
-      <table>
+      <table id="table_align">
         <thead>
         <tr>
             <th>Number</th>
-            <th>Last Name</th>
+            <!--<th>Last Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Date of Birth</th>
+            <th>Date of Birth</th>-->
         </tr>
         </thead>
         
         <tbody>
-        <tr>
-            <td>James</td>
-            <td>Matman</td>
-            <td>(713) 123-8965</td>
-            <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-            <td>01/13/1979</td>
-        </tr>
-        <tr>
-            <td>Johnny</td>
-            <td>Smith</td>
-            <td>(713) 584-9614</td>
-            <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
-            <td>06/09/1971</td>
-        </tr>
-        <tr>
-            <td>Susan</td>
-            <td>Johnson</td>
-            <td>(713) 847-1124</td>
-            <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
-            <td>08/25/1965</td>
-        </tr>
-        <tr>
-            <td>Tracy</td>
-            <td>Richardson</td>
-            <td>(713) 245-4821</td>
-            <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
-            <td>03/13/1980</td>
-        </tr>
+               	  	<%
+	request.setCharacterEncoding("UTF-8");
+	try {
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+
+	
+	Class.forName("com.mysql.cj.jdbc.Driver"); 
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+	String sql="select * from trafficParticipate where id = '" + id + "'";
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery(sql);
+
+	while(rs.next()) {
+
+		%>
+
+          <tr>
+              <td><%=rs.getString("number") %></td>
+  
+          </tr>
+          	      
+		<%
+	}
+	
+	rs.close();
+	stmt.close();
+	conn.close();
+
+} catch(Exception e) {
+	e.printStackTrace();
+}
+
+%>
         </tbody>
     </table>
   </div>
