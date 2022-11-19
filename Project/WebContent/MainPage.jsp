@@ -67,9 +67,9 @@
             <div class="row">
                 <div class="photo-slider">
                     <img src="image/main_1.png" alt="" class="photo-slider-img NOW">
-                    <a href="BB/BB_freind.jsp"><img src="image/main_2.png" alt="" class="photo-slider-img"></a>
-                    <a href="NN/NN_friend.jsp"><img src="image/main_3.png" alt="" class="photo-slider-img"></a>
-                    <a href="YG/YG_friend.jsp"><img src="image/main_4.png" alt="" class="photo-slider-img"></a>
+                    <img src="image/main_2.png" id="bb" alt="" class="photo-slider-img">
+                    <a href="NN/NN_friend.jsp"><img src="image/main_3.png" id="nn" alt="" class="photo-slider-img"></a>
+                    <a href="YG/YG_friend.jsp"><img src="image/main_4.png" id="yg" alt="" class="photo-slider-img"></a>
                 </div>
                 <div class="photo-controls">
                     <div class="photo-pagination">

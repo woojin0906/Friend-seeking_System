@@ -1,7 +1,6 @@
 *{
   margin: 0;
   padding: 0;
-    font-family:'Do Hyeon', sans-serif;
   box-sizing: border-box;
 }
 
@@ -14,6 +13,7 @@ body {
 
 /* -------------header */
 .header {
+	font-family:'Do Hyeon', sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -32,6 +32,7 @@ body {
 /* ----------------sidebar */
 
 #boardside * {
+	font-family:'Do Hyeon', sans-serif;
     list-style: none;
     text-decoration: none;
     margin: 0;
@@ -208,6 +209,7 @@ input#menuicon.hidden {
 }
 
 .custom-btn {
+	font-family:'Do Hyeon', sans-serif;
   width: 100px;
   height: 40px;
   color: #000;
@@ -304,6 +306,7 @@ input#menuicon.hidden {
                3px 3px 5px #ceced1;
 }
 .wrapper{
+	font-family:'Do Hyeon', sans-serif;
   left: calc(25%);
   z-index: -5;
   position: relative;
@@ -594,9 +597,7 @@ footer {
     display: inline;
     margin-right: 20px;
 }
-footer > div.items {
-  left: 20%;
-}
+
 footer .items {
   position: relative;
     float: left;
