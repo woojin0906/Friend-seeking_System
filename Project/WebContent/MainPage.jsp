@@ -49,7 +49,6 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="PostMain.jsp">전체 글 보기</a></li>
                     <li><a href="BB/BB_friend.jsp"><img src="image/car.png">  붕붕친구</a></li>
                     <li><a href="NN/NN_friend.jsp"><img src="image/eat.png">  냠냠친구</a></li>
                     <li><a href="YG/YG_friend.jsp"><img src="image/studying.png">  열공친구</a></li>                        
