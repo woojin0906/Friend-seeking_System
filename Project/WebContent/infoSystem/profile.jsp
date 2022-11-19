@@ -15,12 +15,30 @@
  <header class="header">
     <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
     <div class="btnright">
-    <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
-    <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+    <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='profile.jsp'"><span>Mypage</span></button>
+    <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='logout.jsp'"><span>LogOut</span></button>
+    </div>
+    <div id="boardside">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <div class="cont">
+                <ul>
+                    <li><a href="BB/BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
+                </ul>
+            </div>
+            <label for="menuicon" class="background"></label>
+        </div>
     </div>
 </header>
 
-  <div class="wrapper">
+  <div class="wrapper small">
       <div class="img-area">
         <div class="inner-area">
           <!-- 이미지가 들어가거나 삭제 -->
@@ -31,7 +49,7 @@
       
       <div class="buttons">
         <button onclick="location.href='#'">내가 쓴 글</button>
-        <button onclick="location.href='#'">참여한 "이름추천받습니다."</button>
+        <button onclick="location.href='#'">참여한 글</button>
       </div>
   </div>
 

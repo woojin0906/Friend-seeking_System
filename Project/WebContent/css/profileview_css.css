@@ -1,8 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+    font-family:'Do Hyeon', sans-serif;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
   justify-content: center;
 }
 
+/* -------------header */
 .header {
   position: fixed;
   top: 0;
@@ -26,6 +27,152 @@ body {
   -moz-transition: height 0.3s;
   transition: height 0.3s;
   display: inline-block;
+}
+
+/* ----------------sidebar */
+
+#boardside * {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 0;
+  }
+  
+  #boardside .sidebar {
+    background: #bbb;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    padding: 20px 0;
+    z-index: 1;
+    transition: all 0.35s;
+  }
+  
+  #boardside .sidebar .cont {
+    position: fixed;
+    top: 15%;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: #bbb;
+    z-index: 5;
+  }
+  
+  #boardside .sidebar .cont > ul { margin: 20px;  }
+  #boardside .sidebar .cont > ul >li {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 30px;
+    list-style: none;
+  }
+  #boardside .sidebar .cont > ul >li > a {
+    display: inline-block;
+    width: auto;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-size: 25px;
+  }
+  
+  #boardside .sidebar .cont > ul > li:active,
+  #boardside .sidebar .cont > ul > li:hover,
+  #boardside .sidebar .cont > ul > li:focus {
+    background-color: #373737;
+  }
+  
+  #boardside input[id="menuicon"]{
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label + div {
+    left: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label {
+    display: block;
+    width: 15px;
+    height: 17px;
+    position: fixed;
+    cursor: pointer;
+    margin: 35px;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label {
+    z-index: 2000;
+  }
+  
+  #boardside input[id="menuicon"] + label span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    background: #000;
+    transition: all .35s;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(1) {
+    top: 0;
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(2) {
+    top: 51%;
+    
+    transform: translateY(-60%);
+  }
+  
+  #boardside input[id="menuicon"] + label span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span {
+    background: #fff;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(1){
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  #boardside input[id="menuicon"]:checked + label span:nth-child(2){
+    opacity: 0;
+  }
+  
+  #boardside input[id="menuicon"]:checked + label span:nth-child(3){
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+  
+  #boardside .background {
+    position: fixed;
+    top: 0%;
+    right: 0;
+    width: calc(100% - 300px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all .35s;
+    opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+  }
+  
+input#menuicon.hidden {
+  visibility: hidden;
+}
+
+  input#menuicon:checked ~ .sidebar .cont { left: 0; transition: all .35s; }
+  input#menuicon:checked ~ .sidebar .background { 
+    opacity: 1;
+    visibility: visible;
+    transition: all .35s;
 }
 
 .header .logoimg {
@@ -169,6 +316,10 @@ body {
   align-items: center;
   flex-direction: column;
 }
+.small {
+	height: 500px;
+}
+
 .wrapper hr {
   position: relative;
   width: 80%;
@@ -426,6 +577,7 @@ a {
 }
 /* footer */
 footer {
+	font-weight: 100;
     height : 200px;
     background-color: #A6A6A6;
     
