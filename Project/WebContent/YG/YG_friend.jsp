@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>붕붕친구</title>
+		<title>열공친구</title>
 		
 		<link href="../css/friend.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,6 @@
         <% 
 	        String id = (String) session.getAttribute("ID");		
 	        String nick_getData = (String) session.getAttribute("NICK");
-// 	        String index = request.getParameter("_index");
 	        int index = Integer.parseInt(request.getParameter("_index"));
 	        
 	        if(session.getAttribute("ID") != null) { %>
@@ -59,8 +58,8 @@
     	<div id="board">
     		<div class="wrap">
 	    		<div class="title">
-	    			<strong>붕붕친구</strong>
-	    			<p>부담갖지 말고 편하게 타자!</p>
+	    			<strong>열공친구</strong>
+	    			<p>다같이 점수 수직상승!</p>
 	    		</div>
 	    		<div class="list_wrap">
 	                <div class="list">
@@ -77,7 +76,7 @@
             						"jdbc:mysql://localhost/friend", "friends", "2022server");
             				Statement stmt = conn.createStatement();
             				ResultSet rs = stmt.executeQuery(
-            						"select number, title, nickname, writetime, category from traffic order by number desc limit " + (index-1)*10 + ",10");
+            						"select number, title, nickname, writetime, category from study order by number desc limit " + (index-1)*10 + ",10");
             				
             				while(rs.next()){
             					String number = rs.getString(1);
@@ -86,7 +85,7 @@
             					String writetime = rs.getString(4).substring(0, 10);
             					String category = rs.getString(5);
             					
-            					out.println("<div><div class=num>"+number+"</div><div class=title><a href=Traffic_writePost.jsp?number="
+            					out.println("<div><div class=num>"+number+"</div><div class=title><a href=Study_writePost.jsp?number="
             							+number+">"+title+"</a></div><div class=writer>"+nickname+"</div><div class=date>"
             							+writetime+"</div><div class=category>"+category+"</div></div>");
             				}
@@ -98,14 +97,14 @@
 	    				Connection conn2 = DriverManager.getConnection(
 	    						"jdbc:mysql://localhost/friend", "friends", "2022server");
 	    				Statement stmt2 = conn2.createStatement();
-	    				ResultSet rs2 = stmt2.executeQuery("select count(number) from traffic");
+	    				ResultSet rs2 = stmt2.executeQuery("select count(number) from study");
                     	int max = 0, temp = 1;
                     	
                     	while(rs2.next()){
                     		max = rs2.getInt(1);
                     		
 	                    	while(max > 0){
-	                    		out.println("<a href=BB_friend.jsp?_index="+temp+" class=num>"+temp+"</a>");
+	                    		out.println("<a href=YG_friend.jsp?_index="+temp+" class=num>"+temp+"</a>");
 	                    		temp++;
 	                    		max -= 10;
 	                    	}
@@ -115,7 +114,7 @@
                 <div class="bt_wrap">
 	                <%
 	                	if(session.getAttribute("ID") != null)
-                    		out.println("<a href=Traffic_writingFrame.jsp class=on>등록</a>");
+                    		out.println("<a href=Study_writingFrame.jsp class=on>등록</a>");
                     %>
                 </div>
     		</div>

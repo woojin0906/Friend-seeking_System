@@ -18,7 +18,6 @@
         <% 
 	        String id = (String) session.getAttribute("ID");		
 	        String nick_getData = (String) session.getAttribute("NICK");
-// 	        String index = request.getParameter("_index");
 	        int index = Integer.parseInt(request.getParameter("_index"));
 	        
 	        if(session.getAttribute("ID") != null) { %>
