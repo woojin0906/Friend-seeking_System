@@ -18,7 +18,11 @@
         <% 
 	        String id = (String) session.getAttribute("ID");		
 	        String nick_getData = (String) session.getAttribute("NICK");
-	        int index = Integer.parseInt(request.getParameter("_index"));
+
+	        String val = request.getParameter("_index");
+			if( val == null ) val = "1";
+	        
+	        int index = Integer.parseInt(val);
 	        
 	        if(session.getAttribute("ID") != null) { %>
 	 	        <div class="btnright">
