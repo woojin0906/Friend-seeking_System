@@ -1,60 +1,40 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="board.Traffic"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
-<%
-
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	Class.forName("com.mysql.cj.jdbc.Driver"); // JDBC 드라이버 로딩
-	String dbUrl = "jdbc:mysql://localhost:3306/friend?useUnicode=true&characterEncoding=utf8"; // 데이터베이스 정보
-	String dbId = "friends"; // DB 아이디
-	String dbPw = "2022server"; // DB 패스워드
-	String id = (String) session.getAttribute("ID");		
-	session.setAttribute("ID", id);
-	String nick = (String) session.getAttribute("NICK");
-	session.setAttribute("NICK", nick);						// 글 수정을 위해 글 번호 세션에 넘기기
-%>
-
- <header class="header">
+	<head>
+		<meta charset="UTF-8">
+		<title>붕붕친구</title>
+		
+		<link href="../css/BB_friend.css?ver=1" rel="stylesheet" type="text/css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
-  
-        if(session.getAttribute("ID") != null) { %>
- 	        <div class="btnright">
- 	        	<%=nick%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
- 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
- 	        </div>
-		<!-- 로그인 안 했을 때 -->
-        <% } else { %>
- 	        <div class="btnright">
- 	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
- 	        </div>
+	        String id = (String) session.getAttribute("ID");		
+	    	session.setAttribute("ID", id);
+	        String nick_getData = (String) session.getAttribute("NICK");
+	        session.setAttribute("NICK", nick_getData);	
+	        if(session.getAttribute("ID") != null) { %>
+	 	        <div class="btnright">
+	 	        	<%=nick_getData%>님 환영합니다.
+	 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
+	 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
+	 	        </div>
+			<!-- 로그인 안 했을 때 -->
+	        <% } else { %>
+	 	        <div class="btnright">
+	 	        	
+	 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+	 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+	 	        </div>
        	<% } %>
-    </header>
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -64,8 +44,7 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
-                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../BB/BB_friend2.jsp"><img src="../image/car.png">  붕붕친구</a></li>
                     <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
@@ -73,170 +52,111 @@
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-
-  <div id="wrap">
-    <div id="header">
-      <div class="container">
-        <div class="top">
-          <div class="logo">
-          </div>
-          <div class="title">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="wrap">
-      <div id="contents">
-        <div class="container sub_list">
-
-          <div class="row">
-            <div class="col-12">
-              <div class="table-head">
-                <div>
-                  <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-                  <h2>붕붕친구 게시판</h2>
-                  <div class="table-sub-n">n개의 글</div>
+    </header>
+    
+    <section>
+    	<div id="board">
+    		<div class="wrap">
+	    		<div class="title">
+	    			<strong>붕붕친구</strong>
+	    			<p>가나다라마바사아자차카타파하하하하하</p>
+	    		</div>
+	    		<div class="list_wrap">
+	                <div class="list">
+	                    <div class="top">
+		                        <div class="num">번호</div>
+		                        <div class="title">제목</div>
+		                        <div class="writer">글쓴이</div>
+		                        <div class="date">작성일</div>
+		                        <div class="count">조회</div>
+	                    </div>
+<!-- 	                    <div> -->
+<!-- 	                        <div class="num">5</div> -->
+<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
+<!-- 	                        <div class="writer">아무개</div> -->
+<!-- 	                        <div class="date">2022.08.21</div> -->
+<!-- 	                        <div class="count">33</div> -->
+<!-- 	                    </div> -->
+<!-- 	                    <div> -->
+<!-- 	                        <div class="num">5</div> -->
+<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
+<!-- 	                        <div class="writer">아무개</div> -->
+<!-- 	                        <div class="date">2022.08.21</div> -->
+<!-- 	                        <div class="count">33</div> -->
+<!-- 	                    </div> -->
+<!-- 	                    <div> -->
+<!-- 	                        <div class="num">5</div> -->
+<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
+<!-- 	                        <div class="writer">아무개</div> -->
+<!-- 	                        <div class="date">2022.08.21</div> -->
+<!-- 	                        <div class="count">33</div> -->
+<!-- 	                    </div> -->
+<!-- 	                    <div> -->
+<!-- 	                        <div class="num">5</div> -->
+<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
+<!-- 	                        <div class="writer">아무개</div> -->
+<!-- 	                        <div class="date">2022.08.21</div> -->
+<!-- 	                        <div class="count">33</div> -->
+<!-- 	                    </div> -->
+<!-- 	                    <div> -->
+<!-- 	                        <div class="num">5</div> -->
+<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
+<!-- 	                        <div class="writer">아무개</div> -->
+<!-- 	                        <div class="date">2022.08.21</div> -->
+<!-- 	                        <div class="count">33</div> -->
+<!-- 	                    </div> -->
+	                    <div>
+	                        <div class="num">5</div>
+	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
+	                        <div class="writer">아무개</div>
+	                        <div class="date">2022.08.21</div>
+	                        <div class="count">33</div>
+	                    </div>
+	                    <div>
+	                        <div class="num">4</div>
+	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
+	                        <div class="writer">아무개</div>
+	                        <div class="date">2022.08.21</div>
+	                        <div class="count">33</div>
+	                    </div>
+	                    <div>
+	                        <div class="num">3</div>
+	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
+	                        <div class="writer">아무개</div>
+	                        <div class="date">2022.08.21</div>
+	                        <div class="count">33</div>
+	                    </div>
+	                    <div>
+	                        <div class="num">2</div>
+	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
+	                        <div class="writer">아무개</div>
+	                        <div class="date">2022.08.21</div>
+	                        <div class="count">33</div>
+	                    </div>
+	                    <div>
+	                        <div class="num">1</div>
+	                        <div class="title"><a href="view.html">글 제목이 들어감</a></div>
+	                        <div class="writer">아무개</div>
+	                        <div class="date">2022.08.21</div>
+	                        <div class="count">33</div>
+	                    </div>
+                	</div>
+                <div class="page">
+                    <a href="#" class="bt first"><<</a>
+                    <a href="#" class="bt prev"><</a>
+                    <a href="#" class="num on">1</a>
+                    <a href="#" class="num">2</a>
+                    <a href="#" class="num">3</a>
+                    <a href="#" class="bt next">></a>
+                    <a href="#" class="bt last">>></a>
                 </div>
-                <div>
-		<%if(session.getAttribute("ID") != null){%> <!--  비로그인시 숨기기 -->
-                  <a href="Traffic_writingFrame.jsp" class="btn-7">글작성</a>
+                <div class="bt_wrap">
+                    <a href="Traffic_writingFrame.jsp" class="on">등록</a>
                 </div>
-              </div>
-              <div class="table-div">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>글 번호</th>
-                      <th>작성자</th>
-                      <th>제목</th> 
-                      <th>종류</th> <!-- 카풀&택시 -->
-                      <th>성별</th>
-                      <th>인원</th> <!-- 2~5명 , 5명이상 , 상관없음 -->
-                      <th>출발지</th> <!-- 출발장소 -->
-                      <th>도착지</th> <!-- 도착장소 -->      
-                      <th>시간</th> 
-                      <th>기타</th> 
-                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <%
-	              	Traffic traffic = null;
-	              	try {
-	              		String sql = "select * from traffic order by number desc"; // SQL 쿼리
-	              		
-	              		conn = DriverManager.getConnection(dbUrl, dbId, dbPw); // DB 연결
-	              		pstmt = conn.prepareStatement(sql);
-	              		rs = pstmt.executeQuery();
-	              		
-	              		while(rs.next()) {
-	              			traffic = new Traffic();
-	              			traffic.setNumber(rs.getInt("number"));
-	              			traffic.setNickName(rs.getString("nickname"));
-	              			traffic.setTitle(rs.getString("title"));
-	              			traffic.setPromiseTime(rs.getString("promiseTime"));
-	              			Date writeTime = rs.getDate("writeTime");
-	              			traffic.setWriteTime(writeTime);
-	              			traffic.setCount(rs.getString("count"));
-	              			traffic.setSex(rs.getString("sex"));
-	              			traffic.setStart(rs.getString("start"));
-	              			traffic.setDest(rs.getString("dest"));
-	              			traffic.setMain(rs.getString("main"));
-	              			traffic.setCategory(rs.getString("category"));
-	              			String number = rs.getString("number");
-	              			System.out.println(number);
-           					out.println("<tr>");
-           					out.println("<td><a href='Traffic_writePost.jsp?number="+number+"'>" + number + "</a></td>");
-           					
-           					 	   
-                  %>
-			                      <td><%= traffic.getNickName()%></td> <!-- 작성자 -->           					 
-			                      <td><%= traffic.getTitle() %></td> <!-- 제목 -->
-			                      <td><%= traffic.getCategory() %></td> <!-- 종류 -->
-			                      <td><%= traffic.getSex() %></td> <!-- 성별 -->
-			                      <td><%= traffic.getCount() %></td> <!-- 인원 -->
-			                      <td><%= traffic.getStart() %></td> <!-- 출발지 -->
-			                      <td><%= traffic.getDest() %></td> <!-- 도착지 -->
-			                      <td><%= traffic.getPromiseTime() %></td> <!-- 시간 -->
-			                      <td><%= traffic.getMain() %></td> <!-- 기타내용 -->
-			                      
-                    		</tr>
-           			<%
-	              		}
-	              	} catch(Exception e) {
-	              		e.printStackTrace();
-	              	} finally {
-	              		 // DB 자원 해제
-	              		if(pstmt != null) { pstmt.close(); }
-	              		if(conn != null) { conn.close(); }
-	              	}
-		}
-                  %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="list_footer">
-        <div class="footer_wrap" style="right: 0;">
-          <div class="ppbt_area">
-            <div class="ppbt_left">
-              <script>
-                $(function () {
-                  $('input[name="daterange"]').daterangepicker({
-                    opens: 'left',
-                    locale: {
-                      direction: 'ltr',
-                      format: 'YYYY/MM/DD',
-                      separator: ' - ',
-                      applyLabel: '적용',
-                      cancelLabel: '취소',
-                      weekLabel: 'W',
-                      customRangeLabel: '사용자 설정',
-                      daysOfWeek: ['일', '월', '화', '수', '목', '금', '토'],
-                      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-                      firstDay: moment.localeData().firstDayOfWeek()
-                    }
-                  }, function (start, end, label) {
-                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                    $('#keyword').val("D");
-                  });
-                });
-              </script>
-
-            </div>
-          </div>
-        </div>
-        <div class="ppbt_search">
-          <form action="#" method="get" name="list_search"><input type="hidden" name="act" value="">
-            <input type="hidden" name="vid" value="">
-            <input type="hidden" name="mid" value="#">
-            <input type="hidden" name="category" value="">
-            <select name="search_target" class="ppbt">
-              <option value="title_content">제목+내용</option>
-              <option value="title">제목</option>
-              <option value="content">내용</option>
-              <option value="comment">댓글</option>
-              <option value="nick_name">작성자</option>
-            </select>
-            <input class="ppip focused" type="text" name="search_keyword" value="" title="검색" placeholder="검색어를 입력하세요.">
-            <button class="ppbt bt_mono" type="submit">검색</button>
-          </form>
-        </div>
-        <div class="paging txt_en">
-          <div class="paging_wrap">
-            <a href="#">1</a><a href="#" class="page_num">2</a><a href="#" class="page_num">3</a><a href="#"
-              class="page_num">4</a><a href="#" class="page_num">5</a><a href="#" class="page_num">6</a><a href="#"
-              class="page_num">7</a><a href="#" class="page_num">8</a><a href="#" class="page_num">9</a><a href="#"
-              class="page_num">10</a> ... <a class="bt_page bt_last" href="#" title="last page">끝 페이지</a>
-          </div>
-        </div>
-        </div>
-<footer>
+    		</div>
+    	</div>
+    </section>
+    <footer>
         <nav id="bottom_menu">
             <ul>
                 <li>구해줘! 프렌즈</li>
@@ -264,15 +184,11 @@
         <div class="items">
             <h2 class="items_name">입금 정보</h2>
             <ul>
-            	<li>구해줘! 프렌즈</li>
                 <li>농협 123-123-123456</li>
-                
+                <li>구해줘! 프렌즈</li>
             </ul>
         </div>
-
-</footer>
-
-    </div>
-  </div>
-</body>
+     </footer>
+    
+	</body>
 </html>
