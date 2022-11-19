@@ -40,7 +40,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		let checkMsg;
 		let checkState = true;
 		
-		if (nickval != <%=nick%>) {
+		if (nickval != "<%=nick%>") {
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
@@ -124,7 +124,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		
 		while(rs.next()) {
 			%>
-			 <input type="hidden" name="_number" value="<%=number %>"/><%=number %> <!-- 글 수정 시 글 번호 필요 -->
+			 <input type="hidden" name="_number" value="<%=number %>"/> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
