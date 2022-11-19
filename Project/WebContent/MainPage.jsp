@@ -66,7 +66,7 @@
         <div class="container">
             <div class="row">
                 <div class="photo-slider">
-                    <img src="image/main_1.png" alt="" class="photo-slider-img">
+                    <img src="image/main_1.png" alt="" class="photo-slider-img NOW">
                     <img src="image/main_2.png" alt="" class="photo-slider-img">
                     <img src="image/main_3.png" alt="" class="photo-slider-img">
                     <img src="image/main_4.png" alt="" class="photo-slider-img">
