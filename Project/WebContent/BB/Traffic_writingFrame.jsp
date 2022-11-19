@@ -54,7 +54,7 @@
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
-					window.location.href = "Traffic_writePost.jsp";
+					window.location.href = "BB_friend.jsp";
 				}
 			});
 </script>

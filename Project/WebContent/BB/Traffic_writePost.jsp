@@ -19,7 +19,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 <body>
 <%
 	String number = request.getParameter("number"); // 게시판에서 글번호 받아오기
-	//System.out.println(number);
 	
 	if(number == null) {
 		number = (String) session.getAttribute("NUM");
@@ -29,8 +28,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	String id = (String) session.getAttribute("ID");		
 	String res = (String) request.getParameter("res");
 	if (res == null) res = "";
-	
-	out.println("123: " + res);
 	
 	if (res.equals("failed")){
 		out.println("<div class=background><div id=popup>"+ "이미 참여했습니다." 
@@ -48,7 +45,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	// 작성자와 현재 웹을 사용하는 사용자의 nickname이 동일한지 검사한 뒤, 수정하기 위한 데이터를 전송하는 function
 	$(document).on("click", "#btn", function(){
 		let nickval = $('#_nickName').val();
-		console.log(nickval);
+
 		let checkMsg;
 		let checkState = true;
 		
@@ -62,7 +59,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		if (checkState == true) {
 			$("#form_data").attr("action", "Traffic_writingChangeFrame.jsp");
 			$("#form_data").submit();
-// 			window.location.href = "Traffic_writingChangeFrame.jsp";
 		}
 	});
 
@@ -125,8 +121,8 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
-		System.out.println("글보기 넘버:" + number);
-		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
+
+		
 		if(!number.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number + "'");
 		} 
@@ -137,7 +133,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		
 		while(rs.next()) {
 			%>
-			<!--  <input type="hidden" name="_number" value="<%=number %>"/> --> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
@@ -212,7 +207,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	        Class.forName("com.mysql.cj.jdbc.Driver"); 
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
-	        System.out.println(number);
+	        
 			if(!number.equals("")) {
 				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
 			} 

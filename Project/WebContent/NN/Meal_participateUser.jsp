@@ -70,7 +70,7 @@
 <div id="main_footer">
 <div id="user">
 	<h1>참여자 정보 확인</h1>
-<form id="form_1" action="Traffic_participateCheck.jsp" method="post">
+<form id="form_1" action="Meal_participateCheck.jsp" method="post">
 	<table border=1>
 
 	<%

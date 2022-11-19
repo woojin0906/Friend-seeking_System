@@ -53,7 +53,7 @@
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
-					window.location.href = "Study_writePost.jsp";
+					window.location.href = "YG_friend.jsp";
 				}
 			});
 </script>
@@ -64,8 +64,6 @@
 	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
 	session.setAttribute("ID", id);				
 %>
-
-	
     <header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->

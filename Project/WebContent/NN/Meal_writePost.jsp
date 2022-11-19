@@ -18,13 +18,21 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 </head>
 <body>
 <%
-	String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
+	String number = request.getParameter("number"); // 게시판에서 글번호 받아오기
+	
+	if(number == null) {
+		number = (String) session.getAttribute("NUM");
+	}
 	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-	session.setAttribute("NICK", nick);
 	String id = (String) session.getAttribute("ID");		
-	session.setAttribute("ID", id);
-
+	String res = (String) request.getParameter("res");
+	if (res == null) res = "";
+	
+	if (res.equals("failed")){
+		out.println("<div class=background><div id=popup>"+ "이미 참여했습니다." 
+			+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+	} 
 %>
  <script>
 	//가상으로 삽입한 팝업창을 닫는 function	
@@ -40,7 +48,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 		let checkMsg;
 		let checkState = true;
 		
-		if (nickval != <%=nick%>){
+		if (nickval != "<%=nick%>") {
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
@@ -48,8 +56,8 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 	}
 		if (checkState == true) {
+			$("#form_data").attr("action", "Meal_writingChangeFrame.jsp");
 			$("#form_data").submit();
-			window.location.href = "Traffic_writingChangeFrame.jsp";
 		}
 	});
 
@@ -98,30 +106,33 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <main>
      <div class="main">
            
-     <form id="form_data" action="Meal_writingChangeFrame.jsp" method="get" >
+     <form id="form_data" action="Meal_writePost.jsp" method="post" >
          <table id="_table_writerPage">
         
 	<%
 	try {
-	    Connection conn = null;
+	 	Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		Class.forName("com.mysql.cj.jdbc.Driver"); 
-		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
-		stmt = conn.createStatement();
-		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
-		if(!number.equals("")) {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where number = '" + number + "'");
-		} 
-		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
-		else if(!nick.equals("")) {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where nickname = '" + nick + "'order by number desc limit 1");
-		}
+		if(number == null) number = "";
+		if(nick == null) nick = "";
+		
+	Class.forName("com.mysql.cj.jdbc.Driver"); 
+	conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
+	stmt = conn.createStatement();
+
+	
+	if(!number.equals("")) {
+		rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where number = '" + number + "'");
+	} 
+	// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
+	else {
+		rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, drink, dest, main, writetime from meal where nickname = '" + nick + "'order by number desc limit 1");
+	}
 		
 		while(rs.next()) {
 			%>
-			<input type="hidden" name="_number" value="<%=number %>"/><%=number %> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>
@@ -130,8 +141,8 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              </tr>
              <tr>
                  <th>작성자</th>
-                 <td id="hidden"><input type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
-                 <td id="btn_writePost1"><button id="btn" type="button" >수정하기</button></td>
+                 <td id="hidden" colspan="2"><input id="_nickName" type="hidden" name="_nickName" value="<%=rs.getString("nickname") %>"/><%=rs.getString("nickname") %></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                 <td id="btn_writePost1"><input id="btn" type="button" value="수정하기"></td>
              </tr>
       		 <tr>
                  <th>종류</th>
@@ -180,7 +191,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
              <table id="_talbe_participants">
      		
              <tr><td class="name" id="border" colspan=2><h2>참여자</h2></td>
-             <td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/></td>
+             <td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Meal_participateUser.jsp'"/></td>
              </tr>
                  <tr>
                      <th class="border_th" id="table_border">이름</th>
@@ -199,11 +210,11 @@ pageEncoding="UTF-8" import="java.sql.*"%>
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 	        stmt = conn.createStatement();
 	        
-			if(!number.equals("") && !nick.equals("")) {
+	        if(!number.equals("")) {
 				rs = stmt.executeQuery("select * from mealParticipate where number = '" + number + "'");
 			} 
 			
-			if(!nick.equals("")) {
+			else if(!nick.equals("")) {
 				rs = stmt.executeQuery("select * from mealParticipate where nickname = '" + nick + "'order by number desc limit 1");
 			}
 			

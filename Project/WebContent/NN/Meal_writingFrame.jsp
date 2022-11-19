@@ -54,7 +54,7 @@
 					
 				if(val == "글이 등록되었습니다.확인"){
 					
-					window.location.href = "Meal_writePost.jsp";
+					window.location.href = "NN_friend.jsp";
 				}
 			});
 </script>

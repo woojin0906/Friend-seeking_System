@@ -43,34 +43,32 @@
 		
 		if (titleval == "" || typeval == "" || genval == "" || perval == ""
 			|| alcohol == "" || arrval == "" || conval == "" || timeval == ""){
+			
 			checkMsg = "모든 입력값을 입력해주세요.";
 			checkState = false;
 			$('body').append("<div class=background><div id=popup>"+ checkMsg 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 		} 
 		
-		if(checkState == true)
-			$("#form_1").submit();
+		if(checkState)
+ 			$("#form_1").submit();
 		}
 	);
 
 </script>
 <%
+
 	request.setCharacterEncoding("UTF-8");
 
-	String number = request.getParameter("number");
+	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
+	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
+	String number = (String) session.getAttribute("NUM");
+
 	String type = request.getParameter("_type");
 	String gender = request.getParameter("_gender");
+	String alcohol = request.getParameter("_alcohol");
     String person = request.getParameter("_person");
-    String alcohol = request.getParameter("_alcohol");
-
-    // writePost로 부터 작성자 받아오기
- 	String num = (String) session.getAttribute("NUM");
- 	session.setAttribute("NUM", num);
- 	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
-	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
-	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
-	session.setAttribute("ID", id);			
+    
    %>
    
     <header class="header">
@@ -175,7 +173,7 @@
                  <td><textarea id="_context" name="_context" cols="122" rows="10" value=""><%=request.getParameter("_context") %></textarea></td>        
              </tr>
              <tr>
-                 <td colspan="2"><input id="btn" type="button" value="수정하기"></td>
+                 <td colspan="2"><button id="btn" type="button">수정하기</button></td>
              </tr>
          </table>    
          </form>

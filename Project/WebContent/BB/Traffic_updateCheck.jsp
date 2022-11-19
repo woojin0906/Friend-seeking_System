@@ -27,8 +27,8 @@
  			String number = (String) session.getAttribute("NUM");
  			session.setAttribute("NUM", number);	
  			if(number == null) number = "";
- 			System.out.println("업데이트 넘버:" + number);
-			String title = request.getParameter("_title");
+
+ 			String title = request.getParameter("_title");
 			String nickname = request.getParameter("_nickname");
 			String type = request.getParameter("_type");
 			String time = request.getParameter("_time");

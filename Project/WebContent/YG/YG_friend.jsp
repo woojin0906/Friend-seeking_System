@@ -23,7 +23,7 @@
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	Class.forName("com.mysql.jdbc.Driver"); // JDBC 드라이버 로딩
+	Class.forName("com.mysql.cj.jdbc.Driver"); // JDBC 드라이버 로딩
 	String dbUrl = "jdbc:mysql://localhost:3306/friend?useUnicode=true&characterEncoding=utf8"; // 데이터베이스 정보
 	String dbId = "friends"; // DB 아이디
 	String dbPw = "2022server"; // DB 패스워드
