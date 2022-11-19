@@ -50,8 +50,8 @@
             <div class="cont">
                 <ul>
                     <li><a href="BB/BB_friend.jsp?_index=1"><img src="image/car.png">  붕붕친구</a></li>
-                    <li><a href="NN/NN_friend.jsp"><img src="image/eat.png">  냠냠친구</a></li>
-                    <li><a href="YG/YG_friend.jsp"><img src="image/studying.png">  열공친구</a></li>                        
+                    <li><a href="NN/NN_friend.jsp?_index=1"><img src="image/eat.png">  냠냠친구</a></li>
+                    <li><a href="YG/YG_friend.jsp?_index=1"><img src="image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -85,7 +85,7 @@
         <hr>
         <div id="wrap">
             <div class="simple-view">
-                <a class="astyle" href="BB/BB_friend.jsp"><p><img src="image/car.png"> 붕붕 친구 게시판</p></a>
+                <a class="astyle" href="BB/BB_friend.jsp?_index=1"><p><img src="image/car.png"> 붕붕 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -117,7 +117,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="NN/NN_friend.jsp"><p><img src="image/eat.png"> 냠냠 친구 게시판</p></a>
+                <a class="astyle" href="NN/NN_friend.jsp?_index=1"><p><img src="image/eat.png"> 냠냠 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
 	                try {
@@ -149,7 +149,7 @@
                 %>
             </div>
             <div class="simple-view">
-                <a class="astyle" href="YG_friend.jsp"><p><img src="image/studying.png"> 열공 친구 게시판</p></a>
+                <a class="astyle" href="YG/YG_friend.jsp?_index=1"><p><img src="image/studying.png"> 열공 친구 게시판</p></a>
                 <hr class="hrstyle">
                 <%
                 try {
