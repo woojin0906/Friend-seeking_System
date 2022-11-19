@@ -39,9 +39,7 @@
  	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
-    </header>
-    
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -60,6 +58,9 @@
             <label for="menuicon" class="background"></label>
         </div>
     </div>
+    </header>
+    
+    
     
 
     <div id="content">
@@ -181,7 +182,8 @@
                 %>
             </div>
         </div>
-    </div>
+        </div>
+        
     
     <footer>
         <nav id="bottom_menu">
