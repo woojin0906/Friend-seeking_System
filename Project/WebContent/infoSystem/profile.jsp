@@ -48,8 +48,8 @@
       <div class="about">간단한 자기소개(없어도됨)</div>
       
       <div class="buttons">
-        <button onclick="location.href='#'">내가 쓴 글</button>
-        <button onclick="location.href='#'">참여한 글</button>
+        <button onclick="location.href='profile_write.jsp'">내가 쓴 글</button>
+        <button onclick="location.href='prifile_part.jsp'">참여한 글</button>
       </div>
   </div>
 
