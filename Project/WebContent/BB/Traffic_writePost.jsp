@@ -26,9 +26,16 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	}
 	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-	session.setAttribute("NICK", nick);
 	String id = (String) session.getAttribute("ID");		
-	session.setAttribute("ID", id);
+	String res = (String) request.getParameter("res");
+	if (res == null) res = "";
+	
+	out.println("123: " + res);
+	
+	if (res.equals("failed")){
+		out.println("<div class=background><div id=popup>"+ "이미 참여했습니다." 
+			+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
+	} 
 %>
 
 <script>

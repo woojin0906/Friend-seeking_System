@@ -54,9 +54,7 @@
 					stmt.close();
 					conn.close();
 			} catch (Exception e) {
-				//e.printStackTrace();
-				request.setAttribute("_res", "중복 참여");
-				pageContext.forward("BB/Traffic_participateUser.jsp");
+				response.sendRedirect("BB/Traffic_writePost.jsp?res=failed");
 			}
 		%>
 </body>

@@ -168,7 +168,9 @@
 			String res = (String) request.getAttribute("_res");
 			if (res == null) res = "";
 			
-			if (res.equals("중복 참여")){
+			out.println("123: " + res);
+			
+			if (res.equals("failed")){
 				out.println("<div class=background><div id=popup>"+ "이미 참여했습니다." 
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 			} 
