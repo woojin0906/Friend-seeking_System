@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -28,9 +28,9 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  ºØºØÄ£±¸</a></li>
-                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  ³È³ÈÄ£±¸</a></li>
-                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  ¿­°øÄ£±¸</a></li>                        
+                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  ë¶•ë¶•ì¹œêµ¬</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  ëƒ ëƒ ì¹œêµ¬</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  ì—´ê³µì¹œêµ¬</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -43,7 +43,7 @@
 	  	<div class="nameabout">
 	  	<%
 		String nick = (String) session.getAttribute("NICK");
-            		System.out.println("Å×½ºÆ®");
+            		System.out.println("í…ŒìŠ¤íŠ¸");
 	request.setCharacterEncoding("UTF-8");
 	try {
 	
@@ -58,10 +58,10 @@
 	
 	while(rs.next()) {
 		%>
-	      <div class="name">´Ð³×ÀÓ : <%=nick %></div>
-	      <div class="about">ÀÌ¸§ : <%=rs.getString("name") %></div>
-	      <div class="about">¼ºº° : <%=rs.getString("sex") %></div>
-	      <div class="about">ÀüÈ­¹øÈ£ : <%=rs.getString("phone") %></div>
+	      <div class="name">ë‹‰ë„¤ìž„ : <%=nick %></div>
+	      <div class="about">ì´ë¦„ : <%=rs.getString("name") %></div>
+	      <div class="about">ì„±ë³„ : <%=rs.getString("sex") %></div>
+	      <div class="about">ì „í™”ë²ˆí˜¸ : <%=rs.getString("phone") %></div>
 	      
 		<%
 	}
@@ -78,15 +78,15 @@
 	    </div>
 	    <div class="rightinfo">
 	   		<div class="buttons smallbutton">
-				<button onclick="location.href='infochange.jsp'">³» Á¤º¸ ¼öÁ¤</button>
+				<button onclick="location.href='infochange.jsp'">ë‚´ ì •ë³´ ìˆ˜ì •</button>
 	      	</div>
 	    </div>
   	</div>
       
       <div class="center">
 	      <div class="buttons">
-	        <button onclick="location.href='profile_write.jsp'">³»°¡ ¾´ ±Û</button>
-	        <button onclick="location.href='profile_part.jsp'">Âü¿©ÇÑ ±Û</button>
+	        <button onclick="location.href='profile_write.jsp'">ë‚´ê°€ ì“´ ê¸€</button>
+	        <button onclick="location.href='profile_part.jsp'">ì°¸ì—¬í•œ ê¸€</button>
 	      </div>
       </div>
   </div>
@@ -94,33 +94,33 @@
 
     <nav id="bottom_menu">
         <ul>
-            <li>±¸ÇØÁà! ÇÁ·»Áî</li>
-            <li>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</li>
-            <li>ÀúÀÛ±Ç Á¤º¸</li>
-            <li>ÀÌ¿ë ¾È³»</li>
+            <li>êµ¬í•´ì¤˜! í”„ë Œì¦ˆ</li>
+            <li>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</li>
+            <li>ì €ìž‘ê¶Œ ì •ë³´</li>
+            <li>ì´ìš© ì•ˆë‚´</li>
         </ul>
     </nav>
     <div class="items">
-        <h2 class="items_name">¹®ÀÇÀüÈ­</h2>
+        <h2 class="items_name">ë¬¸ì˜ì „í™”</h2>
         <ul>
             <li class="phone">123-1234</li>
             <li>10:00 - 18:00(Lunch 12:00 - 13:00)</li>
         </ul>
     </div>
     <div class="items">
-        <h2 class="items_name">±¸ÇØÁà! ÇÁ·»Áî</h2>
+        <h2 class="items_name">êµ¬í•´ì¤˜! í”„ë Œì¦ˆ</h2>
         <ul>
-            <li>ÁÖ¼Ò : ÀÎÃµ±¤¿ª½Ã ³²±¸ ÀÎÇÏ·Î 100</li>
-            <li>ÀüÈ­ : 031-123-1234</li>
-            <li>ÆÑ½º : 031-123-1234</li>
-            <li>ÀÌ¸ÞÀÏ : 123-12-12345</li>
+            <li>ì£¼ì†Œ : ì¸ì²œê´‘ì—­ì‹œ ë‚¨êµ¬ ì¸í•˜ë¡œ 100</li>
+            <li>ì „í™” : 031-123-1234</li>
+            <li>íŒ©ìŠ¤ : 031-123-1234</li>
+            <li>ì´ë©”ì¼ : 123-12-12345</li>
         </ul>
     </div>
     <div class="items">
-        <h2 class="items_name">ÀÔ±Ý Á¤º¸</h2>
+        <h2 class="items_name">ìž…ê¸ˆ ì •ë³´</h2>
         <ul>
-            <li>³óÇù 123-123-123456</li>
-            <li>±¸ÇØÁà! ÇÁ·»Áî</li>
+            <li>ë†í˜‘ 123-123-123456</li>
+            <li>êµ¬í•´ì¤˜! í”„ë Œì¦ˆ</li>
         </ul>
     </div>
  </footer>

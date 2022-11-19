@@ -236,6 +236,8 @@ input#menuicon.hidden {
   padding: 0;
   border: none;
   margin-left: 10px;
+  font-family:'Do Hyeon', sans-serif;
+  font-size: 17px;
 }
 .btn-3 span {
   position: relative;
@@ -558,7 +560,7 @@ footer {
     border-top: 1px solid #e3e3e3;
 }
 #bottom_menu ul {
-    padding : 0px 0 0 30px;
+    padding : 15px 0 0 30px;
     font-weight: bold;
 }
 #bottom_menu li {
@@ -566,13 +568,14 @@ footer {
     margin-right: 20px;
 }
 footer .items {
-    float: left;
-    margin : 0px 20px 0 30px;
+position: relative;
+  float: left;
+  margin : 55px 20px 0 60px;
 }
 
-footer .items ul { margin-top: 2px; }
+footer .items ul { margin-top: 20px; }
 footer .items li { margin-top: 2px; list-style: none; }
 footer .phone {
-    font-size: 25px;
-    font-weight: bold;
+  font-size: 25px;
+  font-weight: bold;
 }
