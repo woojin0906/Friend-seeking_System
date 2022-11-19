@@ -301,16 +301,14 @@ input#menuicon.hidden {
 }
 
 section {
-	
+	position: absolute;
+	width: 100%;
+	top: 120px;
 }
 
-
-#list {
-/* 	width: 100%; */
-/* 	height: 100%; */
+section .content {
+	text-align: center;
 }
-
-
 
 /* footer */
 footer {

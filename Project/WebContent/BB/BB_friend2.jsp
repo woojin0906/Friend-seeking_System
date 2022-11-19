@@ -55,8 +55,11 @@
     </header>
     
     <section>
+    	<div class="content">
+	   		<p><h2>붕붕친구 게시판</h2>
+    	
+    	</div>
     </section>
-    
     <footer>
         <nav id="bottom_menu">
             <ul>
