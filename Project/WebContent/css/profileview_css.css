@@ -318,6 +318,9 @@ input#menuicon.hidden {
   display: flex;
   flex-direction: column;
 }
+.center {
+	align-items: center;
+}
 .small {
 	height: 320px;
 	width: 45%;

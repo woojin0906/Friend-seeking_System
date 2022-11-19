@@ -38,7 +38,7 @@
         </div>
     </div>
 	</header>
-    <div class="wrapper">
+    <div class="wrapper center">
       <div class="name">닉네임(아이디)이 들어감</div>
       <div class="buttons"><button>내가 쓴 글</button></div>
       <hr>

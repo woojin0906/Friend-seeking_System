@@ -57,7 +57,7 @@
       <div class="center">
 	      <div class="buttons">
 	        <button onclick="location.href='profile_write.jsp'">내가 쓴 글</button>
-	        <button onclick="location.href='prifile_part.jsp'">참여한 글</button>
+	        <button onclick="location.href='profile_part.jsp'">참여한 글</button>
 	      </div>
       </div>
   </div>
