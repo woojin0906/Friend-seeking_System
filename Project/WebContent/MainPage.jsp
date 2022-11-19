@@ -66,10 +66,10 @@
         <div class="container">
             <div class="row">
                 <div class="photo-slider">
-                    <img src="image/ex.png" alt="" class="photo-slider-img">
-                    <img src="http://times-bignews.com/UploadFiles/201508/images/20150804143239.jpg" alt="" class="photo-slider-img">
-                    <img src="https://67.media.tumblr.com/f297ec85158c7767b52d8443513b5675/tumblr_nkasx4XoCN1u92dlto1_500.jpg" alt="" class="photo-slider-img">
-                    <img src="http://down.qnwz.cn/uploads/allimg/140603/1-1406031521295E.jpg" alt="" class="photo-slider-img">
+                    <img src="image/main_1.png" alt="" class="photo-slider-img">
+                    <img src="image/main_2.png" alt="" class="photo-slider-img">
+                    <img src="image/main_3.png" alt="" class="photo-slider-img">
+                    <img src="image/main_4.png" alt="" class="photo-slider-img">
                 </div>
                 <div class="photo-controls">
                     <div class="photo-pagination">
