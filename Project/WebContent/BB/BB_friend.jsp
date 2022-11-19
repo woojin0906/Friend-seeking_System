@@ -236,9 +236,6 @@
           </div>
         </div>
         </div>
-
-    </div>
-  </div>
 <footer>
         <nav id="bottom_menu">
             <ul>
@@ -274,5 +271,8 @@
         </div>
 
 </footer>
+
+    </div>
+  </div>
 </body>
 </html>
