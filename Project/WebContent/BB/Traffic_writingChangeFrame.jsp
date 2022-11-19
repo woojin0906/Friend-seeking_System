@@ -69,9 +69,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
-	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
 	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
-	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
 
 	// 글 보기에서 글의 내용 가져오기
 	String number = request.getParameter("number");
