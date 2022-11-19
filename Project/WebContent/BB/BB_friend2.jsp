@@ -54,6 +54,8 @@
     </div>
     </header>
     
+    <section>
+    </section>
     
     <footer>
         <nav id="bottom_menu">

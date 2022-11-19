@@ -1,9 +1,18 @@
 @charset "UTF-8";@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+* {
+	margin: 0;
+}
+
+html, body {
+	position: relative;
+	widht: 100%;
+	height: 100%;
+}
 
 .header {
   font-family:'Do Hyeon', sans-serif;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -123,7 +132,7 @@
     display: block;
     width: 15px;
     height: 17px;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     margin: 35px;
   }
@@ -286,9 +295,21 @@ input#menuicon.hidden {
 .btn-3 span:hover:before {
   height: 100%;
 }
+
 .btn-3 span:hover:after {
   width: 100%;
 }
+
+section {
+	
+}
+
+
+#list {
+/* 	width: 100%; */
+/* 	height: 100%; */
+}
+
 
 
 /* footer */
@@ -296,7 +317,7 @@ footer {
 font-family: 'Lato', sans-serif;
   position: absolute;
   left: 0;
-  top: 1350px;
+  top: 900px;
   height : 300px;
   width: 100%;
   background-color: #A6A6A6;
