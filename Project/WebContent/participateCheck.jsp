@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -32,7 +33,6 @@
 				if( phone == null ) phone="";
 				
 				try {
-					
 					Connection conn = null;
 					Statement sstmt = null;
 					PreparedStatement stmt = null;
@@ -44,33 +44,19 @@
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
 					
-					sql = "select nickname from trafficparticipate";
-					sstmt = conn.createStatement();
-					rs = stmt.executeQuery(sql);
-					
-					while(rs.next()){
-		               	String nickname = rs.getString(1);
-						if(nickname.equals(nick)){
-							infoState = false;
-							break;
-						}
-		            }
-					if(infoState) {
 						sql = "insert into trafficParticipate (id, number, name, sex, phone) values ('" + id + "', '" + num + "', '" + name + "', '" + sex + "', '" + phone + "')";
 						stmt = conn.prepareStatement(sql);
 					
 						stmt.executeUpdate();
 						
 						response.sendRedirect("BB/Traffic_writePost.jsp");
-					} else {
-						request.setAttribute("_res", "중복 참여");
-						pageContext.forward("BB/Traffic_participateUser.jsp");
-					}
 
 					stmt.close();
 					conn.close();
 			} catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
+				request.setAttribute("_res", "중복 참여");
+				pageContext.forward("BB/Traffic_participateUser.jsp");
 			}
 		%>
 </body>

@@ -379,6 +379,7 @@ footer .phone {
 	z-index: -1;
 }
 
+
 .background {
   position: fixed;
   top: 0;
@@ -389,6 +390,22 @@ footer .phone {
   z-index: 1000;
   opacity: 100%;
   backdrop-filter: blur(4px);
+}
+
+#popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+	width: 20%;
+	height: 20%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 1.3vw;
+	background-color: white;
+	text-align: center;
+	line-height: 500%;
+	box-shadow: 0px 0px 15px black;
+	border-radius: 10px;
 }
 
 #closeBtn {
