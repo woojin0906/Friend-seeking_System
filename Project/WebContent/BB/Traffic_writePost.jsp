@@ -48,8 +48,9 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 					+ "<button id=closeBtn type=button>확인</button>" +"</div></div>");
 	}
 		if (checkState == true) {
+			$("#form_data").attr("action", "Traffic_writingChangeFrame.jsp");
 			$("#form_data").submit();
-			window.location.href = "Traffic_writingChangeFrame.jsp";
+// 			window.location.href = "Traffic_writingChangeFrame.jsp";
 		}
 	});
 

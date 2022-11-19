@@ -76,6 +76,10 @@
 	String type = request.getParameter("_type");
 	String gender = request.getParameter("_gender");
     String person = request.getParameter("_person");
+    System.out.println("number의 값: " + number);
+    System.out.println("type의 값: " + type);
+    System.out.println("gender의 값: " + gender);
+    System.out.println("person의 값: " + person);
    // System.out.println(number);
     System.out.println(nick);
     System.out.println(id);
