@@ -18,7 +18,12 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 </head>
 <body>
 <%
-	String number = request.getParameter("number"); 			// 게시판에서 글번호 받아오기
+	String number = request.getParameter("number"); // 게시판에서 글번호 받아오기
+	//System.out.println(number);
+	
+	if(number == null) {
+		number = (String) session.getAttribute("NUM");
+	}
 	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
 	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
 	session.setAttribute("NICK", nick);
@@ -113,19 +118,19 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 		stmt = conn.createStatement();
-		
+		System.out.println("글보기 넘버:" + number);
 		// 게시판에서 글 보기로 넘어올 때 넘버 값 사용
 		if(!number.equals("")) {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where number = '" + number + "'");
 		} 
 		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
-		else if(!nick.equals("")) {
+		else {
 			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
 		}
 		
 		while(rs.next()) {
 			%>
-			 <input type="hidden" name="_number" value="<%=number %>"/> <!-- 글 수정 시 글 번호 필요 -->
+			<!--  <input type="hidden" name="_number" value="<%=number %>"/> --> <!-- 글 수정 시 글 번호 필요 -->
              <tr>
                  <th class="name" id="table_top"><h2>제목</h2></th>
                  <td id="table_top"><input type="hidden" name="_title" value="<%=rs.getString("title") %>"/><%=rs.getString("title") %></td>

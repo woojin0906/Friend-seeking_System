@@ -24,9 +24,10 @@
 			String date = sf.format(nowTime);
 			
  			// hidden으로 숨겨진 number값을 받아와 해당하는 넘버값의 글 수정하기
- 			String number = request.getParameter("number");
+ 			String number = (String) session.getAttribute("NUM");
+ 			session.setAttribute("NUM", number);	
  			if(number == null) number = "";
- 			
+ 			System.out.println("업데이트 넘버:" + number);
 			String title = request.getParameter("_title");
 			String nickname = request.getParameter("_nickname");
 			String type = request.getParameter("_type");
