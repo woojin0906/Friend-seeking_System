@@ -67,9 +67,9 @@
             <div class="row">
                 <div class="photo-slider">
                     <img src="image/main_1.png" alt="" class="photo-slider-img NOW">
-                    <img id="BB" src="image/main_2.png" id="bb" alt="" class="photo-slider-img">
-                    <img id="NN" src="image/main_3.png" id="nn" alt="" class="photo-slider-img">
-                    <img id="YG" src="image/main_4.png" id="yg" alt="" class="photo-slider-img">
+                    <img id="BB" src="image/BB_slide.png" id="bb" alt="" class="photo-slider-img">
+                    <img id="NN" src="image/NN_slide.png" id="nn" alt="" class="photo-slider-img">
+                    <img id="YG" src="image/YG_slide.png" id="yg" alt="" class="photo-slider-img">
                 </div>
                 <div class="photo-controls">
                     <div class="photo-pagination">
