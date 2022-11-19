@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -59,7 +59,7 @@
     		<div class="wrap">
 	    		<div class="title">
 	    			<strong>붕붕친구</strong>
-	    			<p>가나다라마바사아자차카타파하하하하하</p>
+	    			<p>부담갖지 말고 편하게 타자!</p>
 	    		</div>
 	    		<div class="list_wrap">
 	                <div class="list">
@@ -68,43 +68,28 @@
 		                        <div class="title">제목</div>
 		                        <div class="writer">글쓴이</div>
 		                        <div class="date">작성일</div>
-		                        <div class="category">종류</div>
+		                        <div class="category">분류</div>
 	                    </div>
-	                    <div>
-	                        <div class="num">5</div>
-	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
-	                        <div class="writer">아무개</div>
-	                        <div class="date">2022.08.21</div>
-	                        <div class="count">33</div>
-	                    </div>
-	                    <div>
-	                        <div class="num">4</div>
-	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
-	                        <div class="writer">아무개</div>
-	                        <div class="date">2022.08.21</div>
-	                        <div class="count">33</div>
-	                    </div>
-	                    <div>
-	                        <div class="num">3</div>
-	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
-	                        <div class="writer">아무개</div>
-	                        <div class="date">2022.08.21</div>
-	                        <div class="count">33</div>
-	                    </div>
-	                    <div>
-	                        <div class="num">2</div>
-	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
-	                        <div class="writer">아무개</div>
-	                        <div class="date">2022.08.21</div>
-	                        <div class="count">33</div>
-	                    </div>
-	                    <div>
-	                        <div class="num">1</div>
-	                        <div class="title"><a href="view.html">글 제목이 들어감</a></div>
-	                        <div class="writer">아무개</div>
-	                        <div class="date">2022.08.21</div>
-	                        <div class="count">33</div>
-	                    </div>
+	                    <%	// 각 게시판 게시글 읽어오는 부분
+	                    	Class.forName("com.mysql.cj.jdbc.Driver");
+            				Connection conn = DriverManager.getConnection(
+            						"jdbc:mysql://localhost/friend", "friends", "2022server");
+            				Statement stmt = conn.createStatement();
+            				ResultSet rs = stmt.executeQuery(
+            						"select number, title, nickname, writetime, category from traffic order by number desc limit 10");
+            				
+            				while(rs.next()){
+            					String number = rs.getString(1);
+            					String title = rs.getString(2);
+            					String nickname = rs.getString(3);
+            					String writetime = rs.getString(4).substring(0, 10);
+            					String category = rs.getString(5);
+            					
+            					out.println("<div><div class=num>"+number+"</div><div class=title><a href=Traffic_writePost.jsp?number="
+            							+number+">"+title+"</a></div><div class=writer>"+nickname+"</div><div class=date>"
+            							+writetime+"</div><div class=category>"+category+"</div></div>");
+            				}
+	                    %>
                 	</div>
                 <div class="page">
                     <a href="#" class="bt first"><<</a>
