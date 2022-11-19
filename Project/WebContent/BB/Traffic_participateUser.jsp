@@ -36,9 +36,7 @@
         <% 
   
         String id = (String) session.getAttribute("ID");
-		session.setAttribute("ID", id);
 		String number = (String) session.getAttribute("NUM");
-		session.setAttribute("NUM", number);
 		String nick = request.getParameter("_nickName"); // 작성자 nick
 		String nickName = (String) session.getAttribute("NICK"); // 현재 로그인된 nick
         if(session.getAttribute("ID") != null) { %>

@@ -18,7 +18,6 @@
 				request.setCharacterEncoding("UTF-8");
 	
 				String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-				session.setAttribute("NICK", nick);
 				String numb = (String) session.getAttribute("NUM");
 				String number = request.getParameter("_number");
 				int num =  Integer.parseInt(numb);
@@ -45,12 +44,12 @@
 					String url = "jdbc:mysql://localhost:3306/friend";
 					conn  = DriverManager.getConnection(url, "friends", "2022server");
 					
-					sql = "select * from member";
+					sql = "select nickname from trafficparticipate";
 					sstmt = conn.createStatement();
 					rs = stmt.executeQuery(sql);
 					
 					while(rs.next()){
-		               	String nickname = rs.getString("nickname");
+		               	String nickname = rs.getString(1);
 						if(nickname.equals(nick)){
 							infoState = false;
 							break;
