@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*"%>
+    pageEncoding="UTF-8" import="java.sql.*" import="java.lang.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>붕붕친구</title>
 		
-		<link href="../css/BB_friend.css?ver=1" rel="stylesheet" type="text/css">
+		<link href="../css/friend.css?ver=1" rel="stylesheet" type="text/css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -17,9 +17,10 @@
 		<!-- 로그인 했을 때 -->
         <% 
 	        String id = (String) session.getAttribute("ID");		
-	    	session.setAttribute("ID", id);
 	        String nick_getData = (String) session.getAttribute("NICK");
-	        session.setAttribute("NICK", nick_getData);	
+// 	        String index = request.getParameter("_index");
+	        int index = Integer.parseInt(request.getParameter("_index"));
+	        
 	        if(session.getAttribute("ID") != null) { %>
 	 	        <div class="btnright">
 	 	        	<%=nick_getData%>님 환영합니다.
@@ -44,9 +45,9 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
-                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
-                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
+                    <li><a href="../BB/BB_friend.jsp?_index=1"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../NN/NN_friend.jsp?_index=1"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../YG/YG_friend.jsp?_index=1"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
@@ -76,7 +77,7 @@
             						"jdbc:mysql://localhost/friend", "friends", "2022server");
             				Statement stmt = conn.createStatement();
             				ResultSet rs = stmt.executeQuery(
-            						"select number, title, nickname, writetime, category from traffic order by number desc limit 10");
+            						"select number, title, nickname, writetime, category from traffic order by number desc limit " + (index-1)*10 + ",10");
             				
             				while(rs.next()){
             					String number = rs.getString(1);
@@ -92,16 +93,30 @@
 	                    %>
                 	</div>
                 <div class="page">
-                    <a href="#" class="bt first"><<</a>
-                    <a href="#" class="bt prev"><</a>
-                    <a href="#" class="num on">1</a>
-                    <a href="#" class="num">2</a>
-                    <a href="#" class="num">3</a>
-                    <a href="#" class="bt next">></a>
-                    <a href="#" class="bt last">>></a>
+                    <%
+	                    Class.forName("com.mysql.cj.jdbc.Driver");
+	    				Connection conn2 = DriverManager.getConnection(
+	    						"jdbc:mysql://localhost/friend", "friends", "2022server");
+	    				Statement stmt2 = conn2.createStatement();
+	    				ResultSet rs2 = stmt2.executeQuery("select count(number) from traffic");
+                    	int max = 0, temp = 1;
+                    	
+                    	while(rs2.next()){
+                    		max = rs2.getInt(1);
+                    		
+	                    	while(max > 0){
+	                    		out.println("<a href=BB_friend.jsp?_index="+temp+" class=num>"+temp+"</a>");
+	                    		temp++;
+	                    		max -= 10;
+	                    	}
+                    	}
+                    %>
                 </div>
                 <div class="bt_wrap">
-                    <a href="Traffic_writingFrame.jsp" class="on">등록</a>
+	                <%
+	                	if(session.getAttribute("ID") != null)
+                    		out.println("<a href=Traffic_writingFrame.jsp class=on>등록</a>");
+                    %>
                 </div>
     		</div>
     	</div>

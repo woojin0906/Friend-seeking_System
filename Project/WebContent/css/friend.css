@@ -426,6 +426,7 @@ font-family: 'Lato', sans-serif;
 #board .page a.num {
     padding-top: 9px;
     font-size: 14px;
+    border: 1px solid #ddd;
 }
 
 #board .page a.num.on {

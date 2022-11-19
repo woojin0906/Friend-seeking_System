@@ -14,7 +14,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 	
-    <title>Document</title>
+    <title>Welcome!</title>
 </head>
 <body>
     <header class="header">
@@ -49,7 +49,7 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="BB/BB_friend.jsp"><img src="image/car.png">  붕붕친구</a></li>
+                    <li><a href="BB/BB_friend.jsp?_index=1"><img src="image/car.png">  붕붕친구</a></li>
                     <li><a href="NN/NN_friend.jsp"><img src="image/eat.png">  냠냠친구</a></li>
                     <li><a href="YG/YG_friend.jsp"><img src="image/studying.png">  열공친구</a></li>                        
                 </ul>
