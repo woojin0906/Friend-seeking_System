@@ -28,9 +28,9 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="BB/BB_friend.jsp"><img src="../image/car.png">  贺贺模备</a></li>
-                    <li><a href="NN/NN_friend.jsp"><img src="../image/eat.png">  橙橙模备</a></li>
-                    <li><a href="YG/YG_friend.jsp"><img src="../image/studying.png">  凯傍模备</a></li>                        
+                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  贺贺模备</a></li>
+                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  橙橙模备</a></li>
+                    <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  凯傍模备</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
