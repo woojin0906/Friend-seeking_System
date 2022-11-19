@@ -367,7 +367,7 @@ section {
 }
 
 #board .list 
-    .num, .writer, .date, .count {
+    .num, .writer, .date, .category {
     width: 10%;
 }
 

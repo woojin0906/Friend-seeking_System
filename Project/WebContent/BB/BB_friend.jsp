@@ -44,7 +44,7 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../BB/BB_friend2.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
                     <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
@@ -68,43 +68,8 @@
 		                        <div class="title">제목</div>
 		                        <div class="writer">글쓴이</div>
 		                        <div class="date">작성일</div>
-		                        <div class="count">조회</div>
+		                        <div class="category">종류</div>
 	                    </div>
-<!-- 	                    <div> -->
-<!-- 	                        <div class="num">5</div> -->
-<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
-<!-- 	                        <div class="writer">아무개</div> -->
-<!-- 	                        <div class="date">2022.08.21</div> -->
-<!-- 	                        <div class="count">33</div> -->
-<!-- 	                    </div> -->
-<!-- 	                    <div> -->
-<!-- 	                        <div class="num">5</div> -->
-<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
-<!-- 	                        <div class="writer">아무개</div> -->
-<!-- 	                        <div class="date">2022.08.21</div> -->
-<!-- 	                        <div class="count">33</div> -->
-<!-- 	                    </div> -->
-<!-- 	                    <div> -->
-<!-- 	                        <div class="num">5</div> -->
-<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
-<!-- 	                        <div class="writer">아무개</div> -->
-<!-- 	                        <div class="date">2022.08.21</div> -->
-<!-- 	                        <div class="count">33</div> -->
-<!-- 	                    </div> -->
-<!-- 	                    <div> -->
-<!-- 	                        <div class="num">5</div> -->
-<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
-<!-- 	                        <div class="writer">아무개</div> -->
-<!-- 	                        <div class="date">2022.08.21</div> -->
-<!-- 	                        <div class="count">33</div> -->
-<!-- 	                    </div> -->
-<!-- 	                    <div> -->
-<!-- 	                        <div class="num">5</div> -->
-<!-- 	                        <div class="title"><a href="#">글 제목이 들어감</a></div> -->
-<!-- 	                        <div class="writer">아무개</div> -->
-<!-- 	                        <div class="date">2022.08.21</div> -->
-<!-- 	                        <div class="count">33</div> -->
-<!-- 	                    </div> -->
 	                    <div>
 	                        <div class="num">5</div>
 	                        <div class="title"><a href="#">글 제목이 들어감</a></div>
