@@ -36,7 +36,7 @@
 			String person = request.getParameter("_person");
 			String arrival = request.getParameter("_arrival");
 			String context = request.getParameter("_context");
-			
+		
 			if( !title.equals("") && !time.equals("") && !person.equals("") && !gender.equals("") && !type.equals("") && !arrival.equals("") && !context.equals("")) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver"); 

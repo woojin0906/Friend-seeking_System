@@ -9,11 +9,15 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 <html>
 <head>
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <link rel="stylesheet" type="text/css" media="screen" href="../css/writePostStyle.css">
  <script src="../script/header.js" type="text/javascript"></script>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <link rel="stylesheet" type="text/css" media="screen" href="../css/writePostStyle.css">
+ 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
  <title>글모음 홈페이지</title>
 </head>
 <body>
@@ -23,9 +27,10 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	if(number == null) {
 		number = (String) session.getAttribute("NUM");
 	}
-	session.setAttribute("NUM", number);						// 글 수정을 위해 글 번호 세션에 넘기기
-	String nick = (String) session.getAttribute("NICK");		// 게시판에서 NICK, ID 받아오기
-	String id = (String) session.getAttribute("ID");		
+	session.setAttribute("NUM", number);				
+    String nick_getData = (String) session.getAttribute("NICK");
+    session.setAttribute("NICK", nick_getData);	// 글 수정을 위해 글 번호 세션에 넘기기
+    
 	String res = (String) request.getParameter("res");
 	if (res == null) res = "";
 	
@@ -49,7 +54,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		let checkMsg;
 		let checkState = true;
 		
-		if (nickval != "<%=nick%>") {
+		if (nickval != "<%=nick_getData%>") {
 			checkMsg = "수정할 권한이 없습니다.";
 			checkState = false;
 			
@@ -63,14 +68,15 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 	});
 
 </script>
-    <header class="header">
+      <header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
-  
+        String id = (String) session.getAttribute("ID");		
+    	session.setAttribute("ID", id);
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
- 	        	<%=nick%>님 환영합니다.
+ 	        	<%=nick_getData%>님 환영합니다.
  	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
  	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
@@ -78,12 +84,11 @@ pageEncoding="UTF-8" import="java.sql.*" %>
         <% } else { %>
  	        <div class="btnright">
  	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
-    </header>
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -93,7 +98,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
                     <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
                     <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
@@ -102,6 +106,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
             <label for="menuicon" class="background"></label>
         </div>
     </div>
+    </header>
 
 <div id="main_footer">
  	<main>
@@ -116,7 +121,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 			ResultSet rs = null;
 			
 			if(number == null) number = "";
-			if(nick == null) nick = "";
+			if(nick_getData == null) nick_getData = "";
 			
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
@@ -128,7 +133,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		} 
 		// 글 작성 후 바로 글 보기로 넘어갈 때 넘버 값을 모르기 때문에 사용자의 NICK을 사용
 		else {
-			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick + "'order by number desc limit 1");
+			rs = stmt.executeQuery("select nickname, title, category, promisetime, sex, count, start, dest, main, writetime from traffic where nickname = '" + nick_getData + "'order by number desc limit 1");
 		}
 		
 		while(rs.next()) {
@@ -173,6 +178,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
                  <td id="context" colspan="3"><input type="hidden" name="_context" value="<%=rs.getString("main") %>"/><%=rs.getString("main") %></td>        
              </tr>
          </table>    
+         	<input id="btnPost" type="button" value="목록" onclick="location.href='BB_friend.jsp?_index=1'">
          </form>
       <%
 		}
@@ -183,7 +189,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 		e.printStackTrace();
 	}
 		%>
-		
+
 	  <div class="table2">
          <form>
              <table id="_talbe_participants">
@@ -202,7 +208,7 @@ pageEncoding="UTF-8" import="java.sql.*" %>
       		Statement stmt = null;
       		ResultSet rs = null;
 	   		if(number == null) number = "";
-	    	if(nick == null) nick = "";
+	    	if(nick_getData == null) nick_getData = "";
 	    	
 	        Class.forName("com.mysql.cj.jdbc.Driver"); 
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
@@ -212,8 +218,8 @@ pageEncoding="UTF-8" import="java.sql.*" %>
 				rs = stmt.executeQuery("select * from trafficParticipate where number = '" + number + "'");
 			} 
 			
-			else if(!nick.equals("")) {
-				rs = stmt.executeQuery("select * from trafficParticipate where name = '" + nick + "'order by number desc limit 1");
+			else if(!nick_getData.equals("")) {
+				rs = stmt.executeQuery("select * from trafficParticipate where name = '" + nick_getData + "'order by number desc limit 1");
 			}
 			
 			while(rs.next()) {

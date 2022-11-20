@@ -6,6 +6,7 @@
 }
 
 .header {
+  font-family:'Do Hyeon', sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,6 +20,8 @@
   -moz-transition: height 0.3s;
   transition: height 0.3s;
   display: inline-block;
+  font-size: 20px;
+  z-index: 1;
 }
 
 .header .logoimg {
@@ -55,6 +58,7 @@
 
 /* --------------------------- sidebar*/
 #boardside * {
+	font-family:'Do Hyeon', sans-serif;
     list-style: none;
     text-decoration: none;
     margin: 0;
@@ -97,7 +101,7 @@
     color: #fff;
     padding: 10px;
     margin: 10px;
-    font-size: 15px;
+    font-size: 25px;
   }
   
   #boardside .sidebar .cont > ul > li:active,

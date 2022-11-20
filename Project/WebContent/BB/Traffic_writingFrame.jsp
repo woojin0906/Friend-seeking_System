@@ -15,6 +15,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" type="text/css" media="screen" href="../css/writerStyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <title>글작성 홈페이지</title>
 </head>
 <body>
@@ -58,35 +61,29 @@
 				}
 			});
 </script>
-<%
-	// 값 잘 받아옴
-	String nick = (String) session.getAttribute("NICK");			// 글 작성 후 바로 글 보기로 넘어가기 위해 NICK을 받아오기
-	session.setAttribute("NICK", nick);								// NICK을 세션에 넘기기
-	String id = (String) session.getAttribute("ID");				// 참여하기를 위해 ID 세션에 받아오기
-	session.setAttribute("ID", id);									// 참여하기를 위해 ID 세션에 넘기기
-%>
-
-    <header class="header">
+        <header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
-  
+        String id = (String) session.getAttribute("ID");		
+    	session.setAttribute("ID", id);
+        String nick_getData = (String) session.getAttribute("NICK");
+        session.setAttribute("NICK", nick_getData);	
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
- 	        	<%=nick%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
- 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        	<%=nick_getData%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href=../'infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->
         <% } else { %>
  	        <div class="btnright">
  	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
-    </header>
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -96,7 +93,6 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
                     <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
                     <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
@@ -105,6 +101,7 @@
             <label for="menuicon" class="background"></label>
         </div>
     </div>
+    </header>
 
 <div id="main_footer">
     <main>
@@ -121,7 +118,7 @@
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td><%=nick %><input type="hidden" name="_nickname" value="<%=nick%>"></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
+                    <td><%=nick_getData %><input type="hidden" name="_nickname" value="<%=nick_getData%>"></td> <!-- 여기에는 작성자 이름을 받아올 예정 -->        
                 </tr>
          		<tr>
                     <th>종류</th>
@@ -238,7 +235,7 @@
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/friend?serverTimezone=UTC", "friends", "2022server");
 			
 				stmt = conn.prepareStatement("insert into traffic (nickname, title, writetime, count, sex, start, dest, main, promisetime, category) values ('" +
-						nick + "'," + "'" + title + "'," + "'" + date + "'," + "'" + person + "'," + "'" + gender + "'," + "'" + depart + "'," + "'" + arrival + "'," + "'" + context + "'," + "'" + time + "'," + "'" + type + "')");
+						nick_getData + "'," + "'" + title + "'," + "'" + date + "'," + "'" + person + "'," + "'" + gender + "'," + "'" + depart + "'," + "'" + arrival + "'," + "'" + context + "'," + "'" + time + "'," + "'" + type + "')");
 			
 			stmt.executeUpdate();
 

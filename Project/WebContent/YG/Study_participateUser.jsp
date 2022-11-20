@@ -10,9 +10,12 @@
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
  <script src="../script/header.js" type="text/javascript"></script>
  <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <link rel="stylesheet" type="text/css" media="screen" href="../css/user.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <title>참여자 정보 확인</title>
 </head>
 <body>
@@ -23,31 +26,31 @@
 				$('.background').remove();
 			});
 		</script>
+
  <header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
-  
-        String id = (String) session.getAttribute("ID");
 		String number = (String) session.getAttribute("NUM");
-		String nick = request.getParameter("_nickName"); // 작성자 nick
-		String nickName = (String) session.getAttribute("NICK"); // 현재 로그인된 nick
+        String id = (String) session.getAttribute("ID");		
+    	session.setAttribute("ID", id);
+        String nick_getData = (String) session.getAttribute("NICK");
+        session.setAttribute("NICK", nick_getData);	
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
- 	        	<%=nickName%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/profile.jsp'"><span>Mypage</span></button>
- 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/logout.jsp'"><span>LogOut</span></button>
+ 	        	<%=nick_getData%>님 환영합니다.
+ 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
+ 	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->
         <% } else { %>
  	        <div class="btnright">
  	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
-    </header>
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -57,16 +60,16 @@
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
-                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
-                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-
+    </header>
+    
 <div id="main_footer">
 <div id="user">
 	<h1>참여자 정보 확인</h1>
@@ -91,7 +94,7 @@
 				%>
 				<tr><input type="hidden" name="_number" value="<%=number %>">
 					<input type="hidden" name="_id" value="<%=id %>">
-					<input type="hidden" name="_nickName" value="<%=nick %>">
+					<input type="hidden" name="_nickName" value="<%=nick_getData %>">
 					<th>이름</th>
 					<td><input id="text" type="hidden" name="_name" value="<%=rs.getString("name") %>"><%=rs.getString("name") %></td>
 				</tr>

@@ -14,6 +14,9 @@ pageEncoding="UTF-8" import="java.sql.*"%>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <link rel="stylesheet" type="text/css" media="screen" href="../css/writePostStyle.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
  <title>글모음 홈페이지</title>
 </head>
 <body>
@@ -67,10 +70,11 @@ pageEncoding="UTF-8" import="java.sql.*"%>
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
         <% 
-  
+        String nick_getData = (String) session.getAttribute("NICK");
+        session.setAttribute("NICK", nick_getData);	
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
- 	        	<%=nick%>님 환영합니다.
+ 	        	<%=nick_getData%>님 환영합니다.
  	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
  	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
@@ -78,12 +82,11 @@ pageEncoding="UTF-8" import="java.sql.*"%>
         <% } else { %>
  	        <div class="btnright">
  	        	
- 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/loginFrame.jsp'"><span>Log In</span></button>
- 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='infoSystem/signUp.jsp'"><span>Sign Up</span></button>
+ 	            <button id="loginBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/loginFrame.jsp'"><span>Log In</span></button>
+ 	            <button id="sognUpBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/signUp.jsp'"><span>Sign Up</span></button>
  	        </div>
        	<% } %>
-    </header>
-    <div id="boardside">
+       	<div id="boardside">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
@@ -93,16 +96,15 @@ pageEncoding="UTF-8" import="java.sql.*"%>
         <div class="sidebar">
             <div class="cont">
                 <ul>
-                    <li><a href="../PostMain.jsp">전체 글 보기</a></li>
-                    <li><a href="BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
-                    <li><a href="../NN/NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
+                    <li><a href="../BB/BB_friend.jsp"><img src="../image/car.png">  붕붕친구</a></li>
+                    <li><a href="NN_friend.jsp"><img src="../image/eat.png">  냠냠친구</a></li>
                     <li><a href="../YG/YG_friend.jsp"><img src="../image/studying.png">  열공친구</a></li>                        
                 </ul>
             </div>
             <label for="menuicon" class="background"></label>
         </div>
     </div>
-
+    </header>
          
 <div id="main_footer">
  <main>
@@ -170,6 +172,7 @@ pageEncoding="UTF-8" import="java.sql.*"%>
                  <td id="context" colspan="3"><input type="hidden" name="_context" value="<%=rs.getString("main") %>"/><%=rs.getString("main") %></td>        
              </tr>
          </table>    
+         <input id="btnPost" type="button" value="목록" onclick="location.href='YG_friend.jsp?_index=1'">
          </form>
              	<%		 	}
 

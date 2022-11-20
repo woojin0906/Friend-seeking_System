@@ -6,6 +6,7 @@
 }
 
 .header {
+  font-family:'Do Hyeon', sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,6 +20,8 @@
   -moz-transition: height 0.3s;
   transition: height 0.3s;
   display: inline-block;
+  font-size: 20px;
+  z-index: 1;
 }
 
 .header .logoimg {
@@ -55,6 +58,7 @@
 
 /* --------------------------- sidebar*/
 #boardside * {
+	font-family:'Do Hyeon', sans-serif;
     list-style: none;
     text-decoration: none;
     margin: 0;
@@ -97,7 +101,7 @@
     color: #fff;
     padding: 10px;
     margin: 10px;
-    font-size: 15px;
+    font-size: 25px;
   }
   
   #boardside .sidebar .cont > ul > li:active,
@@ -280,13 +284,14 @@ footer .phone {
 }
 
 /* button */
+
 .custom-btn {
   width: 100px;
   height: 40px;
   color: #000;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
+  font-family:'Do Hyeon', sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -307,6 +312,7 @@ footer .phone {
   padding: 0;
   border: none;
   margin-left: 10px;
+  font-size: 17px;
 }
 .btn-3 span {
   position: relative;
@@ -315,7 +321,7 @@ footer .phone {
   height: 100%;
 }
 .btn-3:before,
-.btn-3:after { /* ���콺 ȣ�� �� ������, �� ���� */
+.btn-3:after { /* 占쏙옙占쎌스 호占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙, 占쏙옙 占쏙옙占쏙옙 */
   position: absolute;
   content: "";
   right: 0;
