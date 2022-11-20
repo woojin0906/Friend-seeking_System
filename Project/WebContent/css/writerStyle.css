@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-
-* { 
-    font-family:'Noto Sans KR', sans-serif;
-}
-
 .header {
   font-family:'Do Hyeon', sans-serif;
   position: fixed;
@@ -313,6 +308,7 @@ footer .phone {
   border: none;
   margin-left: 10px;
   font-size: 17px;
+  font-family:'Do Hyeon', sans-serif;
 }
 .btn-3 span {
   position: relative;

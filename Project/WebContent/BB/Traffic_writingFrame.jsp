@@ -49,7 +49,7 @@
 				if(checkState == true)
 					$("#form_1").submit();
 				}
-	);
+			);
 			//가상으로 삽입한 팝업창을 닫는 function	
 			$(document).on("click", "#closeBtn", function(e) {
 				let val = $('#popup').text();
@@ -64,7 +64,7 @@
         <header class="header">
         <a href="../MainPage.jsp"><img class ="logoimg"src="../image/logo_mod.png"></a>
 		<!-- 로그인 했을 때 -->
-        <% 
+    <% 
         String id = (String) session.getAttribute("ID");		
     	session.setAttribute("ID", id);
         String nick_getData = (String) session.getAttribute("NICK");
@@ -90,6 +90,7 @@
             <span></span>
             <span></span>
         </label>
+        
         <div class="sidebar">
             <div class="cont">
                 <ul>
@@ -248,8 +249,6 @@
 	}
 	}
 		
-		
-	
 %>
 </body>
 

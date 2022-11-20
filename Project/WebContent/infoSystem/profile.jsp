@@ -43,7 +43,6 @@
 	  	<div class="nameabout">
 	  	<%
 		String nick = (String) session.getAttribute("NICK");
-            		System.out.println("테스트");
 	request.setCharacterEncoding("UTF-8");
 	try {
 	
