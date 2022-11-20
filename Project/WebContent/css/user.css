@@ -294,6 +294,8 @@ footer .phone {
   padding: 0;
   border: none;
   margin-left: 10px;
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 17px;
 }
 .btn-3 span {
   position: relative;
