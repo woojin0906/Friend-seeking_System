@@ -38,7 +38,6 @@
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
  	        	<%=nick_getData%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
  	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->

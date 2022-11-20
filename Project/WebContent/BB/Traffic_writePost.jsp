@@ -77,7 +77,6 @@ pageEncoding="UTF-8" import="java.sql.*" %>
         if(session.getAttribute("ID") != null) { %>
  	        <div class="btnright">
  	        	<%=nick_getData%>님 환영합니다.
- 	            <button id="mypageBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/profile.jsp'"><span>Mypage</span></button>
  	            <button id="logoutBtn" class="custom-btn btn-3" onclick="location.href='../infoSystem/logout.jsp'"><span>LogOut</span></button>
  	        </div>
 		<!-- 로그인 안 했을 때 -->
@@ -195,7 +194,10 @@ pageEncoding="UTF-8" import="java.sql.*" %>
              <table id="_talbe_participants">
      		
              <tr><td class="name" id="border" colspan=2><h2>참여자</h2></td>
-             <td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/></td>
+             <%
+              if(id != null) { %>
+             	<td id="border"><input id="btn_check" type="button" value="참여하기" onclick="location.href='Traffic_participateUser.jsp'"/></td>
+             <% } %>
              </tr>
                  <tr>
                      <th class="border_th" id="table_border">이름</th>
