@@ -2,6 +2,7 @@
 	작성자: 김지웅
 	findPwd으로부터 데이터를 받고 로그인을 검증하는 페이지
  -->
+<%@ page import="encrytion.SHA256"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
@@ -56,7 +57,11 @@
 			               	String getPhone = rs.getString(2);
 							if(getName.equals(name)){
 								if(getPhone.equals(tel)){
-									sql = "update member set password='" + id + "' where id='" + id + "'";
+									
+									SHA256 sha256 = new SHA256();
+									String endpw = sha256.enc256(id);
+									
+									sql = "update member set password='" + endpw + "' where id='" + id + "'";
 									pstmt = conn.prepareStatement(sql);
 									pstmt.executeUpdate();
 									
