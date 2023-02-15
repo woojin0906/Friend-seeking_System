@@ -1,19 +1,58 @@
 # Friend-seeking_System
-인하공업전문대학
-서버구축관리 - 2학년 2학기
+Project Notion Address : https://www.notion.so/2-2-aaadc8ef283e4cf1839105fe3861668c
 
-친구구하기 플랫폼(붕붕친구, 냠냠친구, 열공친구)
+<div align="center"><h1>- 구해줘 프렌즈! -</h1></div>
+<div align="center">인하공업전문대학 [서버구축관리] 과제 프로젝트 - 2학년 2학기</div>
+<div align="center">2022-10-21 ~ 2022-12-15</div>
+<br>
+<div align="center"><img src="https://img.shields.io/badge/JAVA-004088?style=flat-square"/>
+<img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
+<img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat-square&logo=Eclipse IDE&logoColor=white"/></div>
+<br>
 
-개발 프로그램 : eclipse - jsp, html, css
-
-개발일자 : 2022-10-21 ~ 2022-12-15
-
-참여자 : 김지웅, 김재호, 전우진, 강규석
+주제 : 친구구하기 플랫폼(붕붕친구, 냠냠친구, 열공친구)
 <br><br>
 
 ## 📑 프로젝트 개요
 학교 과제로 진행한 프로젝트입니다. 구해줘! 프렌즈는 사용자들끼리 즐기는 자유로운 친구구하기 서비스입니다. 에브리타임과 같은 애플리케이션을 참고하여 게시판을 통해 여러 주제로 친구를 구하는 글들을 통해 시작되었습니다. 주제 별로 글을 올리고 로그인을 한 사용자들은 참여하고 싶은 글에 참여를 할 수 있습니다.
 <br><br>
+
+## Contributer
+<table align="center" width=400>
+<!-- 김지웅 -->
+  <tr>
+    <td><h4><a href="https://github.com/gomwoong1">@gomwoong1</a></h4></td>
+    <td>
+        <ul>
+          <li>로딩, 로그인, 회원가입, 게시판 UI 구현</li>
+          <li>로그인, 회원가입, 게시판, 메인 DB 구현</li>
+        </ul>
+    </td>
+  </tr>
+  <!-- 전우진 -->
+  <tr>
+    <td><h4><a href="https://github.com/woojin0906">@woojin0906</a></h4></td>
+    <td>
+        <ul>
+          <li>전체 페이지 하단 UI 구현
+          <li>주제 별 글 작성, 글 보기, 글 수정, 참여자 페이지 UI 구현</li>
+          <li>주제 별 글 작성, 글 보기, 글 수정, 참여자 페이지 DB 구현</li>
+        </ul>
+    </td>
+  </tr>
+  <!-- 강규석 -->
+  <tr>
+    <td><h4><a href="https://github.com/kanggyuseokz">@kanggyuseokz</a></h4></td>
+    <td>
+        <ul>
+          <li>네비게이션 기능, 메인 페이지 UI 구현</li>
+        </ul>
+    </td>
+  </tr>
+</table>
+
 
 ## 🛠️ 시스템 구성 및 기능
 <div align="center"><img src = "https://user-images.githubusercontent.com/100831211/216356347-57d78686-7a6f-4756-83e0-b7bfcb805099.png" ></div>
