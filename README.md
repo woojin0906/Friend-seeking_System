@@ -1,5 +1,5 @@
 # Friend-seeking_System
-Project Notion Address : https://www.notion.so/2-2-aaadc8ef283e4cf1839105fe3861668c
+Project Notion Address : https://woo-jin.notion.site/a7319b652db04412aeb719a6b1ec2a54?pvs=4
 
 <div align="center"><h1>- 구해줘 프렌즈! -</h1></div>
 <div align="center">인하공업전문대학 [서버구축관리] 과제 프로젝트 - 2학년 2학기</div>
